@@ -1,0 +1,77 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2505
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red225\green226\blue231;\red31\green32\blue41;\red69\green187\blue62;
+\red81\green36\blue227;}
+{\*\expandedcolortbl;;\csgenericrgb\c88217\c88535\c90427;\csgenericrgb\c12157\c12549\c16078;\csgenericrgb\c26985\c73392\c24249;
+\csgenericrgb\c31805\c14233\c89143;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab593
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \
+\cf4 	// MARK: Handle Dark Mode\cf2 \
+\cf4 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) \{\cf2 \
+\cf4 		self.view.backgroundColor = UIColor(named: "CustomControlColor")\cf2 \
+\cf4 		self.bubblesView.backgroundColor = UIColor(named: "CustomControlColor")\cf2 \
+\cf4 	\}\
+\
+	// MARK: Set Dark Mode\cf2 \
+\cf4 	// let isDark = UserDefaults.standard.bool(forKey: "isDark")\cf2 \
+\cf4 	// if isDark \{ self.view.backgroundColor = UIColor.black \} else \{ self.view.backgroundColor = UIColor.white \}\\\
+\
+	// UserDefaults.standard.set(false, forKey: "isDark")\cf2 \
+\cf4 	// self.view.backgroundColor = UIColor.white\
+\
+	// MARK: Handle Dark Mode\cf2 \
+	\cf4 // TODO: Dark Mode Toggle Not Working\cf2 \
+\
+\cf4 	private func toggleDarkMode() \{\cf2 \
+\cf4 		if self.view.backgroundColor == UIColor.white \{\cf2 \
+\cf4 			UserDefaults.standard.set(true, forKey: "isDark")\cf2 \
+\cf4 			self.view.backgroundColor = UIColor.black\cf2 \
+\cf4 		\}\cf2 \
+\cf4 		else if self.view.backgroundColor == UIColor.black \{\cf2 \
+\cf4 			UserDefaults.standard.set(false, forKey: "isDark")\cf2 \
+\cf4 			self.view.backgroundColor = UIColor.white\cf2 \
+\cf4 		\}\cf2 \
+\cf4 	\}\cf2 \
+\cf4 	\cf2 \
+\cf4 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) \{\cf2 \
+\cf4 		self.view.backgroundColor = UIColor(named: "CustomControlColor")\cf2 \
+\cf4 	\}\
+\
+	func rhymes() -> [String] \{\cf2 \
+\cf4 		var rhymes = [String]()\cf2 \
+\cf4 		\cf2 \
+\cf4 		if let apiUrl = URL(string: "\cf5 \cb3 https://wordsapiv1.p.rapidapi.com/words/\cf4 \cb3 " + self.word + "/rhymes") \{\cf2 \
+\cf4 			var request = URLRequest(url: apiUrl)\cf2 \
+\cf4 			request.addValue("wordsapiv1.p.rapidapi.com", forHTTPHeaderField: "x-rapidapi-host")\cf2 \
+\cf4 			request.addValue("764084a202msh2f0775947fe53c3p1c195djsn6daa3abe9336", forHTTPHeaderField: "x-rapidapi-key")\cf2 \
+\cf4 			\cf2 \
+\cf4 			let task = URLSession.shared.dataTask(with: request) \{ (data, res, error) in\cf2 \
+\cf4 				guard let data = data, let response = res else \{ print("[ERROR] Did Not Recieve Data From WordsAPI"); return \}\cf2 \
+\cf4 				print("[API RESPONSE] \\(response)")\cf2 \
+\cf4 				do \{\cf2 \
+\cf4 					if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any], let rhymesBuffer = json["rhymes"] as? [String: [String]] \{\cf2 \
+\cf4 						if let allRhymes = rhymesBuffer["all"] \{\cf2 \
+\cf4 							\cf2 \
+\cf4 							for rhyme in allRhymes \{\cf2 \
+\cf4 								if rhyme.contains(" ") \{ print("[INFO] Ignoring Multi-Word Rhyme") \} else \{ rhymes.append(rhyme) \}\cf2 \
+\cf4 							\}\cf2 \
+\cf4 							print("[INFO] Rhymes For \\(self.word): \\(allRhymes)")\cf2 \
+\cf4 						\}\cf2 \
+\cf4 					\}\cf2 \
+\cf4 					else \{ print("[ERROR] Could Not Serialize JSON") \}\cf2 \
+\cf4 				\}\cf2 \
+\cf4 				catch \{ print("[ERROR] Could Not Parse JSON Data From WordsAPI") \}\cf2 \
+\cf4 			\}\cf2 \
+\cf4 			task.resume()\cf2 \
+\cf4 		\}\cf2 \
+\cf4 		else \{ print("[ERROR] Could Not Validate URL") \}\cf2 \
+\cf4 		\cf2 \
+\cf4 		let shortenedArray = Array(rhymes.shuffled().prefix(howMany/2))\cf2 \
+\cf4 		\cf2 \
+\cf4 		return shortenedArray\cf2 \
+\cf4 	\}\cf2 \
+\cf4 \
+}
