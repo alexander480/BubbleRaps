@@ -57,7 +57,7 @@ class WordPackVC: UIViewController {
 		super.viewWillAppear(true)
 		
 		self.headingView.backgroundColor = self.unlockable.colorForCurrentTheme()
-		self.coinButton.setTitleForAllStates(title: "\(self.unlockable.currentCoinBalance()) 🅒")
+		self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.coinBalanceWithIcon())
 	}
 	
 
@@ -118,9 +118,13 @@ extension WordPackVC: UITableViewDataSource {
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: "WordPackCell", for: indexPath) as! WordPackCell
 			cell.title.text = selectedPack
 			cell.cellView.backgroundColor = color
-			cell.costLabel.textColor = color
 		
-		if unlockedPacks.contains(selectedPack) { cell.costLabel.text = "●" }
+		cell.costLabel.attributedText = self.unlockable.addCoinIconTo(String: "500 ", Color: #colorLiteral(red: 0.2427230775, green: 0.6916770339, blue: 1, alpha: 1), Size: nil)
+		
+		if unlockedPacks.contains(selectedPack) {
+			cell.costLabel.text = "●"
+			cell.costLabel.textColor = color
+		}
 		
 		return cell
 	}

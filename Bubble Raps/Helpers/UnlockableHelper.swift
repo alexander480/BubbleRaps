@@ -88,6 +88,30 @@ class UnlockableHelper: NSObject  {
 		if remainingCoins >= 0 { return true } else { return false }
 	}
 	
+	func addCoinIconTo(String: String, Color: UIColor?, Size: CGFloat?) -> NSMutableAttributedString {
+		let str = NSMutableAttributedString(string: String)
+		if let font = UIFont(name: "AvenirNext-HeavyItalic", size: Size ?? 14.0) {
+			str.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.length))
+			str.addAttribute(.foregroundColor, value: Color ?? UIColor.white, range: NSRange(location: 0, length: str.length))
+			
+			if Color == UIColor.white { str.add(Image: #imageLiteral(resourceName: "Bubble Currency Small (White)"), WithOffset: -3.25) }
+			else { str.add(Image: #imageLiteral(resourceName: "Bubble Currency Small"), WithOffset: -3.25) }
+		}
+		
+		return str
+	}
+	
+	func coinBalanceWithIcon() -> NSMutableAttributedString {
+		let str = NSMutableAttributedString(string: "\(self.currentCoinBalance()) ")
+		if let font = UIFont(name: "AvenirNext-HeavyItalic", size: 14.0) {
+			str.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.length))
+			str.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: str.length))
+			str.add(Image: #imageLiteral(resourceName: "Bubble Currency Small (White)"), WithOffset: -4.15)
+		}
+		
+		return str
+	}
+	
 	// MARK: Theme Functions
 	
 	let allThemes = ["Purpink", "Dark Purpink", "Purple", "Dark Purple", "Blue", "Dark Blue", "Gray", "Dark Gray"]

@@ -18,7 +18,6 @@ class RoundCompletedAlert: UIViewController {
 	
 	@IBOutlet weak var backgroundImageView: UIImageView!
 	
-	@IBOutlet weak var coinView: UIView!
 	@IBOutlet weak var coinLabel: UILabel!
 	
 	@IBOutlet weak var titleLabel: UILabel!
@@ -29,6 +28,8 @@ class RoundCompletedAlert: UIViewController {
 		if isGameOver { self.dismiss(animated: true) { self.delegate?.gameOverClicked() } }
 		else { self.dismiss(animated: true) { self.delegate?.nextRoundClicked() } }
 	}
+	
+	let unlockable = UnlockableHelper()
 	
 	var delegate: RoundCompletedAlertDelegate?
 	
@@ -52,10 +53,9 @@ class RoundCompletedAlert: UIViewController {
 			
 			let coinsEarned = self.currentScore / 5
 			
-			self.coinView.isHidden = false
-			self.coinLabel.text = "+\(coinsEarned) 🅒"
+			self.coinLabel.attributedText = self.coinsEarnedString(Number: coinsEarned)
 			
-			let currentCoins = UserDefaults.standard.integer(forKey: "coins")
+			let currentCoins = self.unlockable.currentCoinBalance()
 			UserDefaults.standard.set(currentCoins + coinsEarned, forKey: "coins")
 
 			if isHighScore {
@@ -68,11 +68,25 @@ class RoundCompletedAlert: UIViewController {
 			}
 		}
 		else {
-			self.coinView.isHidden = true
 			self.backgroundImageView.image = #imageLiteral(resourceName: "Next Round Popup Background")
 			self.nextButton.setBackgroundImageForAllStates(image: #imageLiteral(resourceName: "Next Round Button"))
 			self.titleLabel.text = "Round Completed!"
 			self.subtitleLabel.text = "\(self.currentScore) Correct Answers"
+			
+			self.coinLabel.attributedText = self.coinsEarnedString(Number: 1)
 		}
 	}
+	
+	private func coinsEarnedString(Number: Int) -> NSMutableAttributedString {
+		let str = NSMutableAttributedString(string: "+ \(Number) ")
+		if let font = UIFont(name: "AvenirNext-Heavy", size: 26.0) {
+			str.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.length))
+			str.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.3767357171, green: 0.6819834709, blue: 1, alpha: 1), range: NSRange(location: 0, length: str.length))
+			
+			str.add(Image: #imageLiteral(resourceName: "Bubble Currency Small"), WithOffset: -5.25)
+		}
+		
+		return str
+	}
+	
 }

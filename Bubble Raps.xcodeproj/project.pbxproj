@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -88,7 +88,6 @@
 				2B944FCC5C699AF137456167 /* Pods-Bubble Raps.debug.xcconfig */,
 				681A1E0F7B4FDDD263D4B679 /* Pods-Bubble Raps.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

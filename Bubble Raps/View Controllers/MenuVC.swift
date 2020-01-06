@@ -7,8 +7,8 @@
 //  Copyright © 2019 Delta Vel. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import GoogleMobileAds
 
 // MARK: Uncomment The Following Import To Test Crashlytics (Step One)
 // import Crashlytics
@@ -18,6 +18,8 @@ class MenuVC: UIViewController {
 	// MARK: Class Variables
 	
 	let unlockable = UnlockableHelper()
+	var rewardedAd: GADRewardedAd!
+	
 	var selectedPack = "Standard"
 	var selectedPackIndex = 0
 	
@@ -41,8 +43,10 @@ class MenuVC: UIViewController {
 		}
 	}
 	
-	@IBOutlet weak var darkModeButton: UIButton!
-	@IBAction func darkModeButtonAction(_ sender: Any) { }
+	@IBOutlet weak var adButton: UIButton!
+	@IBAction func adButtonAction(_ sender: Any) {
+		self.adRequestAlert()
+	}
 	
 	@IBOutlet weak var coinButton: UIButton!
 	@IBAction func coinButtonAction(_ sender: Any) {
@@ -58,6 +62,7 @@ class MenuVC: UIViewController {
 	@IBOutlet weak var beginButton: UIButton!
 	@IBAction func beginAction(_ sender: Any) {
 		if ReachabilityHelper.isConnectedToNetwork() {
+			// MARK: Segue Often Crashes App For Some Reason
 			self.performSegue(withIdentifier: "BeginSegue", sender: self)
 		}
 		else { self.presentAlert(title: "No Internet Connection!", message: "Please connect to the internet", actions: nil) }
@@ -134,7 +139,13 @@ class MenuVC: UIViewController {
 		
 		// MARK: Uncomment The Following Line To Add 250 Coins To Account
 		self.unlockable.addCoins(Amount: 250)
-		self.coinButton.setTitleForAllStates(title: "\(self.unlockable.currentCoinBalance()) 🅒")
+		
+		// Update Displayed Coin Balance
+		self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.coinBalanceWithIcon())
+		
+		// self.coinButton.setTitleForAllStates(title: "\(self.unlockable.currentCoinBalance()) 🅒")
+		// self.coinButton.attributedTitle(for: .normal)
+		
 		print("[INFO] Current Coin Balance: \(self.unlockable.currentCoinBalance())")
 		
 		// MARK: Uncomment Following Lines To Reset Currently Unlocked Packs
@@ -191,13 +202,13 @@ class MenuVC: UIViewController {
 		else if roundTime == 5 { self.timerLabel.text = "Hard" }
 		else if roundTime == 7 { self.timerLabel.text = "Medium" }
 		else if roundTime == 9 { self.timerLabel.text = "Easy" }
-		
-		// Display Coins
-		self.coinButton.setTitleForAllStates(title: "\(self.unlockable.currentCoinBalance()) 🅒")
 	}
 	
-	override func viewWillAppear(_ animated: Bool) { self.coinButton.setTitleForAllStates(title: "\(self.unlockable.currentCoinBalance()) 🅒") }
-	
+	override func viewWillAppear(_ animated: Bool) {
+		// Display Coins
+		self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.coinBalanceWithIcon())
+	}
+
 	private func resetHighScore() {
 		self.scoreLabel.text = "0"
 		UserDefaults.standard.set(0, forKey: "highScore")
@@ -207,32 +218,70 @@ class MenuVC: UIViewController {
 	// MARK: Prepare For Segue
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "BeginSegue" {
-			if let vc = segue.destination as? MainVC {
-				vc.wordsToRhyme = self.unlockable.getShuffledWordPack(Named: self.packLabel.text)
+			if let vc = segue.destination as? MainVC, let packName = self.packLabel.text {
+				vc.wordsToRhyme = self.unlockable.getShuffledWordPack(Named: packName)
 			}
 		}
 	}
 }
 
-// MARK: Setup UI
-/*
-extension MenuVC {
-	func setupUserInterface() {
-		self.addShadowsTo(View: self.highScoreMenuView)
-		self.addShadowsTo(View: self.timerMenuView)
-		self.addShadowsTo(View: self.wordPackMenuView)
-		self.addShadowsTo(View: self.beginButton)
+// MARK: Setup Rewarded Ad
+
+extension MenuVC: GADRewardedAdDelegate {
+	private func createAndLoadRewardedAd() -> GADRewardedAd {
+		let rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+		rewardedAd.load(GADRequest()) { error in
+			if let error = error {
+				print("[ERROR] Rewarded Ad Failed To Load. [MESSAGE] \(error.localizedDescription)")
+			}
+			else {
+				print("[INFO] Rewarded Ad Loaded Successfully.")
+				self.presentRewardedAd()
+			}
+		}
+	  return rewardedAd
 	}
 	
-	private func addShadowsTo(View: UIView) {
-		View.layer.shadowColor = UIColor.black.cgColor
-		View.layer.shadowOpacity = 0.3
-		View.layer.shadowOffset = .zero
-		View.layer.shadowRadius = 1
+	private func presentRewardedAd() {
+		if rewardedAd!.isReady { rewardedAd?.present(fromRootViewController: self, delegate: self) }
+		else { print("[WARNING] Rewarded Ad Not Ready To Present.") }
+	}
+	
+	func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
+		self.adCompletedAlert()
+	}
+	
+	func rewardedAd(_ rewardedAd: GADRewardedAd, didFailToPresentWithError error: Error) {
+		print("[ERROR] Could Not Load Rewarded Ad. [MESSAGE] \(error.localizedDescription)")
+	}
+
+	func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
+		unlockable.addCoins(Amount: 10)
+	}
+	
+	private func adRequestAlert() {
+		let alert = UIAlertController(title: "Earn Free Bubbles!!", message: "Watch A Short Video To Earn 10 Free Bubbles", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Watch Video", style: .default) { (action) in
+			alert.dismiss(animated: true, completion: nil)
+			self.rewardedAd = self.createAndLoadRewardedAd()
+		});
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+			alert.dismiss(animated: true, completion: nil)
+		}));
 		
-		View.layer.shadowPath = UIBezierPath(rect: View.bounds).cgPath
-		View.layer.shouldRasterize = true
-		View.layer.rasterizationScale = UIScreen.main.scale
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	private func adCompletedAlert() {
+		let alert = UIAlertController(title: "Thanks For Watching!!", message: "10 bubbles have been awarded to your account (unless the ad was closed early)", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Watch Another", style: .default) { (action) in
+			alert.dismiss(animated: true, completion: nil)
+			self.rewardedAd = self.createAndLoadRewardedAd()
+		});
+		alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: { (action) in
+			alert.dismiss(animated: true, completion: nil)
+		}));
+		
+		self.present(alert, animated: true, completion: nil)
 	}
 }
-*/

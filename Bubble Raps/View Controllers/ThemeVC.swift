@@ -55,21 +55,21 @@ class ThemeVC: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		self.mainView.backgroundColor = self.unlockable.colorForCurrentTheme()
-		self.coinButton.setTitleForAllStates(title: "\(self.unlockable.currentCoinBalance()) 🅒")
+		self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.coinBalanceWithIcon())
 	}
 	
 	// MARK: Purchase Theme UI Handler
 	private func presentPurchaseAlert(theme: String, cost: Int) {
-		let alert = UIAlertController(title: "Purchase \(theme) Theme", message: "This Theme Costs \(cost) Coins.", preferredStyle: .alert)
+		let alert = UIAlertController(title: "Purchase \(theme) Theme", message: "This theme costs \(cost) bubbles.", preferredStyle: .alert)
 		let purchaseAction = UIAlertAction(title: "Purchase", style: .default) { (action) in
 			switch self.unlockable.purchaseTheme(Named: theme, Cost: cost) {
 			case .success:
-				self.presentAlert(title: "\(theme) Theme Unlocked!", message: "You Have \(self.unlockable.currentCoinBalance()) Coins Remaining.", actions: nil)
+				self.presentAlert(title: "\(theme) Theme Unlocked!", message: "You have \(self.unlockable.currentCoinBalance()) bubbles remaining.", actions: nil)
 				self.collectionView.reloadData()
 			case .notEnoughCoins:
-				self.presentAlert(title: "Not Enough Coins!", message: "You Need \(cost - self.unlockable.currentCoinBalance()) More Coins to unlock this theme.", actions: nil)
+				self.presentAlert(title: "Not Enough Bubbles!", message: "You need \(cost - self.unlockable.currentCoinBalance()) more bubbles to unlock this theme.", actions: nil)
 			case .alreadyUnlocked:
-				self.presentAlert(title: "You Have Already Unlocked This Theme!", message: "Get yourself something nice, you've got enough coins (;", actions: nil)
+				self.presentAlert(title: "You Have Already Unlocked This Theme!", message: "Get yourself something nice, you've got enough bubbles (;", actions: nil)
 			}
 			alert.dismiss(animated: true, completion: nil)
 		}
@@ -131,7 +131,7 @@ extension ThemeVC: UICollectionViewDataSource {
 		else {
 			let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "LockedThemeCell", for: indexPath) as! LockedThemeCell
 				cell.backgroundColor = self.unlockable.colorFor(Theme: cellTheme)
-				cell.titleLabel.text = "200 🅒"
+				cell.titleLabel.attributedText = self.unlockable.addCoinIconTo(String: "200 ", Color: #colorLiteral(red: 0.2427230775, green: 0.6916770339, blue: 1, alpha: 1), Size: nil)
 			
 			return cell
 		}

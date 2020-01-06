@@ -8,14 +8,13 @@
 
 import UIKit
 import AmazingBubbles
+import GoogleMobileAds
 
 class MainVC: UIViewController {
 	
 	// MARK: Storyboard Outlets
 	
-	@IBOutlet weak var bubblesView: ContentBubblesView! {
-		didSet { bubblesView.delegate = self; bubblesView.dataSource = self }
-	}
+	@IBOutlet weak var bubblesView: ContentBubblesView! { didSet { bubblesView.delegate = self; bubblesView.dataSource = self } }
 	
 	@IBOutlet weak var titleView: UIView!
 	@IBOutlet weak var titleLabel: UILabel!
@@ -28,11 +27,11 @@ class MainVC: UIViewController {
 	
 	// MARK: Class Variables
 	
+	var interstitial: GADInterstitial!
+	
 	let unlockable = UnlockableHelper()
 	
 	var isHighscore = false
-	var isGameOver = false
-	
 	var round = 0
 	var correctAnswers = 0
 	var incorrectAnswers = 0
@@ -47,7 +46,8 @@ class MainVC: UIViewController {
 	
 	var wordsToRhyme = [String]()
 	
-	// MARK: View Did Load
+	// MARK: viewDidLoad
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -64,6 +64,9 @@ class MainVC: UIViewController {
 		
 		// MARK: Start First Round
 		self.startNextRound(isFirstRound: true)
+		
+		// MARK: Setup Ads
+		self.interstitial = self.reloadInterstitial()
     }
 	
 	// MARK: Start Round Function
@@ -185,7 +188,6 @@ class MainVC: UIViewController {
 	private func cleanup() {
 		self.timer.invalidate()
 		self.bubblesView.removeBubbles()
-		
 	}
 }
 
@@ -205,7 +207,9 @@ extension MainVC: ContentBubblesViewDelegate {
 		self.bubblesView.changeBubble(isCorrect: true, index: index)
 		
 		let allRhymesSelected: Bool = (self.correctAnswers / 5) == (self.round + 1)
-		if allRhymesSelected { self.roundCompleted(isGameOver: false) }
+		if allRhymesSelected {
+			self.roundCompleted(isGameOver: false)
+		}
 	}
 	
 	private func incorrectAnswer(view: ContentBubblesView, index: Int) {
@@ -213,7 +217,9 @@ extension MainVC: ContentBubblesViewDelegate {
 		self.bubblesView.changeBubble(isCorrect: false, index: index)
 		self.handleLiveCounter()
 		
-		if self.incorrectAnswers >= 3 { self.roundCompleted(isGameOver: true) }
+		if self.incorrectAnswers >= 3 {
+			self.roundCompleted(isGameOver: true)
+		}
 	}
 }
 
@@ -241,30 +247,37 @@ extension MainVC: ContentBubblesViewDataSource {
     }
 }
 
-// MARK: Round Completed Popup Delegate
+// MARK: RoundCompletedPopup Delegate
 
 extension MainVC: RoundCompletedAlertDelegate {
 	private func roundCompleted(isGameOver: Bool) {
 		self.timer.invalidate()
-		
 		if isGameOver {
-			// Handle Game Over
-			self.isGameOver = true
+			// Update High Score
 			self.updateHighScore()
+			
+			// MARK: Present Interstatial After Game Over
+			self.presentInterstatial()
 		}
-		
-		let alert = self.storyboard?.instantiateViewController(withIdentifier: "RoundCompletedAlert") as! RoundCompletedAlert
-			alert.providesPresentationContextTransitionStyle = true
-			alert.definesPresentationContext = true
-			alert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-			alert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+		else {
+			// Present Round Completed Popup To Proceed To Next Round
+			self.presentRoundCompletedPopup(isGameOver: isGameOver)
+		}
+	}
+	
+	private func presentRoundCompletedPopup(isGameOver: Bool) {
+		let roundCompletedPopup = self.storyboard?.instantiateViewController(withIdentifier: "RoundCompletedAlert") as! RoundCompletedAlert
+			roundCompletedPopup.providesPresentationContextTransitionStyle = true
+			roundCompletedPopup.definesPresentationContext = true
+			roundCompletedPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+			roundCompletedPopup.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
 
-			alert.delegate = self
-			alert.isGameOver = self.isGameOver
-			alert.isHighScore = self.isHighscore
-			alert.currentScore = self.correctAnswers
+			roundCompletedPopup.delegate = self
+			roundCompletedPopup.isGameOver = isGameOver
+			roundCompletedPopup.isHighScore = self.isHighscore
+			roundCompletedPopup.currentScore = self.correctAnswers
 		
-		self.present(alert, animated: true, completion: nil)
+		self.present(roundCompletedPopup, animated: true, completion: nil)
 	}
 	
 	// Update High Score (If Needed)
@@ -291,7 +304,6 @@ extension MainVC: PauseMenuDelegate {
 			menu.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
 			
 			menu.delegate = self
-			
 			menu.currentScore = self.correctAnswers
 			
 			self.present(menu, animated: true, completion: nil)
@@ -300,4 +312,25 @@ extension MainVC: PauseMenuDelegate {
 	
 	func resumeFromPause() { self.startTimer(fromPause: true) }
 	func endFromPause() { self.performSegue(withIdentifier: "BackToMenu", sender: self) }
+}
+
+extension MainVC: GADInterstitialDelegate {
+	func presentInterstatial() {
+		if self.interstitial.isReady { interstitial.present(fromRootViewController: self) }
+		else { print("[WARNING] Interstitial Was Not Ready To Present.") }
+	}
+	
+	func reloadInterstitial() -> GADInterstitial {
+		let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+			interstitial.delegate = self
+			interstitial.load(GADRequest())
+		
+		return interstitial
+	}
+
+	/// Tells the delegate the interstitial had been animated off the screen.
+	func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+		self.interstitial = self.reloadInterstitial()
+		self.presentRoundCompletedPopup(isGameOver: true)
+	}
 }
