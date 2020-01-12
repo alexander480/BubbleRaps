@@ -247,7 +247,7 @@ extension MainVC: ContentBubblesViewDataSource {
     }
 }
 
-// MARK: RoundCompletedPopup Delegate
+// MARK: RoundCompletedAlertDelegate Protocol Stubs
 
 extension MainVC: RoundCompletedAlertDelegate {
 	private func roundCompleted(isGameOver: Bool) {
@@ -280,7 +280,7 @@ extension MainVC: RoundCompletedAlertDelegate {
 		self.present(roundCompletedPopup, animated: true, completion: nil)
 	}
 	
-	// Update High Score (If Needed)
+	// Update High Score
 	private func updateHighScore() {
 		let currentHighScore = UserDefaults.standard.integer(forKey: "highScore")
 		if self.correctAnswers > currentHighScore {
@@ -289,11 +289,13 @@ extension MainVC: RoundCompletedAlertDelegate {
 		}
 	}
 	
+	// Proceed To Next Screen
 	func nextRoundClicked() { self.startNextRound(isFirstRound: false) }
 	func gameOverClicked() { self.performSegue(withIdentifier: "BackToMenu", sender: self) }
 }
 
-// MARK: Pause Menu Popup Delegate
+// MARK: PauseMenuDelegate Protocol Stubs
+
 extension MainVC: PauseMenuDelegate {
 	private func presentPauseMenu() {
 		self.timer.invalidate()
@@ -314,13 +316,15 @@ extension MainVC: PauseMenuDelegate {
 	func endFromPause() { self.performSegue(withIdentifier: "BackToMenu", sender: self) }
 }
 
+// MARK: GADInterstitialDelegate Protocol Stubs
+
 extension MainVC: GADInterstitialDelegate {
-	func presentInterstatial() {
+	private func presentInterstatial() {
 		if self.interstitial.isReady { interstitial.present(fromRootViewController: self) }
 		else { print("[WARNING] Interstitial Was Not Ready To Present.") }
 	}
 	
-	func reloadInterstitial() -> GADInterstitial {
+	private func reloadInterstitial() -> GADInterstitial {
 		let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
 			interstitial.delegate = self
 			interstitial.load(GADRequest())

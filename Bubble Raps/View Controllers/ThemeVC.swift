@@ -131,7 +131,7 @@ extension ThemeVC: UICollectionViewDataSource {
 		else {
 			let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "LockedThemeCell", for: indexPath) as! LockedThemeCell
 				cell.backgroundColor = self.unlockable.colorFor(Theme: cellTheme)
-				cell.titleLabel.attributedText = self.unlockable.addCoinIconTo(String: "200 ", Color: #colorLiteral(red: 0.2427230775, green: 0.6916770339, blue: 1, alpha: 1), Size: nil)
+				cell.titleLabel.attributedText = self.unlockable.addCoinIconTo(String: "250 ", Color: #colorLiteral(red: 0.2427230775, green: 0.6916770339, blue: 1, alpha: 1), Size: nil)
 			
 			return cell
 		}

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,11 +24,68 @@
                                     <constraint firstAttribute="height" constant="300" id="vHo-Hw-EDd"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created By" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCz-8K-UH3">
+                                <rect key="frame" x="0.0" y="753" width="414" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="9rc-jo-9TV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rhyming Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caW-r0-jag">
+                                <rect key="frame" x="0.0" y="128" width="414" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="7wa-KR-mCz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6D-G6-tiN">
+                                <rect key="frame" x="0.0" y="778" width="414" height="44"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="rkI-Uo-rzw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-HeavyItalic" family="Avenir Next" pointSize="32"/>
+                                <state key="normal" title="Delta Vel">
+                                    <color key="titleColor" red="0.43137254901960786" green="0.83137254901960778" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bubble Raps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dy4-EZ-R2t">
+                                <rect key="frame" x="0.0" y="84" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="rFJ-0I-YKo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="32"/>
+                                <color key="textColor" red="0.93654221299999996" green="0.7588678002" blue="0.9983772635" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="h6D-G6-tiN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="29Q-68-m6d"/>
+                            <constraint firstItem="h6D-G6-tiN" firstAttribute="top" secondItem="qCz-8K-UH3" secondAttribute="bottom" id="4Ru-Qh-ctX"/>
+                            <constraint firstItem="caW-r0-jag" firstAttribute="top" secondItem="Dy4-EZ-R2t" secondAttribute="bottom" id="6KC-dg-wPH"/>
+                            <constraint firstItem="qCz-8K-UH3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7G5-1v-ZQg"/>
+                            <constraint firstItem="Dy4-EZ-R2t" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="AYx-20-LHG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="h6D-G6-tiN" secondAttribute="bottom" constant="40" id="AvQ-xy-uZf"/>
+                            <constraint firstItem="h6D-G6-tiN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Car-6A-feX"/>
+                            <constraint firstItem="Dy4-EZ-R2t" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Ebs-iJ-YEE"/>
+                            <constraint firstItem="caW-r0-jag" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="IWV-YF-ueH"/>
                             <constraint firstItem="YM2-TZ-ZXo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="IuM-TZ-eUf"/>
+                            <constraint firstItem="caW-r0-jag" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="K2a-9K-TYd"/>
                             <constraint firstItem="YM2-TZ-ZXo" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="N0X-Cz-LDc"/>
+                            <constraint firstItem="qCz-8K-UH3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Vy8-ue-N5U"/>
+                            <constraint firstItem="Dy4-EZ-R2t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ace-1I-G81"/>
+                            <constraint firstItem="Dy4-EZ-R2t" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="lnH-RH-6D5"/>
+                            <constraint firstItem="qCz-8K-UH3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sDa-JE-PIJ"/>
+                            <constraint firstItem="h6D-G6-tiN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vSF-qe-5ui"/>
+                            <constraint firstItem="caW-r0-jag" firstAttribute="centerX" secondItem="Dy4-EZ-R2t" secondAttribute="centerX" id="x0a-FF-aGp"/>
+                            <constraint firstItem="caW-r0-jag" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ytL-jd-kE7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

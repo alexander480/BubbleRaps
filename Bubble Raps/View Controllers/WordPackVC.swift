@@ -99,7 +99,7 @@ extension WordPackVC: UITableViewDelegate {
 			self.tableView.reloadData()
 		}
 		else {
-			self.presentPurchaseAlert(pack: selectedPack, cost: 5)
+			self.presentPurchaseAlert(pack: selectedPack, cost: 750)
 		}
 	}
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 85.0 }
@@ -119,7 +119,7 @@ extension WordPackVC: UITableViewDataSource {
 			cell.title.text = selectedPack
 			cell.cellView.backgroundColor = color
 		
-		cell.costLabel.attributedText = self.unlockable.addCoinIconTo(String: "500 ", Color: #colorLiteral(red: 0.2427230775, green: 0.6916770339, blue: 1, alpha: 1), Size: nil)
+		cell.costLabel.attributedText = self.unlockable.addCoinIconTo(String: "750 ", Color: #colorLiteral(red: 0.2427230775, green: 0.6916770339, blue: 1, alpha: 1), Size: nil)
 		
 		if unlockedPacks.contains(selectedPack) {
 			cell.costLabel.text = "●"
