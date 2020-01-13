@@ -65,6 +65,7 @@ class ThemeVC: UIViewController {
 			switch self.unlockable.purchaseTheme(Named: theme, Cost: cost) {
 			case .success:
 				self.presentAlert(title: "\(theme) Theme Unlocked!", message: "You have \(self.unlockable.currentCoinBalance()) bubbles remaining.", actions: nil)
+				self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.coinBalanceWithIcon())
 				self.collectionView.reloadData()
 			case .notEnoughCoins:
 				self.presentAlert(title: "Not Enough Bubbles!", message: "You need \(cost - self.unlockable.currentCoinBalance()) more bubbles to unlock this theme.", actions: nil)
@@ -143,7 +144,6 @@ extension ThemeVC: UICollectionViewDataSource {
 extension ThemeVC: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		let screenWidth = UIScreen.main.bounds.width
-		
 		return CGSize(width: screenWidth/3, height: screenWidth/3)
 	}
 	

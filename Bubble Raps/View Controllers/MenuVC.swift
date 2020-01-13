@@ -138,25 +138,25 @@ class MenuVC: UIViewController {
 		// self.present(crashlyticsAlert, animated: true, completion: nil)
 		
 		// MARK: Uncomment The Following Line To Add 250 Coins To Account
-		self.unlockable.addCoins(Amount: 250)
+		// self.unlockable.addCoins(Amount: 250)
 		
 		// Update Displayed Coin Balance
-		self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.coinBalanceWithIcon())
+		// self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.coinBalanceWithIcon())
 		
 		// self.coinButton.setTitleForAllStates(title: "\(self.unlockable.currentCoinBalance()) 🅒")
 		// self.coinButton.attributedTitle(for: .normal)
 		
-		print("[INFO] Current Coin Balance: \(self.unlockable.currentCoinBalance())")
+		// print("[INFO] Current Coin Balance: \(self.unlockable.currentCoinBalance())")
 		
 		// MARK: Uncomment Following Lines To Reset Currently Unlocked Packs
-		UserDefaults.standard.set(["Standard"], forKey: "unlockedPacks")
-		self.unlockable.validateUnlockedPacks()
-		print("[INFO] Unlocked Word Packs: \(self.unlockable.currentlyUnlockedPacks())")
+		// UserDefaults.standard.set(["Standard"], forKey: "unlockedPacks")
+		// self.unlockable.validateUnlockedPacks()
+		// print("[INFO] Unlocked Word Packs: \(self.unlockable.currentlyUnlockedPacks())")
 		
 		// MARK: Uncomment Following Lines To Reset Currently Unlocked Themes
-		UserDefaults.standard.set(["Purpink"], forKey: "unlockedThemes")
-		self.unlockable.validateUnlockedThemes()
-		print("[INFO] Unlocked Themes: \(self.unlockable.currentlyUnlockedThemes())")
+		// UserDefaults.standard.set(["Purpink"], forKey: "unlockedThemes")
+		// self.unlockable.validateUnlockedThemes()
+		// print("[INFO] Unlocked Themes: \(self.unlockable.currentlyUnlockedThemes())")
 	}
 	
 	@IBOutlet weak var packDecreaseArrow: UIButton!

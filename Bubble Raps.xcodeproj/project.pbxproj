@@ -26,13 +26,11 @@
 		E5976E1A2310CDCB005C8D1D /* LabelBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5976E192310CDCB005C8D1D /* LabelBubbleView.swift */; };
 		E5CA33D22325D46E002570F9 /* ThemeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CA33D12325D46E002570F9 /* ThemeVC.swift */; };
 		E5CA33D42325D47B002570F9 /* WordPackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CA33D32325D47B002570F9 /* WordPackVC.swift */; };
-		E5CA33D62325D66B002570F9 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CA33D52325D66B002570F9 /* Themes.swift */; };
 		E5CA5C3E23206CD6009AAE96 /* LargeMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5CA5C3D23206CD6009AAE96 /* LargeMenuView.xib */; };
 		E5CA5C4023206CEE009AAE96 /* LargeMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CA5C3F23206CEE009AAE96 /* LargeMenuView.swift */; };
 		E5D1454F233D6C1F0060920C /* PurchaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D1454E233D6C1F0060920C /* PurchaseHelper.swift */; };
 		E5DC489F22C5ACB60059DD72 /* LabelBubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5DC489E22C5ACB60059DD72 /* LabelBubbleView.xib */; };
 		E5E921DA2318CD660088E2B9 /* BubbleRaps.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5E921D82318CD660088E2B9 /* BubbleRaps.xcdatamodeld */; };
-		E5E921DC2318CF060088E2B9 /* WordPacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E921DB2318CF060088E2B9 /* WordPacks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,13 +58,11 @@
 		E5976E192310CDCB005C8D1D /* LabelBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelBubbleView.swift; sourceTree = "<group>"; };
 		E5CA33D12325D46E002570F9 /* ThemeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVC.swift; sourceTree = "<group>"; };
 		E5CA33D32325D47B002570F9 /* WordPackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPackVC.swift; sourceTree = "<group>"; };
-		E5CA33D52325D66B002570F9 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		E5CA5C3D23206CD6009AAE96 /* LargeMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeMenuView.xib; sourceTree = "<group>"; };
 		E5CA5C3F23206CEE009AAE96 /* LargeMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeMenuView.swift; sourceTree = "<group>"; };
 		E5D1454E233D6C1F0060920C /* PurchaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHelper.swift; sourceTree = "<group>"; };
 		E5DC489E22C5ACB60059DD72 /* LabelBubbleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelBubbleView.xib; sourceTree = "<group>"; };
 		E5E921D92318CD660088E2B9 /* BubbleRaps.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BubbleRaps.xcdatamodel; sourceTree = "<group>"; };
-		E5E921DB2318CF060088E2B9 /* WordPacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPacks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +144,6 @@
 				E5194DC722C475EC000083D8 /* User Interface */,
 				E547327A22F7DAC0002FF63F /* View Controllers */,
 				E5CA5C3A232048C6009AAE96 /* Helpers */,
-				E5E921DB2318CF060088E2B9 /* WordPacks.swift */,
-				E5CA33D52325D66B002570F9 /* Themes.swift */,
 				E54EEBF1231E1EFE002981F6 /* Snippets.rtf */,
 			);
 			path = "Bubble Raps";
@@ -367,7 +361,6 @@
 				E556CF1A2317728500598405 /* RoundCompletedAlert.swift in Sources */,
 				E5D1454F233D6C1F0060920C /* PurchaseHelper.swift in Sources */,
 				E567EEE7231C9119006C36B0 /* PauseMenu.swift in Sources */,
-				E5E921DC2318CF060088E2B9 /* WordPacks.swift in Sources */,
 				E54328B122C1D34300187D44 /* MainVC.swift in Sources */,
 				E547327922F7DAB5002FF63F /* MenuVC.swift in Sources */,
 				E5CA33D22325D46E002570F9 /* ThemeVC.swift in Sources */,
@@ -377,7 +370,6 @@
 				E592E570232D937C0082260D /* UnlockableHelper.swift in Sources */,
 				E5CA5C4023206CEE009AAE96 /* LargeMenuView.swift in Sources */,
 				E5CA33D42325D47B002570F9 /* WordPackVC.swift in Sources */,
-				E5CA33D62325D66B002570F9 /* Themes.swift in Sources */,
 				E5976E1A2310CDCB005C8D1D /* LabelBubbleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

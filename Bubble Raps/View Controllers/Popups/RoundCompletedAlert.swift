@@ -69,7 +69,7 @@ class RoundCompletedAlert: UIViewController {
 			self.coinLabel.attributedText = self.coinsEarnedString(Number: coinsEarned)
 		}
 		
-		let blurEffect = UIBlurEffect(style: .light)
+		let blurEffect = UIBlurEffect(style: .regular)
 		let blurEffectView = UIVisualEffectView(effect: blurEffect)
 			blurEffectView.frame = self.view.frame
 		
@@ -81,11 +81,11 @@ class RoundCompletedAlert: UIViewController {
 		let style = NSMutableParagraphStyle()
 			style.alignment = NSTextAlignment.center
 		
-		if let font = UIFont(name: "AvenirNext-Heavy", size: 17.0) {
+		if let font = UIFont(name: "AvenirNext-Heavy", size: 22.0) {
 			str.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.length))
 			str.addAttribute(.foregroundColor, value: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), range: NSRange(location: 0, length: str.length))
 			str.addAttribute(.paragraphStyle, value: style, range: NSRange(location: 0, length: str.length))
-			str.add(Image: #imageLiteral(resourceName: "Bubble Currency Small"), WithOffset: -5.25)
+			str.add(Image: #imageLiteral(resourceName: "Bubble Currency Small"), WithOffset: -4.25)
 		}
 		
 		return str

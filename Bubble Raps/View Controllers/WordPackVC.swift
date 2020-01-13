@@ -46,9 +46,6 @@ class WordPackVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-		self.tableView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-		
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 	}
@@ -63,16 +60,17 @@ class WordPackVC: UIViewController {
 
 	// MARK: Purchase Theme UI Handler
 	private func presentPurchaseAlert(pack: String, cost: Int) {
-		let alert = UIAlertController(title: "Purchase \(pack) Word Pack", message: "This Word Pack Costs \(cost) Coins.", preferredStyle: .alert)
+		let alert = UIAlertController(title: "Purchase \(pack) Word Pack", message: "This word pack costs \(cost) bubbles.", preferredStyle: .alert)
 		let purchaseAction = UIAlertAction(title: "Purchase", style: .default) { (action) in
 			switch self.unlockable.purchasePack(Named: pack, Cost: cost) {
 			case .success:
-				self.presentAlert(title: "\(pack) Word Pack Unlocked!", message: "\(self.unlockable.currentCoinBalance()) Coins Remaining.", actions: nil)
+				self.presentAlert(title: "\(pack) Word Pack Unlocked!", message: "\(self.unlockable.currentCoinBalance()) bubbles remaining.", actions: nil)
+				self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.coinBalanceWithIcon())
 				self.tableView.reloadData()
 			case .notEnoughCoins:
-				self.presentAlert(title: "Not Enough Coins!", message: "You Need \(cost - self.unlockable.currentCoinBalance()) More Coins To Unlock This Word Pack.", actions: nil)
+				self.presentAlert(title: "Not Enough Coins!", message: "You need \(cost - self.unlockable.currentCoinBalance()) more bubbles to unlock this word pack.", actions: nil)
 			case .alreadyUnlocked:
-				self.presentAlert(title: "You Have Already Unlocked This Word Pack!", message: "Go Get Yourself Something Nice, You've Got Enough Coins (;", actions: nil)
+				self.presentAlert(title: "You Have Already Unlocked This Word Pack!", message: "Go get yourself something nice, you've got enough bubbles (;", actions: nil)
 			}
 			alert.dismiss(animated: true, completion: nil)
 		}
@@ -98,9 +96,7 @@ extension WordPackVC: UITableViewDelegate {
 			if let cell = tableView.cellForRow(at: indexPath) as? WordPackCell { cell.costLabel.text = "●" }
 			self.tableView.reloadData()
 		}
-		else {
-			self.presentPurchaseAlert(pack: selectedPack, cost: 750)
-		}
+		else { self.presentPurchaseAlert(pack: selectedPack, cost: 750) }
 	}
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 85.0 }
 }

@@ -26,11 +26,11 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="295" height="115"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbT-xc-mGS" userLabel="Title">
-                                                <rect key="frame" x="101.5" y="3" width="92.5" height="52"/>
+                                                <rect key="frame" x="100.5" y="3" width="94.5" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="NDU-oq-A0M"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-BoldItalic" family="Avenir Next" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -39,7 +39,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="jlm-r2-Tv5" secondAttribute="height" multiplier="59:12" id="vsc-2A-HCM"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-MediumItalic" family="Avenir Next" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -76,11 +76,11 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O68-1g-dmy" userLabel="Title">
-                                                <rect key="frame" x="110" y="3" width="75.5" height="52"/>
+                                                <rect key="frame" x="108" y="3" width="79.5" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="Dgr-fX-Oto"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-BoldItalic" family="Avenir Next" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -90,7 +90,7 @@
                                                     <constraint firstAttribute="width" secondItem="GH5-rr-EbR" secondAttribute="height" multiplier="193:60" id="6yq-a1-RFq"/>
                                                     <constraint firstAttribute="height" constant="60" id="gQU-Vq-jEB"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-MediumItalic" family="Avenir Next" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -161,20 +161,17 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word Pack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9K-zI-FYc" userLabel="Title">
-                                                <rect key="frame" x="102" y="3" width="91" height="52"/>
+                                                <rect key="frame" x="101.5" y="3" width="92" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="sXh-36-iz7"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-BoldItalic" family="Avenir Next" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tN-qy-YaO">
                                                 <rect key="frame" x="51" y="55" width="193" height="60"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="flL-Hb-jRj"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-MediumItalic" family="Avenir Next" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -242,7 +239,7 @@
                                             <constraint firstAttribute="height" constant="60" id="pkg-Nd-S5z"/>
                                             <constraint firstAttribute="width" secondItem="AAE-mi-HGx" secondAttribute="height" multiplier="59:12" id="rNg-3l-jI9"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                         <state key="normal" title="Begin" backgroundImage="Green Button"/>
                                         <connections>
                                             <action selector="beginAction:" destination="ABQ-tZ-JBR" eventType="touchUpInside" id="pP0-z6-CM2"/>
@@ -318,7 +315,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="jUY-IU-OJV" firstAttribute="trailing" secondItem="l4w-Aa-lut" secondAttribute="trailing" id="2Em-08-JSd"/>
                             <constraint firstItem="jUY-IU-OJV" firstAttribute="top" secondItem="bRj-l6-eGh" secondAttribute="bottom" constant="15" id="3N6-Ki-Ne8"/>
@@ -396,17 +393,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="O2Q-hA-L8n">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="O2Q-hA-L8n">
                                 <rect key="frame" x="0.0" y="233" width="375" height="434"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="9W5-y2-GbN">
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="9W5-y2-GbN">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UnlockedThemeCell" id="CFS-Po-hCs" customClass="UnlockedThemeCell" customModule="Bubble_Raps" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="UnlockedThemeCell" id="CFS-Po-hCs" customClass="UnlockedThemeCell" customModule="Bubble_Raps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -432,7 +429,7 @@
                                             <outlet property="imageView" destination="abK-Ui-Nyb" id="7p8-jf-cBX"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LockedThemeCell" id="fh6-Fg-VFg" customClass="LockedThemeCell" customModule="Bubble_Raps" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="LockedThemeCell" id="fh6-Fg-VFg" customClass="LockedThemeCell" customModule="Bubble_Raps" customModuleProvider="target">
                                         <rect key="frame" x="125" y="0.0" width="125" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -498,7 +495,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="2Z0-kP-ztL"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="36"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="36"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <connections>
@@ -509,13 +506,13 @@
                                         <rect key="frame" x="0.0" y="116" width="375" height="33"/>
                                         <string key="text">Keep improving your scores
 to unlock new themes.</string>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More colors coming soon..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pay-9H-E6R">
                                         <rect key="frame" x="0.0" y="173" width="375" height="17"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -609,7 +606,7 @@ to unlock new themes.</string>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fP-Ff-DIz">
                                         <rect key="frame" x="8" y="8" width="299" height="59"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-HeavyItalic" family="Avenir Next" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -683,7 +680,7 @@ to unlock new themes.</string>
                                     <constraint firstAttribute="width" secondItem="SNR-IW-gHR" secondAttribute="height" multiplier="1:1" id="GI6-TS-0aK"/>
                                     <constraint firstAttribute="height" constant="51" id="Hbm-Sy-RMJ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
@@ -711,7 +708,7 @@ to unlock new themes.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Bx9-LI-xBy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1tt-OQ-tJy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VZ6-Dm-Om5" secondAttribute="bottom" constant="25" id="368-It-NFM"/>
@@ -749,7 +746,7 @@ to unlock new themes.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="132"/>
+            <point key="canvasLocation" x="60" y="131"/>
         </scene>
         <!--Round Completed-->
         <scene sceneID="d0z-HG-P7T">
@@ -770,7 +767,7 @@ to unlock new themes.</string>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="tqh-fo-zf0"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -818,7 +815,7 @@ to unlock new themes.</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0 🅒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="No8-lc-Zr5">
-                                <rect key="frame" x="20" y="378" width="335" height="28"/>
+                                <rect key="frame" x="20" y="393" width="335" height="28"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -829,7 +826,7 @@ to unlock new themes.</string>
                             <constraint firstItem="0RU-CU-YhM" firstAttribute="trailing" secondItem="No8-lc-Zr5" secondAttribute="trailing" constant="20" id="C57-qU-W5K"/>
                             <constraint firstItem="0RU-CU-YhM" firstAttribute="bottom" secondItem="da4-Tr-OVr" secondAttribute="bottom" constant="20" id="KJl-43-2k2"/>
                             <constraint firstItem="da4-Tr-OVr" firstAttribute="leading" secondItem="0RU-CU-YhM" secondAttribute="leading" constant="20" id="YX9-kW-HVE"/>
-                            <constraint firstItem="da4-Tr-OVr" firstAttribute="top" secondItem="No8-lc-Zr5" secondAttribute="bottom" constant="50" id="lJB-5r-Ece"/>
+                            <constraint firstItem="da4-Tr-OVr" firstAttribute="top" secondItem="No8-lc-Zr5" secondAttribute="bottom" constant="35" id="lJB-5r-Ece"/>
                             <constraint firstItem="No8-lc-Zr5" firstAttribute="leading" secondItem="0RU-CU-YhM" secondAttribute="leading" constant="20" id="sVu-r5-VFy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0RU-CU-YhM"/>
@@ -844,7 +841,7 @@ to unlock new themes.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eck-rL-tTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1920.8" y="-595.05247376311854"/>
+            <point key="canvasLocation" x="1650" y="131"/>
         </scene>
         <!--Pause Menu-->
         <scene sceneID="2W2-Jr-LIL">
@@ -884,13 +881,13 @@ to unlock new themes.</string>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wGQ-4I-dkn" secondAttribute="height" multiplier="265:52" id="UEw-dn-SmO"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="48"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="48"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct Answers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTf-fo-ucF">
                                         <rect key="frame" x="20" y="77" width="265" height="29"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="19"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-HeavyItalic" family="Avenir Next" pointSize="21"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -947,7 +944,7 @@ to unlock new themes.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kW-Lw-g3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="-595"/>
+            <point key="canvasLocation" x="859" y="131"/>
         </scene>
         <!--Word Pack-->
         <scene sceneID="1kg-Eb-b1J">
@@ -961,39 +958,44 @@ to unlock new themes.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word Packs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3UR-Hg-WaX">
-                                        <rect key="frame" x="0.0" y="63" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="66" width="375" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="RcT-bW-4fm"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="36"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="36"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDs-8m-yyR">
-                                        <rect key="frame" x="0.0" y="113" width="375" height="33"/>
+                                        <rect key="frame" x="0.0" y="116" width="375" height="33"/>
                                         <string key="text">Keep improving your scores
 to unlock new themes.</string>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More colors coming soon..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEp-7M-tI1">
-                                        <rect key="frame" x="0.0" y="171" width="375" height="17"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="12"/>
+                                        <rect key="frame" x="0.0" y="173" width="375" height="17"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCg-zS-Zfo">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCg-zS-Zfo">
                                         <rect key="frame" x="0.0" y="85" width="63" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lCg-zS-Zfo" secondAttribute="height" multiplier="7:5" id="eJL-vN-5gJ"/>
+                                        </constraints>
                                         <state key="normal" image="Back Tab"/>
                                         <connections>
                                             <action selector="backButtonAction:" destination="fXf-Rw-T6E" eventType="touchUpInside" id="mph-Ls-sp9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8v6-6h-l9c">
-                                        <rect key="frame" x="1" y="146" width="83" height="43"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8v6-6h-l9c">
+                                        <rect key="frame" x="0.0" y="145" width="83" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="2bA-1z-EDL"/>
+                                            <constraint firstAttribute="width" secondItem="8v6-6h-l9c" secondAttribute="height" multiplier="83:45" id="cad-z6-mb4"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" backgroundImage="Currency Tab (No Icon)"/>
                                         <connections>
@@ -1005,20 +1007,25 @@ to unlock new themes.</string>
                                 <constraints>
                                     <constraint firstItem="3UR-Hg-WaX" firstAttribute="leading" secondItem="2LR-aN-L2K" secondAttribute="leading" id="20Y-VA-xBw"/>
                                     <constraint firstItem="tDs-8m-yyR" firstAttribute="leading" secondItem="2LR-aN-L2K" secondAttribute="leading" id="HIY-it-KeF"/>
-                                    <constraint firstItem="eEp-7M-tI1" firstAttribute="top" secondItem="tDs-8m-yyR" secondAttribute="bottom" constant="25" id="KSW-J7-HoS"/>
+                                    <constraint firstItem="8v6-6h-l9c" firstAttribute="leading" secondItem="2LR-aN-L2K" secondAttribute="leading" id="J5P-r4-iMX"/>
+                                    <constraint firstItem="eEp-7M-tI1" firstAttribute="top" secondItem="tDs-8m-yyR" secondAttribute="bottom" constant="24" id="KSW-J7-HoS"/>
                                     <constraint firstAttribute="trailing" secondItem="eEp-7M-tI1" secondAttribute="trailing" id="PKE-1r-0Hv"/>
-                                    <constraint firstAttribute="width" secondItem="2LR-aN-L2K" secondAttribute="height" multiplier="5:3" id="YHA-vB-khd"/>
-                                    <constraint firstAttribute="bottom" secondItem="eEp-7M-tI1" secondAttribute="bottom" constant="37" id="g0v-hY-5cz"/>
+                                    <constraint firstItem="8v6-6h-l9c" firstAttribute="top" secondItem="lCg-zS-Zfo" secondAttribute="bottom" constant="15" id="Uy3-D7-3EL"/>
+                                    <constraint firstAttribute="height" constant="225" id="YTk-z4-Lr9"/>
+                                    <constraint firstAttribute="bottom" secondItem="eEp-7M-tI1" secondAttribute="bottom" constant="35" id="g0v-hY-5cz"/>
                                     <constraint firstAttribute="trailing" secondItem="tDs-8m-yyR" secondAttribute="trailing" id="j0I-qN-coY"/>
+                                    <constraint firstItem="3UR-Hg-WaX" firstAttribute="top" secondItem="2LR-aN-L2K" secondAttribute="top" constant="66" id="lr6-dD-gqF"/>
                                     <constraint firstItem="tDs-8m-yyR" firstAttribute="top" secondItem="3UR-Hg-WaX" secondAttribute="bottom" constant="5" id="odY-KN-MXR"/>
+                                    <constraint firstItem="lCg-zS-Zfo" firstAttribute="leading" secondItem="2LR-aN-L2K" secondAttribute="leading" id="qGq-sa-JvB"/>
                                     <constraint firstItem="eEp-7M-tI1" firstAttribute="leading" secondItem="2LR-aN-L2K" secondAttribute="leading" id="rkD-0t-9FT"/>
                                     <constraint firstAttribute="trailing" secondItem="3UR-Hg-WaX" secondAttribute="trailing" id="tQ2-9y-3h8"/>
                                     <constraint firstItem="tDs-8m-yyR" firstAttribute="top" secondItem="3UR-Hg-WaX" secondAttribute="bottom" constant="5" id="usR-GN-hRb"/>
+                                    <constraint firstItem="eEp-7M-tI1" firstAttribute="bottom" secondItem="8v6-6h-l9c" secondAttribute="bottom" id="yKE-sz-WSa"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Flj-1b-p84">
                                 <rect key="frame" x="0.0" y="225" width="375" height="442"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WordPackCell" rowHeight="85" id="JFV-0k-LGr" customClass="WordPackCell" customModule="Bubble_Raps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="85"/>
@@ -1032,7 +1039,7 @@ to unlock new themes.</string>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sports" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bco-X9-glr">
                                                             <rect key="frame" x="25" y="0.0" width="235" height="75"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="22"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-BoldItalic" family="Avenir Next" pointSize="22"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -1066,7 +1073,7 @@ to unlock new themes.</string>
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="2Xo-my-8DM" secondAttribute="bottom" id="Cnw-Bn-Y1k"/>
                                                 <constraint firstItem="2Xo-my-8DM" firstAttribute="top" secondItem="l0C-8u-Jdl" secondAttribute="top" constant="10" id="JHl-b2-AJD"/>
@@ -1083,7 +1090,7 @@ to unlock new themes.</string>
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="2LR-aN-L2K" firstAttribute="top" secondItem="QtC-Q8-aOa" secondAttribute="top" id="HdQ-Ib-fWp"/>
                             <constraint firstItem="Flj-1b-p84" firstAttribute="top" secondItem="2LR-aN-L2K" secondAttribute="bottom" id="UqE-c5-fP0"/>
@@ -1115,10 +1122,10 @@ to unlock new themes.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7y-1R-iec">
-                                <rect key="frame" x="88" y="55" width="199" height="45"/>
+                                <rect key="frame" x="100" y="30" width="175" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 🅒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2r-dk-TiT">
-                                        <rect key="frame" x="0.0" y="0.0" width="199" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="175" height="45"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1129,9 +1136,9 @@ to unlock new themes.</string>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="f2r-dk-TiT" secondAttribute="bottom" id="IPW-YW-5jz"/>
                                     <constraint firstItem="f2r-dk-TiT" firstAttribute="top" secondItem="n7y-1R-iec" secondAttribute="top" id="KMQ-5z-arN"/>
-                                    <constraint firstAttribute="width" secondItem="n7y-1R-iec" secondAttribute="height" multiplier="199:45" id="Mhz-9E-3du"/>
                                     <constraint firstAttribute="trailing" secondItem="f2r-dk-TiT" secondAttribute="trailing" id="hFd-ky-P2b"/>
                                     <constraint firstItem="f2r-dk-TiT" firstAttribute="leading" secondItem="n7y-1R-iec" secondAttribute="leading" id="jFO-8b-IUN"/>
+                                    <constraint firstAttribute="width" constant="175" id="jzc-va-V9z"/>
                                     <constraint firstAttribute="height" constant="45" id="rv4-xv-N5i"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -1147,7 +1154,7 @@ to unlock new themes.</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vJ-ix-bto">
-                                <rect key="frame" x="0.0" y="55" width="63" height="45"/>
+                                <rect key="frame" x="0.0" y="30" width="63" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="R9T-6p-N2D"/>
                                     <constraint firstAttribute="width" secondItem="3vJ-ix-bto" secondAttribute="height" multiplier="7:5" id="mIN-J1-wVV"/>
@@ -1158,13 +1165,13 @@ to unlock new themes.</string>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3DO-IG-3Yi">
-                                <rect key="frame" x="25" y="120" width="325" height="490"/>
+                                <rect key="frame" x="25" y="133.5" width="325" height="430"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kG-jm-iek">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="65"/>
+                                        <rect key="frame" x="27.5" y="0.0" width="270" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000 🅒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnQ-ha-bGi">
-                                                <rect key="frame" x="120.5" y="20.5" width="84.5" height="24.5"/>
+                                                <rect key="frame" x="93" y="15.5" width="84.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1172,10 +1179,10 @@ to unlock new themes.</string>
                                         </subviews>
                                         <color key="backgroundColor" red="0.33725490200000002" green="0.55294117649999996" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="dLx-uX-GkB"/>
+                                            <constraint firstAttribute="height" constant="55" id="AmU-g5-OdQ"/>
                                             <constraint firstItem="LnQ-ha-bGi" firstAttribute="centerX" secondItem="5kG-jm-iek" secondAttribute="centerX" id="ePZ-ko-tQe"/>
                                             <constraint firstItem="LnQ-ha-bGi" firstAttribute="centerY" secondItem="5kG-jm-iek" secondAttribute="centerY" id="wVj-fd-4lE"/>
-                                            <constraint firstAttribute="width" secondItem="5kG-jm-iek" secondAttribute="height" multiplier="5:1" id="wiI-wL-rpm"/>
+                                            <constraint firstAttribute="width" secondItem="5kG-jm-iek" secondAttribute="height" multiplier="54:11" id="yIS-vc-ACN"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -1190,11 +1197,11 @@ to unlock new themes.</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9F-R0-2oG">
-                                        <rect key="frame" x="62.5" y="75" width="200" height="40"/>
+                                        <rect key="frame" x="75" y="65" width="175" height="35"/>
                                         <color key="backgroundColor" red="0.23529411764705882" green="0.92156862745098034" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="e9F-R0-2oG" secondAttribute="height" multiplier="5:1" id="fGE-nE-PxO"/>
-                                            <constraint firstAttribute="height" constant="40" id="xBq-ZJ-tyX"/>
+                                            <constraint firstAttribute="height" constant="35" id="xBq-ZJ-tyX"/>
                                         </constraints>
                                         <state key="normal" title="$3.99">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1209,10 +1216,10 @@ to unlock new themes.</string>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlo-pN-Nqo">
-                                        <rect key="frame" x="0.0" y="125" width="325" height="65"/>
+                                        <rect key="frame" x="27.5" y="110" width="270" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3000 🅒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmY-u6-Qw3">
-                                                <rect key="frame" x="120.5" y="20.5" width="84.5" height="24.5"/>
+                                                <rect key="frame" x="93" y="15.5" width="84.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1220,9 +1227,9 @@ to unlock new themes.</string>
                                         </subviews>
                                         <color key="backgroundColor" red="0.33725490200000002" green="0.55294117649999996" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="0b1-Fu-Kys"/>
+                                            <constraint firstAttribute="height" constant="55" id="0b1-Fu-Kys"/>
                                             <constraint firstItem="PmY-u6-Qw3" firstAttribute="centerY" secondItem="vlo-pN-Nqo" secondAttribute="centerY" id="2j7-i6-fcg"/>
-                                            <constraint firstAttribute="width" secondItem="vlo-pN-Nqo" secondAttribute="height" multiplier="5:1" id="XcQ-1H-z5q"/>
+                                            <constraint firstAttribute="width" secondItem="vlo-pN-Nqo" secondAttribute="height" multiplier="54:11" id="9kt-wq-2bz"/>
                                             <constraint firstItem="PmY-u6-Qw3" firstAttribute="centerX" secondItem="vlo-pN-Nqo" secondAttribute="centerX" id="f29-40-dbt"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -1238,10 +1245,10 @@ to unlock new themes.</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qD-6s-0Nz">
-                                        <rect key="frame" x="62.5" y="200" width="200" height="40"/>
+                                        <rect key="frame" x="75" y="175" width="175" height="35"/>
                                         <color key="backgroundColor" red="0.23529411759999999" green="0.92156862750000001" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="UPz-uR-bZo"/>
+                                            <constraint firstAttribute="height" constant="35" id="UPz-uR-bZo"/>
                                             <constraint firstAttribute="width" secondItem="7qD-6s-0Nz" secondAttribute="height" multiplier="5:1" id="bla-FP-iFG"/>
                                         </constraints>
                                         <state key="normal" title="$2.99">
@@ -1257,10 +1264,10 @@ to unlock new themes.</string>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSz-sC-boY">
-                                        <rect key="frame" x="0.0" y="250" width="325" height="65"/>
+                                        <rect key="frame" x="27.5" y="220" width="270" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1750 🅒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDC-ok-vTh">
-                                                <rect key="frame" x="120.5" y="20.5" width="84.5" height="24.5"/>
+                                                <rect key="frame" x="93" y="15.5" width="84.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1268,9 +1275,9 @@ to unlock new themes.</string>
                                         </subviews>
                                         <color key="backgroundColor" red="0.33725490200000002" green="0.55294117649999996" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="6Wa-yb-77Q"/>
+                                            <constraint firstAttribute="height" constant="55" id="6Wa-yb-77Q"/>
                                             <constraint firstItem="aDC-ok-vTh" firstAttribute="centerX" secondItem="DSz-sC-boY" secondAttribute="centerX" id="BRo-fe-wFP"/>
-                                            <constraint firstAttribute="width" secondItem="DSz-sC-boY" secondAttribute="height" multiplier="5:1" id="YzL-tS-LcP"/>
+                                            <constraint firstAttribute="width" secondItem="DSz-sC-boY" secondAttribute="height" multiplier="54:11" id="ngt-p3-FYs"/>
                                             <constraint firstItem="aDC-ok-vTh" firstAttribute="centerY" secondItem="DSz-sC-boY" secondAttribute="centerY" id="uxl-3K-yBj"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -1286,11 +1293,11 @@ to unlock new themes.</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXf-MP-dVQ">
-                                        <rect key="frame" x="62.5" y="325" width="200" height="40"/>
+                                        <rect key="frame" x="75" y="285" width="175" height="35"/>
                                         <color key="backgroundColor" red="0.23529411759999999" green="0.92156862750000001" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="bXf-MP-dVQ" secondAttribute="height" multiplier="5:1" id="8BU-GQ-kCD"/>
-                                            <constraint firstAttribute="height" constant="40" id="VXg-2A-ZhX"/>
+                                            <constraint firstAttribute="height" constant="35" id="VXg-2A-ZhX"/>
                                         </constraints>
                                         <state key="normal" title="$1.99">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1305,10 +1312,10 @@ to unlock new themes.</string>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQT-w1-HSo">
-                                        <rect key="frame" x="0.0" y="375" width="325" height="65"/>
+                                        <rect key="frame" x="27.5" y="330" width="270" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="750 🅒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="934-eb-qSj">
-                                                <rect key="frame" x="126.5" y="20.5" width="72" height="24.5"/>
+                                                <rect key="frame" x="99" y="15.5" width="72" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1317,9 +1324,9 @@ to unlock new themes.</string>
                                         <color key="backgroundColor" red="0.33725490200000002" green="0.55294117649999996" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="934-eb-qSj" firstAttribute="centerY" secondItem="WQT-w1-HSo" secondAttribute="centerY" id="199-65-q3l"/>
-                                            <constraint firstAttribute="height" constant="65" id="2K0-oh-A6Q"/>
+                                            <constraint firstAttribute="height" constant="55" id="2K0-oh-A6Q"/>
                                             <constraint firstItem="934-eb-qSj" firstAttribute="centerX" secondItem="WQT-w1-HSo" secondAttribute="centerX" id="ElM-kS-O6D"/>
-                                            <constraint firstAttribute="width" secondItem="WQT-w1-HSo" secondAttribute="height" multiplier="5:1" id="b1i-Ll-oVH"/>
+                                            <constraint firstAttribute="width" secondItem="WQT-w1-HSo" secondAttribute="height" multiplier="54:11" id="vcW-9A-XFj"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -1334,10 +1341,10 @@ to unlock new themes.</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlP-8z-Bof">
-                                        <rect key="frame" x="62.5" y="450" width="200" height="40"/>
+                                        <rect key="frame" x="75" y="395" width="175" height="35"/>
                                         <color key="backgroundColor" red="0.23529411759999999" green="0.92156862750000001" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Agy-YU-XkZ"/>
+                                            <constraint firstAttribute="height" constant="35" id="Agy-YU-XkZ"/>
                                             <constraint firstAttribute="width" secondItem="LlP-8z-Bof" secondAttribute="height" multiplier="5:1" id="vnT-Z6-iCk"/>
                                         </constraints>
                                         <state key="normal" title="$0.99">
@@ -1354,23 +1361,21 @@ to unlock new themes.</string>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="7qD-6s-0Nz" firstAttribute="width" secondItem="7qD-6s-0Nz" secondAttribute="height" multiplier="5:1" id="Msf-18-JyP"/>
                                     <constraint firstItem="LlP-8z-Bof" firstAttribute="width" secondItem="LlP-8z-Bof" secondAttribute="height" multiplier="5:1" id="NQ5-Yq-35V"/>
                                     <constraint firstItem="bXf-MP-dVQ" firstAttribute="width" secondItem="bXf-MP-dVQ" secondAttribute="height" multiplier="5:1" id="ZPe-vd-mdv"/>
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="3DO-IG-3Yi" firstAttribute="centerX" secondItem="Up5-ha-E35" secondAttribute="centerX" id="3jb-cf-26O"/>
+                            <constraint firstItem="3DO-IG-3Yi" firstAttribute="centerY" secondItem="Up5-ha-E35" secondAttribute="centerY" constant="15" id="ThN-4i-NP8"/>
                             <constraint firstItem="n7y-1R-iec" firstAttribute="centerX" secondItem="Up5-ha-E35" secondAttribute="centerX" id="Vz2-5X-55m"/>
                             <constraint firstItem="n7y-1R-iec" firstAttribute="top" secondItem="3vJ-ix-bto" secondAttribute="top" id="Xyw-jq-BwZ"/>
                             <constraint firstItem="4ge-Qw-wMK" firstAttribute="trailing" secondItem="3DO-IG-3Yi" secondAttribute="trailing" constant="25" id="a3i-46-KHM"/>
-                            <constraint firstItem="3DO-IG-3Yi" firstAttribute="top" secondItem="3vJ-ix-bto" secondAttribute="bottom" constant="20" id="bYn-C0-EUe"/>
                             <constraint firstItem="n7y-1R-iec" firstAttribute="bottom" secondItem="3vJ-ix-bto" secondAttribute="bottom" id="cGk-ov-2xc"/>
                             <constraint firstItem="3DO-IG-3Yi" firstAttribute="leading" secondItem="4ge-Qw-wMK" secondAttribute="leading" constant="25" id="fVn-kG-552"/>
-                            <constraint firstItem="n7y-1R-iec" firstAttribute="top" secondItem="4ge-Qw-wMK" secondAttribute="top" constant="55" id="hcz-zv-yAQ"/>
-                            <constraint firstItem="3DO-IG-3Yi" firstAttribute="top" secondItem="n7y-1R-iec" secondAttribute="bottom" constant="20" id="lFx-wg-b6C"/>
-                            <constraint firstItem="3DO-IG-3Yi" firstAttribute="centerX" secondItem="Up5-ha-E35" secondAttribute="centerX" id="s0u-mF-ZZG"/>
+                            <constraint firstItem="n7y-1R-iec" firstAttribute="top" secondItem="4ge-Qw-wMK" secondAttribute="top" constant="30" id="hcz-zv-yAQ"/>
                             <constraint firstItem="3vJ-ix-bto" firstAttribute="leading" secondItem="4ge-Qw-wMK" secondAttribute="leading" id="xTM-7Q-3O1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4ge-Qw-wMK"/>
