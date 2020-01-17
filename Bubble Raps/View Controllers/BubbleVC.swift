@@ -58,12 +58,14 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let index = indexPath.row
+		
 		let bubbleAmount = self.bubbleAmounts[index]
 		let cost = self.bubbleCosts[index]
+		let atrStr = self.addBubbleIconTo(String: "\(bubbleAmount) ")
 		
-		let color = self.cycleThroughColors(i: indexPath.section) ?? #colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1)
+		let color = self.cycleThroughColors(i: indexPath.row) ?? #colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1)
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: "UnlockCell", for: indexPath) as! UnlockCell
-			cell.title.text = String(describing: bubbleAmount)
+			cell.title.attributedText = atrStr
 			cell.cellView.backgroundColor = color
 		
 		cell.costLabel.text = cost
@@ -80,15 +82,26 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	private func cycleThroughColors(i: Int) -> UIColor? {
-		let themesCount = self.unlockable.allThemes.count - 1
-		if i > themesCount {
-			let key = self.unlockable.allThemes[i - themesCount]
+		let rowCount = self.bubbleAmounts.count - 1
+		if i > rowCount {
+			let key = self.unlockable.allThemes[i - rowCount]
 			return self.unlockable.colorFor(Theme: key)
 		}
 		else {
 			let key = self.unlockable.allThemes[i]
 			return self.unlockable.colorFor(Theme: key)
 		}
+	}
+	
+	private func addBubbleIconTo(String: String) -> NSMutableAttributedString {
+		let str = NSMutableAttributedString(string: String)
+		if let font = UIFont(name: "AvenirNext-HeavyItalic", size: 22.0) {
+			str.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.length))
+			str.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: str.length))
+			str.add(Image: #imageLiteral(resourceName: "Bubble Currency Small (White)"), WithOffset: -6.00)
+		}
+		
+		return str
 	}
 }
 

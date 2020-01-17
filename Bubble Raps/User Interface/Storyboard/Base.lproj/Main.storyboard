@@ -75,7 +75,7 @@
                                                     <constraint firstAttribute="width" secondItem="I73-kT-KOJ" secondAttribute="height" multiplier="59:23" id="uKa-mi-Ab5"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O68-1g-dmy" userLabel="Title">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O68-1g-dmy" userLabel="Title">
                                                 <rect key="frame" x="108" y="3" width="79.5" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="Dgr-fX-Oto"/>
@@ -160,7 +160,7 @@
                                                     <constraint firstAttribute="width" secondItem="uaf-RM-Z1S" secondAttribute="height" multiplier="59:23" id="pOy-Kj-W8f"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word Pack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9K-zI-FYc" userLabel="Title">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word Pack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9K-zI-FYc" userLabel="Title">
                                                 <rect key="frame" x="101.5" y="3" width="92" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="sXh-36-iz7"/>
@@ -763,7 +763,7 @@ to unlock new themes.</string>
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="191"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMU-8Z-TbJ">
-                                        <rect key="frame" x="20" y="35" width="295" height="33"/>
+                                        <rect key="frame" x="134" y="35" width="67.5" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="tqh-fo-zf0"/>
                                         </constraints>
@@ -772,7 +772,7 @@ to unlock new themes.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9q5-LQ-Es1">
-                                        <rect key="frame" x="20" y="71" width="295" height="22"/>
+                                        <rect key="frame" x="147.5" y="71" width="40.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="mte-95-YVR"/>
                                         </constraints>
@@ -793,12 +793,9 @@ to unlock new themes.</string>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="335" id="4BQ-Qj-JCr"/>
-                                    <constraint firstItem="efv-O5-0Xf" firstAttribute="trailing" secondItem="zMU-8Z-TbJ" secondAttribute="trailing" id="5Ua-C2-81u"/>
-                                    <constraint firstItem="9q5-LQ-Es1" firstAttribute="trailing" secondItem="zMU-8Z-TbJ" secondAttribute="trailing" id="5oA-pH-1uk"/>
                                     <constraint firstItem="efv-O5-0Xf" firstAttribute="top" secondItem="9q5-LQ-Es1" secondAttribute="bottom" constant="20" id="8jL-T5-Yns"/>
                                     <constraint firstAttribute="bottom" secondItem="2r1-Yi-URe" secondAttribute="bottom" id="8oa-rH-qqp"/>
                                     <constraint firstItem="efv-O5-0Xf" firstAttribute="centerX" secondItem="da4-Tr-OVr" secondAttribute="centerX" id="9x5-Nd-VjI"/>
-                                    <constraint firstItem="9q5-LQ-Es1" firstAttribute="leading" secondItem="zMU-8Z-TbJ" secondAttribute="leading" id="Ijk-ar-eVP"/>
                                     <constraint firstItem="9q5-LQ-Es1" firstAttribute="centerX" secondItem="da4-Tr-OVr" secondAttribute="centerX" id="Irm-Ql-lqM"/>
                                     <constraint firstItem="efv-O5-0Xf" firstAttribute="leading" secondItem="da4-Tr-OVr" secondAttribute="leading" constant="20" id="Pxc-8p-L9e"/>
                                     <constraint firstItem="2r1-Yi-URe" firstAttribute="leading" secondItem="da4-Tr-OVr" secondAttribute="leading" id="V6i-kQ-VSG"/>
@@ -808,7 +805,6 @@ to unlock new themes.</string>
                                     <constraint firstItem="zMU-8Z-TbJ" firstAttribute="top" secondItem="da4-Tr-OVr" secondAttribute="top" constant="35" id="eAy-XF-c5c"/>
                                     <constraint firstItem="efv-O5-0Xf" firstAttribute="centerX" secondItem="zMU-8Z-TbJ" secondAttribute="centerX" id="f1O-11-1dd"/>
                                     <constraint firstItem="zMU-8Z-TbJ" firstAttribute="centerX" secondItem="da4-Tr-OVr" secondAttribute="centerX" id="kd9-pM-Dph"/>
-                                    <constraint firstItem="efv-O5-0Xf" firstAttribute="leading" secondItem="zMU-8Z-TbJ" secondAttribute="leading" id="lCP-dR-v5I"/>
                                     <constraint firstItem="2r1-Yi-URe" firstAttribute="top" secondItem="da4-Tr-OVr" secondAttribute="top" id="oYS-Gr-pFd"/>
                                     <constraint firstAttribute="trailing" secondItem="efv-O5-0Xf" secondAttribute="trailing" constant="20" id="tzf-uh-7hn"/>
                                     <constraint firstAttribute="bottom" secondItem="efv-O5-0Xf" secondAttribute="bottom" constant="18" id="uFW-LH-SzH"/>
@@ -974,9 +970,9 @@ to unlock new themes.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More colors coming soon..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEp-7M-tI1">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="More colors coming soon..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEp-7M-tI1">
                                         <rect key="frame" x="0.0" y="173" width="375" height="17"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1049,7 +1045,7 @@ to unlock new themes.</string>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="45" id="152-zJ-uOp"/>
-                                                                <constraint firstAttribute="width" constant="85" id="O5f-N7-FYE"/>
+                                                                <constraint firstAttribute="width" secondItem="IEY-hV-DG9" secondAttribute="height" multiplier="17:9" id="EP1-Xs-zXH"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <color key="textColor" red="0.93725490199999995" green="0.50588235290000005" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1135,16 +1131,16 @@ to unlock new themes.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ges-D7-3mk">
-                                        <rect key="frame" x="0.0" y="116" width="375" height="33"/>
+                                        <rect key="frame" x="0.0" y="116" width="375" height="36"/>
                                         <string key="text">Purchase more bubbles to unlock 
 new themes and word packs.</string>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can also remove ads!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1H-cB-5zg">
-                                        <rect key="frame" x="0.0" y="173" width="375" height="17"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your support is greatly appreciated (:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1H-cB-5zg">
+                                        <rect key="frame" x="0.0" y="176" width="375" height="14"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1217,7 +1213,7 @@ new themes and word packs.</string>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="45" id="6IJ-Da-goi"/>
-                                                                <constraint firstAttribute="width" constant="85" id="N1e-KD-1SS"/>
+                                                                <constraint firstAttribute="width" secondItem="o5E-2U-prg" secondAttribute="height" multiplier="17:9" id="w5k-56-cow"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <color key="textColor" red="0.93725490199999995" green="0.50588235290000005" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
