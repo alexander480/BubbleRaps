@@ -48,10 +48,10 @@ class MenuVC: UIViewController {
 		self.adRequestAlert()
 	}
 	
-	@IBOutlet weak var coinButton: UIButton!
-	@IBAction func coinButtonAction(_ sender: Any) {
-		if let coinVC = self.storyboard?.instantiateViewController(withIdentifier: "CoinVC") as? CoinVC {
-			self.present(coinVC, animated: true, completion: nil)
+	@IBOutlet weak var bubbleButton: UIButton!
+	@IBAction func bubbleButtonAction(_ sender: Any) {
+		if let BubbleVC = self.storyboard?.instantiateViewController(withIdentifier: "BubbleVC") as? BubbleVC {
+			self.present(BubbleVC, animated: true, completion: nil)
 		}
 	}
 	
@@ -137,16 +137,13 @@ class MenuVC: UIViewController {
 		// let crashlyticsAlert = Crashlytics.sharedInstance().testCrashlyticsAlert()
 		// self.present(crashlyticsAlert, animated: true, completion: nil)
 		
-		// MARK: Uncomment The Following Line To Add 250 Coins To Account
-		// self.unlockable.addCoins(Amount: 250)
+		// MARK: Uncomment The Following Line To Add 250 Bubbles To Account
+		// self.unlockable.addBubbles(Amount: 250)
 		
-		// Update Displayed Coin Balance
-		// self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.coinBalanceWithIcon())
+		// Update Displayed Bubbles Balance
+		// self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 		
-		// self.coinButton.setTitleForAllStates(title: "\(self.unlockable.currentCoinBalance()) 🅒")
-		// self.coinButton.attributedTitle(for: .normal)
-		
-		// print("[INFO] Current Coin Balance: \(self.unlockable.currentCoinBalance())")
+		// print("[INFO] Current Bubble Balance: \(self.unlockable.currentBubbleBalance())")
 		
 		// MARK: Uncomment Following Lines To Reset Currently Unlocked Packs
 		// UserDefaults.standard.set(["Standard"], forKey: "unlockedPacks")
@@ -206,7 +203,7 @@ class MenuVC: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		// Display Coins
-		self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.coinBalanceWithIcon())
+		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 	}
 
 	private func resetHighScore() {
@@ -256,7 +253,7 @@ extension MenuVC: GADRewardedAdDelegate {
 	}
 
 	func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
-		unlockable.addCoins(Amount: 10)
+		unlockable.addBubbles(Amount: 10)
 	}
 	
 	private func adRequestAlert() {

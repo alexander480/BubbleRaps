@@ -57,7 +57,7 @@ class RoundCompletedAlert: UIViewController {
 			else { self.titleLabel.text = "Game Over"; self.subtitleLabel.text = "\(self.currentScore) Correct Answers" }
 			
 			self.coinLabel.attributedText = self.coinsEarnedString(Number: coinsEarned)
-			self.unlockable.addCoins(Amount: coinsEarned)
+			self.unlockable.addBubbles(Amount: coinsEarned)
 		}
 		else {
 			self.backgroundImageView.image = #imageLiteral(resourceName: "Next Round Popup Background")

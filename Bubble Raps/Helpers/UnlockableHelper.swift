@@ -11,7 +11,7 @@ import UIKit
 
 enum UnlockableStatus {
 	case success
-	case notEnoughCoins
+	case notEnoughBubbles
 	case alreadyUnlocked
 }
 
@@ -25,70 +25,70 @@ class UnlockableHelper: NSObject  {
 	// MARK: Coin Purchasing Functions
 	
 	func purchaseTheme(Named: String, Cost: Int) -> UnlockableStatus {
-		if self.doesUserHaveEnoughCoins(Cost: Cost) {
+		if self.doesUserHaveEnoughBubbles(Cost: Cost) {
 			if self.doesUserHaveTheme(Named: Named) {
 				print("[WARNING] User Has Already Unlocked \(Named) Theme.")
 				
 				return .alreadyUnlocked
 			}
 			else {
-				self.subtractCoins(Amount: Cost)
+				self.subtractBubbles(Amount: Cost)
 				self.unlockTheme(Named: Named)
 				
 				return .success
 			}
 		}
 		else {
-			print("[WARNING] User Does Not Have Enough Coins To Purchase This Theme.")
+			print("[WARNING] User Does Not Have Enough Bubbles To Purchase This Theme.")
 			
-			return .notEnoughCoins
+			return .notEnoughBubbles
 		}
 	}
 	
 	func purchasePack(Named: String, Cost: Int) -> UnlockableStatus {
-		if self.doesUserHaveEnoughCoins(Cost: Cost) {
+		if self.doesUserHaveEnoughBubbles(Cost: Cost) {
 			if self.doesUserHavePack(Named: Named) {
 				print("[WARNING] User Has Already Unlocked \(Named) Word Pack.")
 				
 				return .alreadyUnlocked
 			}
 			else {
-				self.subtractCoins(Amount: Cost)
+				self.subtractBubbles(Amount: Cost)
 				self.unlockPack(Named: Named)
 				
 				return .success
 			}
 		}
 		else {
-			print("[WARNING] User Does Not Have Enough Coins To Purchase This Word Pack.")
+			print("[WARNING] User Does Not Have Enough Bubbles To Purchase This Word Pack.")
 			
-			return .notEnoughCoins
+			return .notEnoughBubbles
 		}
 	}
 	
 	// MARK: Coin Functions
 	
-	func currentCoinBalance() -> Int {
-		return UserDefaults.standard.integer(forKey: "coins")
+	func currentBubbleBalance() -> Int {
+		return UserDefaults.standard.integer(forKey: "bubbles")
 	}
 	
-	func addCoins(Amount: Int) {
-		let currentCoins = UserDefaults.standard.integer(forKey: "coins")
-		UserDefaults.standard.set(currentCoins + Amount, forKey: "coins")
+	func addBubbles(Amount: Int) {
+		let currentBubbles = UserDefaults.standard.integer(forKey: "bubbles")
+		UserDefaults.standard.set(currentBubbles + Amount, forKey: "bubbles")
 	}
 	
-	func subtractCoins(Amount: Int) {
-		let currentCoins = UserDefaults.standard.integer(forKey: "coins")
-		UserDefaults.standard.set(currentCoins - Amount, forKey: "coins")
+	func subtractBubbles(Amount: Int) {
+		let currentBubbles = UserDefaults.standard.integer(forKey: "bubbles")
+		UserDefaults.standard.set(currentBubbles - Amount, forKey: "bubbles")
 	}
 	
-	func doesUserHaveEnoughCoins(Cost: Int) -> Bool {
-		let currentCoins = UserDefaults.standard.integer(forKey: "coins")
-		let remainingCoins = currentCoins - Cost
-		if remainingCoins >= 0 { return true } else { return false }
+	func doesUserHaveEnoughBubbles(Cost: Int) -> Bool {
+		let currentBubbles = UserDefaults.standard.integer(forKey: "bubbles")
+		let remainingBubbles = currentBubbles - Cost
+		if remainingBubbles >= 0 { return true } else { return false }
 	}
 	
-	func addCoinIconTo(String: String, Color: UIColor?, Size: CGFloat?) -> NSMutableAttributedString {
+	func addBubbleIconTo(String: String, Color: UIColor?, Size: CGFloat?) -> NSMutableAttributedString {
 		let str = NSMutableAttributedString(string: String)
 		if let font = UIFont(name: "AvenirNext-HeavyItalic", size: Size ?? 14.0) {
 			str.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.length))
@@ -101,8 +101,8 @@ class UnlockableHelper: NSObject  {
 		return str
 	}
 	
-	func coinBalanceWithIcon() -> NSMutableAttributedString {
-		let str = NSMutableAttributedString(string: "\(self.currentCoinBalance()) ")
+	func bubbleBalanceWithIcon() -> NSMutableAttributedString {
+		let str = NSMutableAttributedString(string: "\(self.currentBubbleBalance()) ")
 		if let font = UIFont(name: "AvenirNext-HeavyItalic", size: 14.0) {
 			str.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.length))
 			str.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: str.length))

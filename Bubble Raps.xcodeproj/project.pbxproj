@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A97189923D1472E00929A10 /* BubbleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97189823D1472E00929A10 /* BubbleVC.swift */; };
 		0ABAC6F123BAB65B00B5E20C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */; };
 		0ABAC6F423BAB87500B5E20C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0ABAC6F323BAB87500B5E20C /* GoogleService-Info.plist */; };
 		5342037AA2B244FAE831B8C3 /* Pods_Bubble_Raps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AE94B28FD9D57E8379EDBF /* Pods_Bubble_Raps.framework */; };
@@ -17,7 +18,6 @@
 		E54328B622C1D34600187D44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E54328B522C1D34600187D44 /* Assets.xcassets */; };
 		E54328B922C1D34600187D44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E54328B722C1D34600187D44 /* LaunchScreen.storyboard */; };
 		E547327922F7DAB5002FF63F /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547327822F7DAB5002FF63F /* MenuVC.swift */; };
-		E54B4CAE233C44C90074C500 /* CoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B4CAD233C44C90074C500 /* CoinVC.swift */; };
 		E54B57B822C8405B0014B71C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B57B722C8405B0014B71C /* Extensions.swift */; };
 		E54EEBF2231E1EFE002981F6 /* Snippets.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E54EEBF1231E1EFE002981F6 /* Snippets.rtf */; };
 		E556CF1A2317728500598405 /* RoundCompletedAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E556CF192317728500598405 /* RoundCompletedAlert.swift */; };
@@ -34,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A97189823D1472E00929A10 /* BubbleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleVC.swift; sourceTree = "<group>"; };
 		0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		0ABAC6F323BAB87500B5E20C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2B944FCC5C699AF137456167 /* Pods-Bubble Raps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.debug.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.debug.xcconfig"; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		E54328B822C1D34600187D44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E54328BA22C1D34600187D44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E547327822F7DAB5002FF63F /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
-		E54B4CAD233C44C90074C500 /* CoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinVC.swift; sourceTree = "<group>"; };
 		E54B57B722C8405B0014B71C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E54EEBEE231E0800002981F6 /* Bubble Raps.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Bubble Raps.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E54EEBF1231E1EFE002981F6 /* Snippets.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Snippets.rtf; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 				E54328B022C1D34300187D44 /* MainVC.swift */,
 				E5CA33D12325D46E002570F9 /* ThemeVC.swift */,
 				E5CA33D32325D47B002570F9 /* WordPackVC.swift */,
-				E54B4CAD233C44C90074C500 /* CoinVC.swift */,
+				0A97189823D1472E00929A10 /* BubbleVC.swift */,
 				E5C1087323307BEB0074623A /* Popups */,
 			);
 			path = "View Controllers";
@@ -358,6 +358,7 @@
 			files = (
 				E5194DC622C46BB3000083D8 /* RhymeHelper.swift in Sources */,
 				E5E921DA2318CD660088E2B9 /* BubbleRaps.xcdatamodeld in Sources */,
+				0A97189923D1472E00929A10 /* BubbleVC.swift in Sources */,
 				E556CF1A2317728500598405 /* RoundCompletedAlert.swift in Sources */,
 				E5D1454F233D6C1F0060920C /* PurchaseHelper.swift in Sources */,
 				E567EEE7231C9119006C36B0 /* PauseMenu.swift in Sources */,
@@ -365,7 +366,6 @@
 				E547327922F7DAB5002FF63F /* MenuVC.swift in Sources */,
 				E5CA33D22325D46E002570F9 /* ThemeVC.swift in Sources */,
 				E54328AF22C1D34300187D44 /* AppDelegate.swift in Sources */,
-				E54B4CAE233C44C90074C500 /* CoinVC.swift in Sources */,
 				E54B57B822C8405B0014B71C /* Extensions.swift in Sources */,
 				E592E570232D937C0082260D /* UnlockableHelper.swift in Sources */,
 				E5CA5C4023206CEE009AAE96 /* LargeMenuView.swift in Sources */,

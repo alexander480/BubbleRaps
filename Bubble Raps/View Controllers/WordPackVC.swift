@@ -25,10 +25,10 @@ class WordPackVC: UIViewController {
 		}
 	}
 	
-	@IBOutlet weak var coinButton: UIButton!
-	@IBAction func coinButtonAction(_ sender: Any) {
-		if let coinVC = self.storyboard?.instantiateViewController(withIdentifier: "CoinVC") as? CoinVC {
-			self.present(coinVC, animated: true, completion: nil)
+	@IBOutlet weak var bubbleButton: UIButton!
+	@IBAction func bubbleButtonAction(_ sender: Any) {
+		if let BubbleVC = self.storyboard?.instantiateViewController(withIdentifier: "BubbleVC") as? BubbleVC {
+			self.present(BubbleVC, animated: true, completion: nil)
 		}
 	}
 	
@@ -54,7 +54,7 @@ class WordPackVC: UIViewController {
 		super.viewWillAppear(true)
 		
 		self.headingView.backgroundColor = self.unlockable.colorForCurrentTheme()
-		self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.coinBalanceWithIcon())
+		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 	}
 	
 
@@ -64,11 +64,11 @@ class WordPackVC: UIViewController {
 		let purchaseAction = UIAlertAction(title: "Purchase", style: .default) { (action) in
 			switch self.unlockable.purchasePack(Named: pack, Cost: cost) {
 			case .success:
-				self.presentAlert(title: "\(pack) Word Pack Unlocked!", message: "\(self.unlockable.currentCoinBalance()) bubbles remaining.", actions: nil)
-				self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.coinBalanceWithIcon())
+				self.presentAlert(title: "\(pack) Word Pack Unlocked!", message: "\(self.unlockable.currentBubbleBalance()) bubbles remaining.", actions: nil)
+				self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 				self.tableView.reloadData()
-			case .notEnoughCoins:
-				self.presentAlert(title: "Not Enough Coins!", message: "You need \(cost - self.unlockable.currentCoinBalance()) more bubbles to unlock this word pack.", actions: nil)
+			case .notEnoughBubbles:
+				self.presentAlert(title: "Not Enough Bubbless!", message: "You need \(cost - self.unlockable.currentBubbleBalance()) more bubbles to unlock this word pack.", actions: nil)
 			case .alreadyUnlocked:
 				self.presentAlert(title: "You Have Already Unlocked This Word Pack!", message: "Go get yourself something nice, you've got enough bubbles (;", actions: nil)
 			}
@@ -93,7 +93,7 @@ extension WordPackVC: UITableViewDelegate {
 		print("[INFO] \(selectedPack) Word Pack Selected")
 		
 		if unlockedPacks.contains(selectedPack) {
-			if let cell = tableView.cellForRow(at: indexPath) as? WordPackCell { cell.costLabel.text = "●" }
+			if let cell = tableView.cellForRow(at: indexPath) as? UnlockCell { cell.costLabel.text = "●" }
 			self.tableView.reloadData()
 		}
 		else { self.presentPurchaseAlert(pack: selectedPack, cost: 750) }
@@ -111,11 +111,11 @@ extension WordPackVC: UITableViewDataSource {
 		let selectedPack = self.wordPacks.keys[indexPath.section]
 		
 		let color = self.cycleThroughColors(i: indexPath.section) ?? #colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1)
-		let cell = self.tableView.dequeueReusableCell(withIdentifier: "WordPackCell", for: indexPath) as! WordPackCell
+		let cell = self.tableView.dequeueReusableCell(withIdentifier: "UnlockCell", for: indexPath) as! UnlockCell
 			cell.title.text = selectedPack
 			cell.cellView.backgroundColor = color
 		
-		cell.costLabel.attributedText = self.unlockable.addCoinIconTo(String: "750 ", Color: #colorLiteral(red: 0.2427230775, green: 0.6916770339, blue: 1, alpha: 1), Size: nil)
+		cell.costLabel.attributedText = self.unlockable.addBubbleIconTo(String: "750 ", Color: #colorLiteral(red: 0.2427230775, green: 0.6916770339, blue: 1, alpha: 1), Size: nil)
 		
 		if unlockedPacks.contains(selectedPack) {
 			cell.costLabel.text = "●"
@@ -138,7 +138,7 @@ extension WordPackVC: UITableViewDataSource {
 	}
 }
 
-class WordPackCell: UITableViewCell {
+class UnlockCell: UITableViewCell {
 	@IBOutlet weak var cellView: UIView!
 	@IBOutlet weak var title: UILabel!
 	@IBOutlet weak var costLabel: UILabel!

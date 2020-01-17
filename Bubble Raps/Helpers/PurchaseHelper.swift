@@ -11,7 +11,7 @@ import StoreKit
 import SwiftyStoreKit
 
 class PurchaseHelper: NSObject {
-	func purchase(Product: SKProduct, CoinAmount: Int, vc: UIViewController) {
+	func purchase(Product: SKProduct, BubbleAmount: Int, vc: UIViewController) {
 		SwiftyStoreKit.purchaseProduct(Product, quantity: 1, atomically: true) { result in
 			switch result {
 			case .success(let product):
@@ -19,11 +19,11 @@ class PurchaseHelper: NSObject {
 					SwiftyStoreKit.finishTransaction(product.transaction)
 				}
 				else {
-					let currentCoins = UserDefaults.standard.integer(forKey: "coins")
-					UserDefaults.standard.set(currentCoins + CoinAmount, forKey: "coins")
+					let currentBubbles = UserDefaults.standard.integer(forKey: "bubbles")
+					UserDefaults.standard.set(currentBubbles + BubbleAmount, forKey: "bubbles")
 					
-					print("[SUCCESS] Coin Purchase Completed")
-					vc.presentAlert(title: "Purchase Complete!", message: "\(CoinAmount) coins have been added to your account", actions: nil)
+					print("[SUCCESS] Bubble Purchase Completed")
+					vc.presentAlert(title: "Purchase Complete!", message: "\(BubbleAmount) bubbles have been added to your account", actions: nil)
 				}
 				
 			case .error(let error):
@@ -44,10 +44,10 @@ class PurchaseHelper: NSObject {
 		}
 	}
 	
-	func productFor(Coins: Int) -> SKProduct? {
+	func productFor(BubbleAmount: Int) -> SKProduct? {
 		var finalResult: SKProduct? = nil
 		
-		SwiftyStoreKit.retrieveProductsInfo(["com.deltavel.bubbleraps.\(Coins)coins"]) { result in
+		SwiftyStoreKit.retrieveProductsInfo(["com.deltavel.bubbleraps.\(BubbleAmount)bubbles"]) { result in
 			if let product = result.retrievedProducts.first {
 				let priceString = product.localizedPrice!
 				print("[INFO] Product Name: \(product.localizedDescription)")
