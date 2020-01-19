@@ -45,7 +45,7 @@ class RhymeHelper {
 	
 	// MARK: Needs Work (Make Synchronous)
 	
-	func getRandomWord(completion: @escaping (String) -> ()){
+	func getRandomWord(completion: @escaping (String) -> ()) {
 		let url = URL(string: "https://wordsapiv1.p.rapidapi.com/words/?random=true")!
 		var request = URLRequest(url: url)
 		request.addValue("wordsapiv1.p.rapidapi.com", forHTTPHeaderField: "x-rapidapi-host")
@@ -105,4 +105,37 @@ class RhymeHelper {
         
         return potentialArray
     }
+	
+	/*
+	func createWordPackFrom(topic: String, completion: @escaping ([String]?) -> Void) {
+		guard let url = URL(string: "https://api.datamuse.com/words?ml=\(topic.urlFormat())") else { return }
+		URLSession.shared.dataTask(with: url) { (result) in
+			switch result {
+				case .success(let response, let data):
+					print(response.description)
+					break
+				case .failure(let error):
+					// Handle Error
+					break
+			 }
+		}
+	}
+	*/
+}
+
+extension URLSession {
+    func dataTask(with url: URL, result: @escaping (Result<(URLResponse, Data), Error>) -> Void) -> URLSessionDataTask {
+		return dataTask(with: url) { (data, response, error) in
+			if let error = error {
+				result(.failure(error))
+				return
+			}
+			guard let response = response, let data = data else {
+				let error = NSError(domain: "error", code: 0, userInfo: nil)
+				result(.failure(error))
+				return
+			}
+			result(.success((response, data)))
+		}
+	}
 }

@@ -225,3 +225,39 @@ extension NSMutableAttributedString {
         return ceil(boundingBox.height)
     }
 }
+
+// MARK: URL Extension
+
+extension URL {
+	func syncFetch() -> Data? {
+		let semaphore = DispatchSemaphore(value: 0)
+		var result: Data?
+		
+		let task = URLSession.shared.dataTask(with: self) {(data, response, error) in
+			guard let data = data else { print("[ERROR] Could Not Fetch Data From API."); return }
+			result = data
+			semaphore.signal()
+		}
+		
+		task.resume()
+		semaphore.wait()
+		
+		return result
+	}
+}
+
+// MARK: Data Extension
+
+extension Data {
+	func parseFromJSON() -> [String] {
+		var array = [String]()
+		
+		do {
+			let json = try JSONSerialization.jsonObject(with: self, options: .mutableContainers) as! [[String: Any]]
+			for result in json { if let rhymeWord = result["word"] as? String { array.append(rhymeWord) } }
+		}
+		catch { print("[ERROR] Could Not Parse JSON From Datamuse API.") }
+		
+		return array
+	}
+}
