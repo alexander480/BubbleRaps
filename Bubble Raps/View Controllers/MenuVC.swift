@@ -38,8 +38,8 @@ class MenuVC: UIViewController {
 	
 	@IBOutlet weak var themeButton: UIButton!
 	@IBAction func themeButtonAction(_ sender: Any) {
-		if let themeVC = self.storyboard?.instantiateViewController(withIdentifier: "ThemeVC") as? ThemeVC {
-			self.present(themeVC, animated: true, completion: nil)
+		if let themesVC = self.storyboard?.instantiateViewController(withIdentifier: "ThemesVC") as? ThemesVC {
+			self.present(themesVC, animated: true, completion: nil)
 		}
 	}
 	

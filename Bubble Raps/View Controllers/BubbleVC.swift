@@ -60,15 +60,17 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		let index = indexPath.row
 		
 		let bubbleAmount = self.bubbleAmounts[index]
-		let cost = self.bubbleCosts[index]
-		let atrStr = self.addBubbleIconTo(String: "\(bubbleAmount) ")
-		
 		let color = self.cycleThroughColors(i: indexPath.row) ?? #colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1)
+		let cost = self.bubbleCosts[index]
+		
+		let atrStr = self.addBubbleIconTo(String: "\(bubbleAmount) ", Color: UIColor.white)
+		
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: "UnlockCell", for: indexPath) as! UnlockCell
 			cell.title.attributedText = atrStr
 			cell.cellView.backgroundColor = color
 		
 		cell.costLabel.text = cost
+		cell.costLabel.textColor = color
 		
 		return cell
 	}
@@ -77,8 +79,12 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		let index = indexPath.row
 		let selectedAmount = self.bubbleAmounts[index]
 		
-		if let product = purchase.productFor(BubbleAmount: selectedAmount) { purchase.purchase(Product: product, BubbleAmount: 1750, vc: self) }
-		else { self.presentAlert(title: "Could Not Complete Purchase", message: "Please try again", actions: nil) }
+		if let product = purchase.productFor(BubbleAmount: selectedAmount) {
+			purchase.purchase(Product: product, BubbleAmount: selectedAmount, vc: self)
+		}
+		else {
+			self.presentAlert(title: "Could Not Complete Purchase", message: "Please try again", actions: nil)
+		}
 	}
 	
 	private func cycleThroughColors(i: Int) -> UIColor? {
@@ -93,11 +99,11 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		}
 	}
 	
-	private func addBubbleIconTo(String: String) -> NSMutableAttributedString {
+	private func addBubbleIconTo(String: String, Color: UIColor) -> NSMutableAttributedString {
 		let str = NSMutableAttributedString(string: String)
 		if let font = UIFont(name: "AvenirNext-HeavyItalic", size: 22.0) {
 			str.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.length))
-			str.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: str.length))
+			str.addAttribute(.foregroundColor, value: Color, range: NSRange(location: 0, length: str.length))
 			str.add(Image: #imageLiteral(resourceName: "Bubble Currency Small (White)"), WithOffset: -6.00)
 		}
 		

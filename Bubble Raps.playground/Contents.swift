@@ -59,11 +59,11 @@ func fetchVulgarArray() -> [String]? {
 }
 
 func clean(Array: [String]) -> [String] {
-	var arr = Array
+	// var arr = Array
 	
 	guard let vulgarArr = fetchVulgarArray() else { print("[ERROR] Could Not Fetch Vulgar Array."); return Array }
-	var cleanedArr = arr.filter { !vulgarArr.contains($0); }
-	var formattedArr = cleanedArr.filter { !$0.contains(" "); }
+	let cleanedArr = Array.filter { !vulgarArr.contains($0); }
+	let formattedArr = cleanedArr.filter { !$0.contains(" "); }
 
 	return formattedArr
 }

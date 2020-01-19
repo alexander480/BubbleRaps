@@ -111,11 +111,12 @@ extension WordPackVC: UITableViewDataSource {
 		let selectedPack = self.wordPacks.keys[indexPath.section]
 		
 		let color = self.cycleThroughColors(i: indexPath.section) ?? #colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1)
+		
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: "UnlockCell", for: indexPath) as! UnlockCell
 			cell.title.text = selectedPack
 			cell.cellView.backgroundColor = color
 		
-		cell.costLabel.attributedText = self.unlockable.addBubbleIconTo(String: "750 ", Color: #colorLiteral(red: 0.2427230775, green: 0.6916770339, blue: 1, alpha: 1), Size: nil)
+		cell.costLabel.attributedText = self.unlockable.addBubbleIconTo(String: "750 ", Color: color, Size: nil, Offset: nil)
 		
 		if unlockedPacks.contains(selectedPack) {
 			cell.costLabel.text = "●"

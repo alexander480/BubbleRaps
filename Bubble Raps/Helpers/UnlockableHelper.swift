@@ -88,14 +88,13 @@ class UnlockableHelper: NSObject  {
 		if remainingBubbles >= 0 { return true } else { return false }
 	}
 	
-	func addBubbleIconTo(String: String, Color: UIColor?, Size: CGFloat?) -> NSMutableAttributedString {
+	func addBubbleIconTo(String: String, Color: UIColor?, Size: CGFloat?, Offset: CGFloat?) -> NSMutableAttributedString {
 		let str = NSMutableAttributedString(string: String)
+		let icon = self.iconImageFor(Color: Color ?? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
 		if let font = UIFont(name: "AvenirNext-HeavyItalic", size: Size ?? 14.0) {
 			str.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.length))
 			str.addAttribute(.foregroundColor, value: Color ?? UIColor.white, range: NSRange(location: 0, length: str.length))
-			
-			if Color == UIColor.white { str.add(Image: #imageLiteral(resourceName: "Bubble Currency Small (White)"), WithOffset: -3.25) }
-			else { str.add(Image: #imageLiteral(resourceName: "Bubble Currency Small"), WithOffset: -3.25) }
+			str.add(Image: icon, WithOffset: Offset ?? -3.25)
 		}
 		
 		return str
@@ -197,11 +196,12 @@ class UnlockableHelper: NSObject  {
 // MARK: Themes Struct and Helper Functions
 
 struct Themes {
-	let themeColors: [String: UIColor] = ["Purpink": #colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1), "Dark Purpink": #colorLiteral(red: 0.937254902, green: 0.5058823529, blue: 0.862745098, alpha: 1), "Purple": #colorLiteral(red: 0.7843137255, green: 0.6039215686, blue: 1, alpha: 1), "Dark Purple": #colorLiteral(red: 0.6235294118, green: 0.3960784314, blue: 0.8941176471, alpha: 1), "Blue": #colorLiteral(red: 0.5725490196, green: 0.7254901961, blue: 1, alpha: 1), "Dark Blue": #colorLiteral(red: 0.337254902, green: 0.5529411765, blue: 0.937254902, alpha: 1), "Gray": #colorLiteral(red: 0.6941176471, green: 0.6941176471, blue: 0.6941176471, alpha: 1), "Dark Gray": #colorLiteral(red: 0.431372549, green: 0.431372549, blue: 0.431372549, alpha: 1)]
+	let themeColors: [String: UIColor] = ["Purpink": #colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1), "Dark Purpink": #colorLiteral(red: 0.937254902, green: 0.5058823529, blue: 0.862745098, alpha: 1), "Purple": #colorLiteral(red: 0.7843137255, green: 0.6039215686, blue: 1, alpha: 1), "Dark Purple": #colorLiteral(red: 0.6235294118, green: 0.3960784314, blue: 0.8941176471, alpha: 1), "Blue": #colorLiteral(red: 0.5725490196, green: 0.7254901961, blue: 1, alpha: 1), "Dark Blue": #colorLiteral(red: 0.337254902, green: 0.5529411765, blue: 0.937254902, alpha: 1), "Gray": #colorLiteral(red: 0.6941176471, green: 0.6941176471, blue: 0.6941176471, alpha: 1), "Dark Gray": #colorLiteral(red: 0.431372549, green: 0.431372549, blue: 0.431372549, alpha: 1), "White": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
 	let borderColors: [String: UIColor] = ["Purpink": #colorLiteral(red: 0.9529411765, green: 0.8196078431, blue: 1, alpha: 1), "Dark Purpink": #colorLiteral(red: 1, green: 0.6392156863, blue: 0.937254902, alpha: 1), "Purple": #colorLiteral(red: 0.8470588235, green: 0.7215686275, blue: 1, alpha: 1), "Dark Purple": #colorLiteral(red: 0.7490196078, green: 0.5411764706, blue: 1, alpha: 1), "Blue": #colorLiteral(red: 0.7215686275, green: 0.8196078431, blue: 1, alpha: 1), "Dark Blue": #colorLiteral(red: 0.4941176471, green: 0.6705882353, blue: 0.9803921569, alpha: 1), "Gray": #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1), "Dark Gray": #colorLiteral(red: 0.5490196078, green: 0.5490196078, blue: 0.5490196078, alpha: 1)]
 	let themedThemeTabs: [String: UIImage] = ["Purpink": #imageLiteral(resourceName: "Theme Tab"), "Dark Purpink": #imageLiteral(resourceName: "Dark Purpink Theme Tab"), "Purple": #imageLiteral(resourceName: "Light Purple Theme Tab"), "Dark Purple": #imageLiteral(resourceName: "Dark Purple Theme Tab"), "Blue": #imageLiteral(resourceName: "Light Blue Theme Tab"), "Dark Blue": #imageLiteral(resourceName: "Dark Blue Theme Tab"), "Gray": #imageLiteral(resourceName: "Light Gray Theme Tab"), "Dark Gray": #imageLiteral(resourceName: "Dark Gray Theme Tab")]
 	let themedBubbles: [String: UIImage] = ["Purpink": #imageLiteral(resourceName: "Selection Bubble"), "Dark Purpink": #imageLiteral(resourceName: "Dark Pink Bubble"), "Purple": #imageLiteral(resourceName: "Light Purple Bubble"), "Dark Purple": #imageLiteral(resourceName: "Dark Purple Bubble"), "Blue": #imageLiteral(resourceName: "Light Blue Bubble"), "Dark Blue": #imageLiteral(resourceName: "Dark Blue Bubble"), "Gray": #imageLiteral(resourceName: "Light Gray Bubble"), "Dark Gray": #imageLiteral(resourceName: "Dark Gray Bubble")]
 	let themedLogos: [String: UIImage] = ["Purpink": #imageLiteral(resourceName: "Purpink Logo"), "Dark Purpink": #imageLiteral(resourceName: "Dark Purpink Logo"), "Purple": #imageLiteral(resourceName: "Light Purple Logo"), "Dark Purple": #imageLiteral(resourceName: "Dark Purple Logo"), "Blue": #imageLiteral(resourceName: "Light Blue Logo"), "Dark Blue": #imageLiteral(resourceName: "Dark Blue Logo"), "Gray": #imageLiteral(resourceName: "Light Gray Logo"), "Dark Gray": #imageLiteral(resourceName: "Dark Gray Logo")]
+	let themedBubbleIcons: [UIColor: UIImage] = [#colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1): #imageLiteral(resourceName: "Purpink Icon"), #colorLiteral(red: 0.937254902, green: 0.5058823529, blue: 0.862745098, alpha: 1): #imageLiteral(resourceName: "Dark Purpink Icon"), #colorLiteral(red: 0.7843137255, green: 0.6039215686, blue: 1, alpha: 1): #imageLiteral(resourceName: "Light Purple Icon"), #colorLiteral(red: 0.6235294118, green: 0.3960784314, blue: 0.8941176471, alpha: 1): #imageLiteral(resourceName: "Dark Purple Icon"), #colorLiteral(red: 0.5725490196, green: 0.7254901961, blue: 1, alpha: 1): #imageLiteral(resourceName: "Light Blue Icon"), #colorLiteral(red: 0.337254902, green: 0.5529411765, blue: 0.937254902, alpha: 1): #imageLiteral(resourceName: "Dark Blue Icon"), #colorLiteral(red: 0.6941176471, green: 0.6941176471, blue: 0.6941176471, alpha: 1): #imageLiteral(resourceName: "Light Gray Icon"), #colorLiteral(red: 0.431372549, green: 0.431372549, blue: 0.431372549, alpha: 1): #imageLiteral(resourceName: "Dark Gray Icon"), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1): #imageLiteral(resourceName: "Bubble Currency Small (White)")]
 }
 
 extension UnlockableHelper {
@@ -211,6 +211,7 @@ extension UnlockableHelper {
 	func tabImageFor(Theme: String) -> UIImage { return Themes().themedThemeTabs[Theme] ?? #imageLiteral(resourceName: "Theme Tab") }
 	func bubbleImageFor(Theme: String) -> UIImage { return Themes().themedBubbles[Theme] ?? #imageLiteral(resourceName: "Selection Bubble") }
 	func logoImageFor(Theme: String) -> UIImage { return Themes().themedLogos[Theme] ?? #imageLiteral(resourceName: "Purpink Logo") }
+	func iconImageFor(Color: UIColor) -> UIImage { return Themes().themedBubbleIcons[Color] ?? #imageLiteral(resourceName: "Bubble Currency Small (White)") }
 }
 
 // MARK: WordPacks Struct

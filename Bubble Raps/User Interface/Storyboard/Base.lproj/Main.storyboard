@@ -385,211 +385,6 @@
             </objects>
             <point key="canvasLocation" x="-735.20000000000005" y="131.78410794602701"/>
         </scene>
-        <!--Theme-->
-        <scene sceneID="wBu-8I-2ri">
-            <objects>
-                <viewController storyboardIdentifier="ThemeVC" title="Theme" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k83-mT-OhV" customClass="ThemeVC" customModule="Bubble_Raps" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VIa-IT-kyi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="O2Q-hA-L8n">
-                                <rect key="frame" x="0.0" y="233" width="375" height="434"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="9W5-y2-GbN">
-                                    <size key="itemSize" width="100" height="100"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="UnlockedThemeCell" id="CFS-Po-hCs" customClass="UnlockedThemeCell" customModule="Bubble_Raps" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected Icon" translatesAutoresizingMaskIntoConstraints="NO" id="abK-Ui-Nyb">
-                                                    <rect key="frame" x="48" y="48" width="29" height="29"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="29" id="BQr-nZ-imb"/>
-                                                        <constraint firstAttribute="height" constant="29" id="Dwb-EP-Ce5"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.76078431369999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="abK-Ui-Nyb" firstAttribute="centerX" secondItem="CFS-Po-hCs" secondAttribute="centerX" id="1ze-OL-8be"/>
-                                            <constraint firstItem="abK-Ui-Nyb" firstAttribute="centerY" secondItem="CFS-Po-hCs" secondAttribute="centerY" id="LUj-hl-kjM"/>
-                                        </constraints>
-                                        <size key="customSize" width="125" height="125"/>
-                                        <connections>
-                                            <outlet property="imageView" destination="abK-Ui-Nyb" id="7p8-jf-cBX"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="LockedThemeCell" id="fh6-Fg-VFg" customClass="LockedThemeCell" customModule="Bubble_Raps" customModuleProvider="target">
-                                        <rect key="frame" x="125" y="0.0" width="125" height="125"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 🅒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hka-me-kEn">
-                                                    <rect key="frame" x="20" y="40" width="85" height="45"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="DdX-Vi-N2X"/>
-                                                        <constraint firstAttribute="height" constant="45" id="IJL-ly-2bx"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" red="0.93725490199999995" green="0.50588235290000005" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="6"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" red="0.93725490196078431" green="0.50588235294117645" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="hka-me-kEn" firstAttribute="leading" secondItem="fh6-Fg-VFg" secondAttribute="leadingMargin" constant="12" id="OVv-Sj-aZg"/>
-                                            <constraint firstItem="hka-me-kEn" firstAttribute="centerX" secondItem="fh6-Fg-VFg" secondAttribute="centerX" id="WDk-Jv-aTw"/>
-                                            <constraint firstItem="hka-me-kEn" firstAttribute="centerY" secondItem="fh6-Fg-VFg" secondAttribute="centerY" id="tXq-Fs-6UA"/>
-                                        </constraints>
-                                        <size key="customSize" width="125" height="125"/>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="hka-me-kEn" id="5yi-2B-bgB"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="0.0" height="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadowPathEqualsFrame" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="dataSource" destination="k83-mT-OhV" id="2wD-po-ZdL"/>
-                                    <outlet property="delegate" destination="k83-mT-OhV" id="wQl-ZV-PLd"/>
-                                </connections>
-                            </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8dO-8f-e1d">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Themes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVp-4S-eTI">
-                                        <rect key="frame" x="0.0" y="66" width="375" height="45"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="2Z0-kP-ztL"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="36"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="ImW-yl-fyr" appends="YES" id="EHJ-eH-YDD"/>
-                                        </connections>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTL-UT-7zN">
-                                        <rect key="frame" x="0.0" y="116" width="375" height="33"/>
-                                        <string key="text">Keep improving your scores
-to unlock new themes.</string>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More colors coming soon..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pay-9H-E6R">
-                                        <rect key="frame" x="0.0" y="173" width="375" height="17"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8c-hj-LFt">
-                                        <rect key="frame" x="0.0" y="85" width="63" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="cwM-1D-X3a"/>
-                                            <constraint firstAttribute="width" secondItem="s8c-hj-LFt" secondAttribute="height" multiplier="7:5" id="yyq-fH-jJr"/>
-                                        </constraints>
-                                        <state key="normal" image="Back Tab"/>
-                                        <connections>
-                                            <action selector="backAction:" destination="k83-mT-OhV" eventType="touchUpInside" id="39I-or-cAx"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0N-Mb-uMu">
-                                        <rect key="frame" x="0.0" y="145" width="83" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="bkc-Nn-z2I"/>
-                                            <constraint firstAttribute="width" secondItem="P0N-Mb-uMu" secondAttribute="height" multiplier="83:45" id="vsB-vl-Be3"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
-                                        <state key="normal" backgroundImage="Currency Tab (No Icon)"/>
-                                        <connections>
-                                            <action selector="bubbleButtonAction:" destination="k83-mT-OhV" eventType="touchUpInside" id="PBM-TG-RRv"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="P0N-Mb-uMu" firstAttribute="top" secondItem="s8c-hj-LFt" secondAttribute="bottom" constant="15" id="2BU-Ke-zfB"/>
-                                    <constraint firstItem="zVp-4S-eTI" firstAttribute="top" secondItem="8dO-8f-e1d" secondAttribute="top" constant="66" id="2wN-3J-nyO"/>
-                                    <constraint firstAttribute="trailing" secondItem="zVp-4S-eTI" secondAttribute="trailing" id="4YE-ff-SW0"/>
-                                    <constraint firstItem="P0N-Mb-uMu" firstAttribute="bottom" secondItem="Pay-9H-E6R" secondAttribute="bottom" id="4nV-hd-fNm"/>
-                                    <constraint firstItem="zVp-4S-eTI" firstAttribute="leading" secondItem="8dO-8f-e1d" secondAttribute="leading" id="9mS-YB-mdP"/>
-                                    <constraint firstAttribute="trailing" secondItem="RTL-UT-7zN" secondAttribute="trailing" id="AIm-wd-iOv"/>
-                                    <constraint firstItem="s8c-hj-LFt" firstAttribute="leading" secondItem="8dO-8f-e1d" secondAttribute="leading" id="CrD-1l-Znf"/>
-                                    <constraint firstAttribute="height" constant="225" id="IxC-He-8K9"/>
-                                    <constraint firstItem="P0N-Mb-uMu" firstAttribute="leading" secondItem="8dO-8f-e1d" secondAttribute="leading" id="Pdv-WE-1u9"/>
-                                    <constraint firstAttribute="bottom" secondItem="Pay-9H-E6R" secondAttribute="bottom" constant="35" id="R6R-2v-r2N"/>
-                                    <constraint firstItem="RTL-UT-7zN" firstAttribute="leading" secondItem="8dO-8f-e1d" secondAttribute="leading" id="cKv-P2-nO7"/>
-                                    <constraint firstItem="Pay-9H-E6R" firstAttribute="leading" secondItem="8dO-8f-e1d" secondAttribute="leading" id="d3X-jX-LOe"/>
-                                    <constraint firstItem="RTL-UT-7zN" firstAttribute="top" secondItem="zVp-4S-eTI" secondAttribute="bottom" constant="5" id="fwj-Rv-WXm"/>
-                                    <constraint firstAttribute="trailing" secondItem="Pay-9H-E6R" secondAttribute="trailing" id="lhJ-TP-7fy"/>
-                                    <constraint firstItem="RTL-UT-7zN" firstAttribute="top" secondItem="zVp-4S-eTI" secondAttribute="bottom" constant="5" id="oRh-Oy-OEM"/>
-                                    <constraint firstItem="Pay-9H-E6R" firstAttribute="top" secondItem="RTL-UT-7zN" secondAttribute="bottom" constant="24" id="uXN-o6-ZPK"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.76078431369999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="O2Q-hA-L8n" secondAttribute="bottom" id="4fy-28-ei1"/>
-                            <constraint firstItem="O2Q-hA-L8n" firstAttribute="leading" secondItem="z9H-Su-0qk" secondAttribute="leading" id="HU9-M3-7OU"/>
-                            <constraint firstItem="8dO-8f-e1d" firstAttribute="trailing" secondItem="z9H-Su-0qk" secondAttribute="trailing" id="Ibl-6T-smx"/>
-                            <constraint firstItem="O2Q-hA-L8n" firstAttribute="top" secondItem="8dO-8f-e1d" secondAttribute="bottom" constant="8" id="Ucd-uq-GEx"/>
-                            <constraint firstItem="8dO-8f-e1d" firstAttribute="leading" secondItem="z9H-Su-0qk" secondAttribute="leading" id="mr2-lD-zJy"/>
-                            <constraint firstItem="8dO-8f-e1d" firstAttribute="top" secondItem="VIa-IT-kyi" secondAttribute="top" id="urM-Sl-uQO"/>
-                            <constraint firstItem="O2Q-hA-L8n" firstAttribute="trailing" secondItem="z9H-Su-0qk" secondAttribute="trailing" id="vde-ad-8Zo"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="z9H-Su-0qk"/>
-                    </view>
-                    <connections>
-                        <outlet property="backButton" destination="s8c-hj-LFt" id="pn0-D2-xTi"/>
-                        <outlet property="bubbleButton" destination="P0N-Mb-uMu" id="SQn-7P-z3I"/>
-                        <outlet property="collectionView" destination="O2Q-hA-L8n" id="lUA-7x-z9j"/>
-                        <outlet property="headingView" destination="8dO-8f-e1d" id="7SK-ds-gNI"/>
-                        <outlet property="mainView" destination="VIa-IT-kyi" id="WiB-oe-vN6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i15-m3-W1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="ImW-yl-fyr">
-                    <connections>
-                        <action selector="holdTitleAction:" destination="k83-mT-OhV" id="HWT-CX-PTu"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="-735" y="815"/>
-        </scene>
         <!--Main-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -1278,10 +1073,10 @@ new themes and word packs.</string>
             </objects>
             <point key="canvasLocation" x="858" y="815"/>
         </scene>
-        <!--Bubbles-->
+        <!--Themes-->
         <scene sceneID="TOR-hA-ZTX">
             <objects>
-                <viewController storyboardIdentifier="BubbleVC" title="Bubbles" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iB5-2c-mHU" customClass="BubbleVC" customModule="Bubble_Raps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThemesVC" title="Themes" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iB5-2c-mHU" customClass="ThemesVC" customModule="Bubble_Raps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BZc-c3-UYb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1289,7 +1084,7 @@ new themes and word packs.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITj-K5-r5d">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bubbles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdp-5u-q4Y">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Themes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdp-5u-q4Y">
                                         <rect key="frame" x="0.0" y="66" width="375" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="SOK-hp-i9N"/>
@@ -1300,13 +1095,13 @@ new themes and word packs.</string>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AX-U5-gX6">
                                         <rect key="frame" x="0.0" y="116" width="375" height="36"/>
-                                        <string key="text">Purchase more bubbles to unlock 
-new themes and word packs.</string>
+                                        <string key="text">Keep improving your scores
+to unlock new themes.</string>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your support is greatly appreciated (:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi8-W0-x0X">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More colors coming soon..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pi8-W0-x0X">
                                         <rect key="frame" x="0.0" y="176" width="375" height="14"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1320,7 +1115,7 @@ new themes and word packs.</string>
                                         </constraints>
                                         <state key="normal" image="Back Tab"/>
                                         <connections>
-                                            <action selector="backButtonAction:" destination="iB5-2c-mHU" eventType="touchUpInside" id="Xsb-GJ-BQ7"/>
+                                            <action selector="backButtonAction:" destination="iB5-2c-mHU" eventType="touchUpInside" id="pGr-Ri-No8"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vT-mx-Zcg">
@@ -1332,7 +1127,7 @@ new themes and word packs.</string>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" backgroundImage="Currency Tab (No Icon)"/>
                                         <connections>
-                                            <action selector="bubbleButtonAction:" destination="iB5-2c-mHU" eventType="touchUpInside" id="Kdp-U2-3ho"/>
+                                            <action selector="bubbleButtonAction:" destination="iB5-2c-mHU" eventType="touchUpInside" id="vbQ-3w-GPO"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1383,7 +1178,7 @@ new themes and word packs.</string>
                                                                 <constraint firstAttribute="height" constant="45" id="Xyt-sj-187"/>
                                                                 <constraint firstAttribute="width" secondItem="X7F-zO-hdK" secondAttribute="height" multiplier="17:9" id="aGG-Hh-l47"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                                             <color key="textColor" red="0.93725490199999995" green="0.50588235290000005" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <userDefinedRuntimeAttributes>
@@ -1436,15 +1231,15 @@ new themes and word packs.</string>
                         <viewLayoutGuide key="safeArea" id="Jwb-Op-1Gc"/>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="rEt-SP-F1k" id="mPe-iX-KFY"/>
-                        <outlet property="bubbleButton" destination="6vT-mx-Zcg" id="dgt-hM-uow"/>
-                        <outlet property="headingView" destination="ITj-K5-r5d" id="gQ0-9Q-2t4"/>
-                        <outlet property="tableView" destination="Cx5-qn-8vd" id="beh-tp-bOZ"/>
+                        <outlet property="backButton" destination="rEt-SP-F1k" id="2Ag-kh-Qif"/>
+                        <outlet property="bubbleButton" destination="6vT-mx-Zcg" id="hAY-io-Cyy"/>
+                        <outlet property="headingView" destination="ITj-K5-r5d" id="GRV-p3-xgL"/>
+                        <outlet property="tableView" destination="Cx5-qn-8vd" id="TJ9-fP-YAn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R2h-VG-ezk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="858" y="815"/>
+            <point key="canvasLocation" x="-735" y="815"/>
         </scene>
     </scenes>
     <resources>
@@ -1465,7 +1260,6 @@ new themes and word packs.</string>
         <image name="Red Increase Arrow" width="10" height="18"/>
         <image name="Red Tab (w Icon)" width="60" height="43"/>
         <image name="Resume Button" width="265" height="55"/>
-        <image name="Selected Icon" width="27" height="27"/>
         <image name="Word Pack Tab" width="63" height="45"/>
         <image name="pause-icon" width="24" height="24"/>
     </resources>
