@@ -10,6 +10,8 @@ import Foundation
 import StoreKit
 import SwiftyStoreKit
 
+// Maybe Hints
+
 class PurchaseHelper: NSObject {
 	func purchase(Product: SKProduct, BubbleAmount: Int, vc: UIViewController) {
 		SwiftyStoreKit.purchaseProduct(Product, quantity: 1, atomically: true) { result in

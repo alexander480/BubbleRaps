@@ -33,7 +33,7 @@ class RhymeHelper {
 				}
 			}
 		}
-		catch { print("[ERROR] Could Not Create JSON Object From URL");  return [String]() }
+		catch { print("[ERROR] Could Not Create JSON Object From URL"); return [String]() }
 		
 		// print("[INFO] All Rhymes For \(word): \(rhymes)")
 		
@@ -97,10 +97,8 @@ class RhymeHelper {
     
 	func potentialRhymes() -> [String: Bool] {
         var potentialArray = [String: Bool]()
-        
         for x in self.rhymes() { potentialArray.updateValue(true, forKey: x) }
         for y in self.notRhymes() { potentialArray.updateValue(false, forKey: y) }
-        
         print("[INFO] Potential Rhymes Array: \(potentialArray)")
         
         return potentialArray

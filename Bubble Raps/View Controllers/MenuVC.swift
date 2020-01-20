@@ -138,10 +138,10 @@ class MenuVC: UIViewController {
 		// self.present(crashlyticsAlert, animated: true, completion: nil)
 		
 		// MARK: Uncomment The Following Line To Add 250 Bubbles To Account
-		// self.unlockable.addBubbles(Amount: 250)
+		self.unlockable.addBubbles(Amount: 250)
 		
 		// Update Displayed Bubbles Balance
-		// self.coinButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 		
 		// print("[INFO] Current Bubble Balance: \(self.unlockable.currentBubbleBalance())")
 		

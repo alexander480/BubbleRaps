@@ -45,6 +45,13 @@ class ThemesVC: UIViewController {
 		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 	}
 	
+	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+		self.headingView.clipsToBounds = true
+		self.headingView.roundCorners(corners: [UIRectCorner.bottomLeft, UIRectCorner.bottomRight], radius: 5.0)
+		self.headingView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+	}
+	
 	private func presentPurchaseAlert(theme: String, cost: Int) {
 			let alert = UIAlertController(title: "Purchase \(theme) Theme", message: "This theme costs \(cost) bubbles.", preferredStyle: .alert)
 			let purchaseAction = UIAlertAction(title: "Purchase", style: .default) { (action) in
@@ -72,14 +79,18 @@ class ThemesVC: UIViewController {
 
 extension ThemesVC: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let unlockedThemes = self.unlockable.currentlyUnlockedThemes()
 		let selectedTheme = self.themes[indexPath.row]
-		
-		print("[INFO] \(selectedTheme) Theme Selected")
+		let unlockedThemes = self.unlockable.currentlyUnlockedThemes()
+		let color = self.unlockable.colorFor(Theme: selectedTheme)
 		
 		if unlockedThemes.contains(selectedTheme) {
-			if let cell = self.tableView.cellForRow(at: indexPath) as? UnlockCell { cell.costLabel.text = "●" }
-			self.tableView.reloadData()
+			print("[INFO] \(selectedTheme) Theme Selected.")
+			self.unlockable.changeTheme(To: selectedTheme)
+			if let cell = self.tableView.cellForRow(at: indexPath) as? UnlockCell {
+				cell.costLabel.text = "●"
+				cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
+			}
+			self.headingView.backgroundColor = color
 		}
 		else {
 			self.presentPurchaseAlert(theme: selectedTheme, cost: 250)
@@ -91,19 +102,27 @@ extension ThemesVC: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return themes.count }
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let selectedTheme = self.themes[indexPath.row]
-		let selectedThemeColor = self.unlockable.colorFor(Theme: selectedTheme)
-		
+		let currentTheme = self.unlockable.currentTheme()
 		let unlockedThemes = self.unlockable.currentlyUnlockedThemes()
+		let color = self.unlockable.colorFor(Theme: selectedTheme)
 
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: "UnlockCell", for: indexPath) as! UnlockCell
-			cell.title.text = selectedTheme
-			cell.cellView.backgroundColor = selectedThemeColor
+			
+		cell.title.text = selectedTheme
+		cell.costLabel.textColor = color
+		cell.cellView.backgroundColor = color
 		
-		cell.costLabel.attributedText = self.unlockable.addBubbleIconTo(String: "250 ", Color: selectedThemeColor, Size: nil, Offset: nil)
-		
-		if unlockedThemes.contains(selectedTheme) {
+		if selectedTheme == currentTheme {
 			cell.costLabel.text = "●"
-			cell.costLabel.textColor = selectedThemeColor
+			cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
+		}
+		else if unlockedThemes.contains(selectedTheme) && !(selectedTheme == currentTheme) {
+			cell.costLabel.text = " "
+			cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
+		}
+		else {
+			let str = self.unlockable.addBubbleIconTo(String: "250 ", Color: color, Size: nil, Offset: nil)
+			cell.costLabel.attributedText = str
 		}
 		
 		return cell

@@ -29,16 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 					// Unlock content
 				case .failed:
 					print("[ERROR] Transaction Failed [didFinishLaunchingWithOptions] [SwiftyStoreKit.completeTransactions()]")
-					break // do nothing
+					break
 				case .deferred:
 					print("[WARNING] Transaction Has Been Deferred [didFinishLaunchingWithOptions] [SwiftyStoreKit.completeTransactions()]")
 					break
 				case .purchasing:
 					print("[INFO] Currently Processing Transaction [didFinishLaunchingWithOptions] [SwiftyStoreKit.completeTransactions()]")
-					break // do nothing
+					break
 				@unknown default:
 					print("[ERROR] Unknown Error Occured In [didFinishLaunchingWithOptions] [SwiftyStoreKit.completeTransactions()] [] ")
-					break // do nothing
+					break
 				}
 			}
 		}

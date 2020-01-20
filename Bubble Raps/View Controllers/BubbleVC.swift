@@ -52,6 +52,13 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 	}
 	
+	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+		self.headingView.clipsToBounds = true
+		self.headingView.roundCorners(corners: [UIRectCorner.bottomLeft, UIRectCorner.bottomRight], radius: 5.0)
+		self.headingView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+	}
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.bubbleAmounts.count
 	}
@@ -63,14 +70,13 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		let color = self.cycleThroughColors(i: indexPath.row) ?? #colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1)
 		let cost = self.bubbleCosts[index]
 		
-		let atrStr = self.addBubbleIconTo(String: "\(bubbleAmount) ", Color: UIColor.white)
-		
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: "UnlockCell", for: indexPath) as! UnlockCell
-			cell.title.attributedText = atrStr
+			cell.title.attributedText = self.addBubbleIconTo(String: "\(bubbleAmount) ", Color: UIColor.white)
 			cell.cellView.backgroundColor = color
 		
-		cell.costLabel.text = cost
+		cell.costLabel.font = UIFont(name: "AvenirNext-Bold", size: 16.0)
 		cell.costLabel.textColor = color
+		cell.costLabel.text = cost
 		
 		return cell
 	}
@@ -104,7 +110,7 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		if let font = UIFont(name: "AvenirNext-HeavyItalic", size: 22.0) {
 			str.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.length))
 			str.addAttribute(.foregroundColor, value: Color, range: NSRange(location: 0, length: str.length))
-			str.add(Image: #imageLiteral(resourceName: "Bubble Currency Small (White)"), WithOffset: -6.00)
+			str.add(Image: #imageLiteral(resourceName: "White Icon"), WithOffset: -6.00)
 		}
 		
 		return str

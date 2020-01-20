@@ -45,19 +45,23 @@ class WordPackVC: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		
 		self.headingView.backgroundColor = self.unlockable.colorForCurrentTheme()
 		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 	}
 	
-
+	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+		self.headingView.clipsToBounds = true
+		self.headingView.roundCorners(corners: [UIRectCorner.bottomLeft, UIRectCorner.bottomRight], radius: 5.0)
+		self.headingView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+	}
+	
 	// MARK: Purchase Theme UI Handler
 	private func presentPurchaseAlert(pack: String, cost: Int) {
 		let alert = UIAlertController(title: "Purchase \(pack) Word Pack", message: "This word pack costs \(cost) bubbles.", preferredStyle: .alert)
@@ -109,7 +113,6 @@ extension WordPackVC: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
 		let selectedPack = self.wordPacks.keys[indexPath.section]
-		
 		let color = self.cycleThroughColors(i: indexPath.section) ?? #colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1)
 		
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: "UnlockCell", for: indexPath) as! UnlockCell
