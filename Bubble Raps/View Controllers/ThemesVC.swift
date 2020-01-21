@@ -96,6 +96,11 @@ extension ThemesVC: UITableViewDelegate {
 			self.presentPurchaseAlert(theme: selectedTheme, cost: 250)
 		}
 	}
+	func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+		if let cell = self.tableView.cellForRow(at: indexPath) as? UnlockCell {
+			cell.costLabel.text = " "
+		}
+	}
 }
 
 extension ThemesVC: UITableViewDataSource {
@@ -113,7 +118,7 @@ extension ThemesVC: UITableViewDataSource {
 		cell.cellView.backgroundColor = color
 		
 		if selectedTheme == currentTheme {
-			cell.costLabel.text = "●"
+			cell.costLabel.text = " "
 			cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
 		}
 		else if unlockedThemes.contains(selectedTheme) && !(selectedTheme == currentTheme) {
