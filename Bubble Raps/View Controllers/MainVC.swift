@@ -191,7 +191,7 @@ class MainVC: UIViewController {
 	}
 }
 
-// MARK: Did Select Item
+// MARK: ContentBubblesViewDelegate Protocol Stubs
 
 extension MainVC: ContentBubblesViewDelegate {
     func minimalSizeForBubble(in view: ContentBubblesView) -> CGSize { return CGSize(width: 80, height: 80) }
@@ -223,7 +223,7 @@ extension MainVC: ContentBubblesViewDelegate {
 	}
 }
 
-// MARK: Setup UICollectionViewCells
+// MARK: ContentBubblesViewDataSource Protocol Stubs
 
 extension MainVC: ContentBubblesViewDataSource {
     func numberOfItems(in view: ContentBubblesView) -> Int { return self.potentialRhymesArray.count }
