@@ -10,7 +10,7 @@ import Foundation
 import StoreKit
 import SwiftyStoreKit
 
-// Maybe Hints
+// Maybe Allow People To Purchase Hints or Additional Time
 
 class PurchaseHelper: NSObject {
 	func purchase(Product: SKProduct, BubbleAmount: Int, vc: UIViewController) {

@@ -15,13 +15,7 @@ enum UnlockableStatus {
 	case alreadyUnlocked
 }
 
-class UnlockableHelper: NSObject  {
-	
-	// MARK: Class Variables
-	
-	// let unlockedThemes = UserDefaults.standard.array(forKey: "unlockedThemes") as? [String]
-	// let unlockedPacks = UserDefaults.standard.array(forKey: "unlockedPacks") as? [String]
-	
+class UnlockableHelper: NSObject {
 	// MARK: Coin Purchasing Functions
 	
 	func purchaseTheme(Named: String, Cost: Int) -> UnlockableStatus {

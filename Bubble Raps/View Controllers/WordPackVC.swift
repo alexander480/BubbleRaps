@@ -142,8 +142,4 @@ extension WordPackVC: UITableViewDataSource {
 	}
 }
 
-class UnlockCell: UITableViewCell {
-	@IBOutlet weak var cellView: UIView!
-	@IBOutlet weak var title: UILabel!
-	@IBOutlet weak var costLabel: UILabel!
-}
+

@@ -116,5 +116,3 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		return str
 	}
 }
-
-
