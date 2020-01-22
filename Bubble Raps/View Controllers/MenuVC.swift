@@ -20,6 +20,8 @@ class MenuVC: UIViewController {
 	let unlockable = UnlockableHelper()
 	var rewardedAd: GADRewardedAd!
 	
+	var loadingAlert: UIAlertController!
+	
 	var selectedPack = "Standard"
 	var selectedPackIndex = 0
 	
@@ -181,6 +183,8 @@ class MenuVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		self.loadingAlert = self.loadingAlert()
+		
 		// Validate unlockedThemes and unlockedPacks
 		self.unlockable.validateUnlockedThemes()
 		self.unlockable.validateUnlockedPacks()
@@ -226,7 +230,7 @@ class MenuVC: UIViewController {
 
 extension MenuVC: GADRewardedAdDelegate {
 	private func createAndLoadRewardedAd() -> GADRewardedAd {
-		let rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+		let rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-6543648439575950/6863943940")
 		rewardedAd.load(GADRequest()) { error in
 			if let error = error {
 				print("[ERROR] Rewarded Ad Failed To Load. [MESSAGE] \(error.localizedDescription)")

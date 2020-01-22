@@ -325,7 +325,7 @@ extension MainVC: GADInterstitialDelegate {
 	}
 	
 	private func reloadInterstitial() -> GADInterstitial {
-		let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+		let interstitial = GADInterstitial(adUnitID: "ca-app-pub-6543648439575950/5722893296")
 			interstitial.delegate = self
 			interstitial.load(GADRequest())
 		

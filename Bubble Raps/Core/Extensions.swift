@@ -30,6 +30,19 @@ extension UIViewController {
 		}
 	}
 	
+	func loadingAlert() -> UIAlertController {
+		let alert = UIAlertController(title: nil, message: "Please Wait", preferredStyle: .alert)
+
+		let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+		loadingIndicator.hidesWhenStopped = true
+		loadingIndicator.style = UIActivityIndicatorView.Style.gray
+		loadingIndicator.startAnimating()
+
+		alert.view.addSubview(loadingIndicator)
+		
+		return alert
+	}
+	
 	func present(Interstatial: GADInterstitial) {
 		if Interstatial.isReady { Interstatial.present(fromRootViewController: self) }
 		else { print("Ad wasn't ready") }

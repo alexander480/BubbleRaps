@@ -84,12 +84,22 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let index = indexPath.row
 		let selectedAmount = self.bubbleAmounts[index]
+		let loadingAlert = self.loadingAlert()
 		
-		if let product = purchase.productFor(BubbleAmount: selectedAmount) {
-			purchase.purchase(Product: product, BubbleAmount: selectedAmount, vc: self)
-		}
-		else {
-			self.presentAlert(title: "Could Not Complete Purchase", message: "Please try again", actions: nil)
+		self.present(loadingAlert, animated: true, completion: nil)
+		self.purchase.productFor(BubbleAmount: selectedAmount) { (product) in
+			if let product = product {
+				self.purchase.purchase(Product: product, BubbleAmount: selectedAmount) { (didComplete) in
+					loadingAlert.dismiss(animated: true, completion: nil)
+					if didComplete {
+						self.presentAlert(title: "Purchase Complete!", message: "\(selectedAmount) bubbles have been added to your account", actions: nil)
+						self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+					}
+				}
+			}
+			else {
+				self.presentAlert(title: "Could Not Complete Purchase", message: "Please try again", actions: nil)
+			}
 		}
 	}
 	
