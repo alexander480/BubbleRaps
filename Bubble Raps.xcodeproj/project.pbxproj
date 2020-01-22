@@ -530,6 +530,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = VZ4LX93GR9;
 				INFOPLIST_FILE = "$(SRCROOT)/Bubble Raps/Core/Info.plist";
@@ -550,6 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VZ4LX93GR9;
 				INFOPLIST_FILE = "$(SRCROOT)/Bubble Raps/Core/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
