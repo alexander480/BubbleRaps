@@ -95,7 +95,7 @@ class RoundCompletedAlert: UIViewController {
 	
 	private func coinsEarned() -> Int {
 		let roundTime = UserDefaults.standard.integer(forKey: "roundTime")
-		let coinsEarnedDict = [9: 1, 7: 2, 5: 1]
+		let coinsEarnedDict = [9: 1, 7: 2, 5: 3]
 		return (self.currentScore / 5) * (coinsEarnedDict[roundTime] ?? 1)
 	}
 }
