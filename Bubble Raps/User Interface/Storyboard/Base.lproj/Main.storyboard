@@ -263,19 +263,19 @@
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="pm3-Ku-VJh">
-                                <rect key="frame" x="96.666666666666686" y="30" width="221" height="221"/>
+                                <rect key="frame" x="93" y="20" width="228" height="228"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pm3-Ku-VJh" secondAttribute="height" multiplier="1:1" id="Ug6-Dm-1fV"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="170" id="b6C-Br-fIo"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="b6C-Br-fIo"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="dAc-py-oO3" appends="YES" id="hjQ-tI-dXd"/>
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRj-l6-eGh">
-                                <rect key="frame" x="351" y="45" width="63" height="45"/>
+                                <rect key="frame" x="351" y="35" width="63" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="CPV-4w-xqO"/>
                                     <constraint firstAttribute="width" secondItem="bRj-l6-eGh" secondAttribute="height" multiplier="7:5" id="us7-3C-QKZ"/>
@@ -286,7 +286,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jUY-IU-OJV">
-                                <rect key="frame" x="351" y="105" width="63" height="45"/>
+                                <rect key="frame" x="351" y="95" width="63" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="A61-3y-mCA"/>
                                     <constraint firstAttribute="width" secondItem="jUY-IU-OJV" secondAttribute="height" multiplier="7:5" id="c5D-35-SFy"/>
@@ -297,7 +297,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVk-a4-s6S">
-                                <rect key="frame" x="0.0" y="45" width="60" height="45"/>
+                                <rect key="frame" x="0.0" y="35" width="60" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sVk-a4-s6S" secondAttribute="height" multiplier="4:3" id="FLP-fg-kB9"/>
                                     <constraint firstAttribute="height" constant="45" id="u1S-5D-jfc"/>
@@ -308,7 +308,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esL-Bu-Xfu" userLabel="Coin Button">
-                                <rect key="frame" x="0.0" y="105" width="83" height="45"/>
+                                <rect key="frame" x="0.0" y="95" width="83" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="67E-qG-g61"/>
                                     <constraint firstAttribute="width" secondItem="esL-Bu-Xfu" secondAttribute="height" multiplier="83:45" id="gAD-Qe-CCq"/>
@@ -333,7 +333,7 @@
                             <constraint firstItem="Itm-DO-d7D" firstAttribute="centerX" secondItem="eKJ-iv-SBk" secondAttribute="centerX" id="Y7g-Jv-2KS"/>
                             <constraint firstItem="esL-Bu-Xfu" firstAttribute="top" secondItem="sVk-a4-s6S" secondAttribute="bottom" constant="15" id="cmm-Ey-FGX"/>
                             <constraint firstItem="pm3-Ku-VJh" firstAttribute="centerX" secondItem="eKJ-iv-SBk" secondAttribute="centerX" id="dFd-yd-GoZ"/>
-                            <constraint firstItem="pm3-Ku-VJh" firstAttribute="top" secondItem="l4w-Aa-lut" secondAttribute="top" constant="30" id="eaV-Ln-g05"/>
+                            <constraint firstItem="pm3-Ku-VJh" firstAttribute="top" secondItem="l4w-Aa-lut" secondAttribute="top" constant="20" id="eaV-Ln-g05"/>
                             <constraint firstItem="bRj-l6-eGh" firstAttribute="top" secondItem="pm3-Ku-VJh" secondAttribute="top" constant="15" id="gYf-mC-kdN"/>
                             <constraint firstItem="Itm-DO-d7D" firstAttribute="leading" secondItem="l4w-Aa-lut" secondAttribute="leading" constant="10" id="lCE-rT-FRh"/>
                             <constraint firstItem="l4w-Aa-lut" firstAttribute="bottom" secondItem="Itm-DO-d7D" secondAttribute="bottom" constant="20" id="pEi-dN-q0u"/>
