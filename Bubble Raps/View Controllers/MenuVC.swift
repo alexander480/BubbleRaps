@@ -230,6 +230,7 @@ class MenuVC: UIViewController {
 
 extension MenuVC: GADRewardedAdDelegate {
 	private func createAndLoadRewardedAd() -> GADRewardedAd {
+		self.present(self.loadingAlert, animated: true, completion: nil)
 		let rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-6543648439575950/6863943940")
 		rewardedAd.load(GADRequest()) { error in
 			if let error = error {
@@ -244,7 +245,10 @@ extension MenuVC: GADRewardedAdDelegate {
 	}
 	
 	private func presentRewardedAd() {
-		if rewardedAd!.isReady { rewardedAd?.present(fromRootViewController: self, delegate: self) }
+		if rewardedAd!.isReady {
+			self.loadingAlert.dismiss(animated: true, completion: nil)
+			rewardedAd?.present(fromRootViewController: self, delegate: self)
+		}
 		else { print("[WARNING] Rewarded Ad Not Ready To Present.") }
 	}
 	
