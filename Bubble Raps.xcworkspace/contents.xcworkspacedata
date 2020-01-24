@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/awllwa/My App Portfolio/Completely Functional Apps/Bubble Raps/Bubble Raps.xcodeproj">
+      location = "group:Bubble Raps.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

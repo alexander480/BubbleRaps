@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0A619D2923D92FD9003EA8EC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A619D2823D92FD9003EA8EC /* StoreKit.framework */; };
+		0A66493223DAC1BE00060259 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A66493123DAC1BE00060259 /* GoogleService-Info.plist */; };
 		0A97189923D1472E00929A10 /* BubbleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97189823D1472E00929A10 /* BubbleVC.swift */; };
 		0A991A6523D6C0E400AA89DF /* UnlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A991A6423D6C0E400AA89DF /* UnlockCell.swift */; };
 		0ABAC6F123BAB65B00B5E20C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */; };
-		0ABAC6F423BAB87500B5E20C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0ABAC6F323BAB87500B5E20C /* GoogleService-Info.plist */; };
 		5342037AA2B244FAE831B8C3 /* Pods_Bubble_Raps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AE94B28FD9D57E8379EDBF /* Pods_Bubble_Raps.framework */; };
 		E5194DC622C46BB3000083D8 /* RhymeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5194DC522C46BB3000083D8 /* RhymeHelper.swift */; };
 		E54328AF22C1D34300187D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54328AE22C1D34300187D44 /* AppDelegate.swift */; };
@@ -37,11 +37,11 @@
 
 /* Begin PBXFileReference section */
 		0A619D2823D92FD9003EA8EC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0A66493123DAC1BE00060259 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A97189823D1472E00929A10 /* BubbleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleVC.swift; sourceTree = "<group>"; };
 		0A991A6423D6C0E400AA89DF /* UnlockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockCell.swift; sourceTree = "<group>"; };
 		0A9BFC0623DAA2DB00E959E4 /* Bubble Raps.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bubble Raps.entitlements"; sourceTree = "<group>"; };
 		0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		0ABAC6F323BAB87500B5E20C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2B944FCC5C699AF137456167 /* Pods-Bubble Raps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.debug.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.debug.xcconfig"; sourceTree = "<group>"; };
 		681A1E0F7B4FDDD263D4B679 /* Pods-Bubble Raps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.release.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.release.xcconfig"; sourceTree = "<group>"; };
 		99AE94B28FD9D57E8379EDBF /* Pods_Bubble_Raps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bubble_Raps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,7 +117,7 @@
 				E54328AE22C1D34300187D44 /* AppDelegate.swift */,
 				E54B57B722C8405B0014B71C /* Extensions.swift */,
 				E54328BA22C1D34600187D44 /* Info.plist */,
-				0ABAC6F323BAB87500B5E20C /* GoogleService-Info.plist */,
+				0A66493123DAC1BE00060259 /* GoogleService-Info.plist */,
 				E5E921D82318CD660088E2B9 /* BubbleRaps.xcdatamodeld */,
 			);
 			path = Core;
@@ -302,7 +302,7 @@
 				E5DC489F22C5ACB60059DD72 /* LabelBubbleView.xib in Resources */,
 				E54EEBF2231E1EFE002981F6 /* Snippets.rtf in Resources */,
 				E5CA5C3E23206CD6009AAE96 /* LargeMenuView.xib in Resources */,
-				0ABAC6F423BAB87500B5E20C /* GoogleService-Info.plist in Resources */,
+				0A66493223DAC1BE00060259 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
