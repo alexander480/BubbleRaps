@@ -69,7 +69,7 @@ class RoundCompletedAlert: UIViewController {
 			self.coinLabel.attributedText = self.coinsEarnedString(Number: coinsEarned)
 		}
 		
-		let blurEffect = UIBlurEffect(style: .regular)
+		let blurEffect = UIBlurEffect(style: .dark)
 		let blurEffectView = UIVisualEffectView(effect: blurEffect)
 			blurEffectView.frame = self.view.frame
 		
