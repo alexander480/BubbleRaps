@@ -321,7 +321,7 @@ extension MainVC: PauseMenuDelegate {
 extension MainVC: GADInterstitialDelegate {
 	private func presentInterstatial() {
 		if self.interstitial.isReady { interstitial.present(fromRootViewController: self) }
-		else { print("[WARNING] Interstitial Was Not Ready To Present.") }
+		else { print("[WARNING] Interstitial Was Not Ready To Present."); self.presentRoundCompletedPopup(isGameOver: true); }
 	}
 	
 	private func reloadInterstitial() -> GADInterstitial {
@@ -332,7 +332,6 @@ extension MainVC: GADInterstitialDelegate {
 		return interstitial
 	}
 
-	/// Tells the delegate the interstitial had been animated off the screen.
 	func interstitialDidDismissScreen(_ ad: GADInterstitial) {
 		self.interstitial = self.reloadInterstitial()
 		self.presentRoundCompletedPopup(isGameOver: true)

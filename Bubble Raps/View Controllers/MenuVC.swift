@@ -233,14 +233,10 @@ extension MenuVC: GADRewardedAdDelegate {
 		self.present(self.loadingAlert, animated: true, completion: nil)
 		let rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-6543648439575950/6863943940")
 		rewardedAd.load(GADRequest()) { error in
-			if let error = error {
-				print("[ERROR] Rewarded Ad Failed To Load. [MESSAGE] \(error.localizedDescription)")
-			}
-			else {
-				print("[INFO] Rewarded Ad Loaded Successfully.")
-				self.presentRewardedAd()
-			}
+			if let error = error { print("[ERROR] Rewarded Ad Failed To Load. [MESSAGE] \(error.localizedDescription)") }
+			else { print("[INFO] Rewarded Ad Loaded Successfully."); self.presentRewardedAd() }
 		}
+		
 	  return rewardedAd
 	}
 	
