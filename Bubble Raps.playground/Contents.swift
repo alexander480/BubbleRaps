@@ -111,8 +111,8 @@ func createWordPackFrom(Topic: String) -> [String] {
 	return validatedPack
 }
 
-// let pack = createWordPackFrom(Topic: "movies")
-// print(pack)
+let pack = createWordPackFrom(Topic: "trolly")
+print(pack)
 
 let validated = validateWord(Pack: ["shine", "made", "trust", "grand", "shed", "dance", "shape", "vapor", "fight", "cold", "grapple", "unicorn", "automobile", "cigarette", "sunny", "extension", "amaze", "focus", "noise", "scent", "shave", "control", "human", "crown", "shuffle", "amazing", "rhyme", "grind", "chance", "grand"])
 

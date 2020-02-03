@@ -42,7 +42,7 @@
 		0A991A6423D6C0E400AA89DF /* UnlockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockCell.swift; sourceTree = "<group>"; };
 		0A9BFC0623DAA2DB00E959E4 /* Bubble Raps.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bubble Raps.entitlements"; sourceTree = "<group>"; };
 		0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		0ABDEC7623E7C2B4009BFCAE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0ABDEC7623E7C2B4009BFCAE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2B944FCC5C699AF137456167 /* Pods-Bubble Raps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.debug.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.debug.xcconfig"; sourceTree = "<group>"; };
 		681A1E0F7B4FDDD263D4B679 /* Pods-Bubble Raps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.release.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.release.xcconfig"; sourceTree = "<group>"; };
 		99AE94B28FD9D57E8379EDBF /* Pods_Bubble_Raps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bubble_Raps.framework; sourceTree = BUILT_PRODUCTS_DIR; };

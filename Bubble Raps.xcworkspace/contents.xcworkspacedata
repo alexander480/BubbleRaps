@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Bubble Raps/../README.md">
+   </FileRef>
+   <FileRef
       location = "group:Bubble Raps.xcodeproj">
    </FileRef>
    <FileRef
