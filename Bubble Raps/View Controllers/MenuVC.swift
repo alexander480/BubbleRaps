@@ -13,6 +13,8 @@ import GoogleMobileAds
 // MARK: Uncomment The Following Import To Test Crashlytics (Step One)
 // import Crashlytics
 
+// TODO: Save Last Chosen Word Pack
+
 class MenuVC: UIViewController {
 	
 	// MARK: Class Variables
@@ -206,7 +208,6 @@ class MenuVC: UIViewController {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
-		// Display Coins
 		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 	}
 
@@ -248,17 +249,13 @@ extension MenuVC: GADRewardedAdDelegate {
 		else { print("[WARNING] Rewarded Ad Not Ready To Present.") }
 	}
 	
-	func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
-		self.adCompletedAlert()
-	}
+	func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) { self.adCompletedAlert() }
 	
 	func rewardedAd(_ rewardedAd: GADRewardedAd, didFailToPresentWithError error: Error) {
 		print("[ERROR] Could Not Load Rewarded Ad. [MESSAGE] \(error.localizedDescription)")
 	}
 
-	func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
-		unlockable.addBubbles(Amount: 10)
-	}
+	func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) { unlockable.addBubbles(Amount: 10) }
 	
 	private func adRequestAlert() {
 		let alert = UIAlertController(title: "Earn Free Bubbles!!", message: "Watch A Short Video To Earn 10 Free Bubbles", preferredStyle: .alert)
