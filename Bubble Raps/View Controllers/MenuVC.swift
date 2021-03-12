@@ -19,7 +19,9 @@ class MenuVC: UIViewController {
 	
 	// MARK: Class Variables
 	
+	let rhymeHelper = RhymeHelper()
 	let unlockable = UnlockableHelper()
+	
 	var rewardedAd: GADRewardedAd!
 	
 	var loadingAlert: UIAlertController!
@@ -162,6 +164,7 @@ class MenuVC: UIViewController {
 	
 	@IBOutlet weak var packDecreaseArrow: UIButton!
 	@IBAction func packDecrease(_ sender: Any) {
+		/*
 		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
 		var nextPack = "nil"
 		
@@ -169,15 +172,18 @@ class MenuVC: UIViewController {
 		else { self.selectedPackIndex -= 1; nextPack = unlockedPacks[self.selectedPackIndex] }
 		
 		self.packLabel.text = nextPack
+		*/
 	}
 	
 	@IBOutlet weak var packIncreaseArrow: UIButton!
 	@IBAction func packIncrease(_ sender: Any) {
+		/*
 		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
 		
 		self.selectedPackIndex += 1
 		if self.selectedPackIndex > unlockedPacks.count - 1 { self.selectedPackIndex = 0 }
 		self.packLabel.text = unlockedPacks[self.selectedPackIndex]
+		*/
 	}
 	
 	// MARK: Class Functions
@@ -186,7 +192,7 @@ class MenuVC: UIViewController {
 		super.viewDidLoad()
 		
 		self.loadingAlert = self.loadingAlert()
-		
+
 		// Validate unlockedThemes and unlockedPacks
 		self.unlockable.validateUnlockedThemes()
 		self.unlockable.validateUnlockedPacks()
@@ -218,13 +224,20 @@ class MenuVC: UIViewController {
 	}
 	
 	// MARK: Prepare For Segue
+	/*
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "BeginSegue" {
-			if let vc = segue.destination as? MainVC, let packName = self.packLabel.text {
-				vc.wordsToRhyme = self.unlockable.getShuffledWordPack(Named: packName)
+			if let vc = segue.destination as? MainVC /*, let packName = self.packLabel.text*/ {
+				// vc.wordsToRhyme = self.unlockable.getShuffledWordPack(Named: packName)
+				
+				// MARK: Starting New Integration
+				rhymeHelper.createWordPack { (wordPack) in
+					vc.wordPack = wordPack
+				}
 			}
 		}
 	}
+	*/
 }
 
 // MARK: Setup Rewarded Ad

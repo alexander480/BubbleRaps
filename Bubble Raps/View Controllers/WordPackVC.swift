@@ -100,7 +100,7 @@ extension WordPackVC: UITableViewDelegate {
 			if let cell = tableView.cellForRow(at: indexPath) as? UnlockCell { cell.costLabel.text = "●" }
 			self.tableView.reloadData()
 		}
-		else { self.presentPurchaseAlert(pack: selectedPack, cost: 750) }
+		else { self.presentPurchaseAlert(pack: selectedPack, cost: 200) }
 	}
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 85.0 }
 }

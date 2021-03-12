@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A42321D258B29C80040B62F /* RhymeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A42321C258B29C80040B62F /* RhymeEngine.swift */; };
+		0A423221258B2F9F0040B62F /* Rhyme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A423220258B2F9F0040B62F /* Rhyme.swift */; };
 		0A619D2923D92FD9003EA8EC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A619D2823D92FD9003EA8EC /* StoreKit.framework */; };
 		0A66493223DAC1BE00060259 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A66493123DAC1BE00060259 /* GoogleService-Info.plist */; };
 		0A97189923D1472E00929A10 /* BubbleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97189823D1472E00929A10 /* BubbleVC.swift */; };
 		0A991A6523D6C0E400AA89DF /* UnlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A991A6423D6C0E400AA89DF /* UnlockCell.swift */; };
 		0ABAC6F123BAB65B00B5E20C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */; };
-		5342037AA2B244FAE831B8C3 /* Pods_Bubble_Raps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AE94B28FD9D57E8379EDBF /* Pods_Bubble_Raps.framework */; };
-		E5194DC622C46BB3000083D8 /* RhymeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5194DC522C46BB3000083D8 /* RhymeHelper.swift */; };
+		3389237FF24BF0DD9B21AC87 /* Pods_Bubble_Raps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBD9CF6663C399E5E400E87 /* Pods_Bubble_Raps.framework */; };
+		E5194DC622C46BB3000083D8 /* RhymeHelper (Old).swift in Sources */ = {isa = PBXBuildFile; fileRef = E5194DC522C46BB3000083D8 /* RhymeHelper (Old).swift */; };
 		E54328AF22C1D34300187D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54328AE22C1D34300187D44 /* AppDelegate.swift */; };
 		E54328B122C1D34300187D44 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54328B022C1D34300187D44 /* MainVC.swift */; };
 		E54328B422C1D34300187D44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E54328B222C1D34300187D44 /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A42321C258B29C80040B62F /* RhymeEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhymeEngine.swift; sourceTree = "<group>"; };
+		0A423220258B2F9F0040B62F /* Rhyme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rhyme.swift; sourceTree = "<group>"; };
 		0A619D2823D92FD9003EA8EC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0A66493123DAC1BE00060259 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A97189823D1472E00929A10 /* BubbleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleVC.swift; sourceTree = "<group>"; };
@@ -43,10 +47,10 @@
 		0A9BFC0623DAA2DB00E959E4 /* Bubble Raps.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bubble Raps.entitlements"; sourceTree = "<group>"; };
 		0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		0ABDEC7623E7C2B4009BFCAE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		2B944FCC5C699AF137456167 /* Pods-Bubble Raps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.debug.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.debug.xcconfig"; sourceTree = "<group>"; };
-		681A1E0F7B4FDDD263D4B679 /* Pods-Bubble Raps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.release.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.release.xcconfig"; sourceTree = "<group>"; };
-		99AE94B28FD9D57E8379EDBF /* Pods_Bubble_Raps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bubble_Raps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5194DC522C46BB3000083D8 /* RhymeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhymeHelper.swift; sourceTree = "<group>"; };
+		15EF4B0BF450D3F2CFF31346 /* Pods-Bubble Raps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.debug.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.debug.xcconfig"; sourceTree = "<group>"; };
+		6E33000172D4EB382653A3DA /* Pods-Bubble Raps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.release.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.release.xcconfig"; sourceTree = "<group>"; };
+		AEBD9CF6663C399E5E400E87 /* Pods_Bubble_Raps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bubble_Raps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5194DC522C46BB3000083D8 /* RhymeHelper (Old).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RhymeHelper (Old).swift"; sourceTree = "<group>"; };
 		E54328AB22C1D34300187D44 /* Bubble Raps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bubble Raps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E54328AE22C1D34300187D44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E54328B022C1D34300187D44 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -56,7 +60,6 @@
 		E54328BA22C1D34600187D44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E547327822F7DAB5002FF63F /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		E54B57B722C8405B0014B71C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		E54EEBEE231E0800002981F6 /* Bubble Raps.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Bubble Raps.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E54EEBF1231E1EFE002981F6 /* Snippets.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Snippets.rtf; sourceTree = "<group>"; };
 		E556CF192317728500598405 /* RoundCompletedAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCompletedAlert.swift; sourceTree = "<group>"; };
 		E567EEE6231C9119006C36B0 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
@@ -78,7 +81,7 @@
 			files = (
 				0A619D2923D92FD9003EA8EC /* StoreKit.framework in Frameworks */,
 				0ABAC6F123BAB65B00B5E20C /* AdSupport.framework in Frameworks */,
-				5342037AA2B244FAE831B8C3 /* Pods_Bubble_Raps.framework in Frameworks */,
+				3389237FF24BF0DD9B21AC87 /* Pods_Bubble_Raps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,8 +99,8 @@
 		14CC28AC1B95E5BE8E0D307D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2B944FCC5C699AF137456167 /* Pods-Bubble Raps.debug.xcconfig */,
-				681A1E0F7B4FDDD263D4B679 /* Pods-Bubble Raps.release.xcconfig */,
+				15EF4B0BF450D3F2CFF31346 /* Pods-Bubble Raps.debug.xcconfig */,
+				6E33000172D4EB382653A3DA /* Pods-Bubble Raps.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -107,7 +110,7 @@
 			children = (
 				0A619D2823D92FD9003EA8EC /* StoreKit.framework */,
 				0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */,
-				99AE94B28FD9D57E8379EDBF /* Pods_Bubble_Raps.framework */,
+				AEBD9CF6663C399E5E400E87 /* Pods_Bubble_Raps.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -136,7 +139,6 @@
 		E54328A222C1D34300187D44 = {
 			isa = PBXGroup;
 			children = (
-				E54EEBEE231E0800002981F6 /* Bubble Raps.playground */,
 				E54328AD22C1D34300187D44 /* Bubble Raps */,
 				E54328AC22C1D34300187D44 /* Products */,
 				2BD80767A36E83AB0757E40F /* Frameworks */,
@@ -221,7 +223,9 @@
 		E5CA5C3A232048C6009AAE96 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				E5194DC522C46BB3000083D8 /* RhymeHelper.swift */,
+				E5194DC522C46BB3000083D8 /* RhymeHelper (Old).swift */,
+				0A42321C258B29C80040B62F /* RhymeEngine.swift */,
+				0A423220258B2F9F0040B62F /* Rhyme.swift */,
 				E592E56F232D937C0082260D /* UnlockableHelper.swift */,
 				E5D1454E233D6C1F0060920C /* PurchaseHelper.swift */,
 			);
@@ -244,12 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E54328BD22C1D34600187D44 /* Build configuration list for PBXNativeTarget "Bubble Raps" */;
 			buildPhases = (
-				2F76A50C6778A3B0B08C9714 /* [CP] Check Pods Manifest.lock */,
+				07E547E5243F009E02AD9C92 /* [CP] Check Pods Manifest.lock */,
 				E54328A722C1D34300187D44 /* Sources */,
 				E54328A822C1D34300187D44 /* Frameworks */,
 				E54328A922C1D34300187D44 /* Resources */,
 				0ABAC6F223BAB75100B5E20C /* ShellScript */,
-				BE0A8A112AB36CFFD27B77A5 /* [CP] Embed Pods Frameworks */,
+				024B1572B86FB42250B22601 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -311,25 +315,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0ABAC6F223BAB75100B5E20C /* ShellScript */ = {
+		024B1572B86FB42250B22601 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		2F76A50C6778A3B0B08C9714 /* [CP] Check Pods Manifest.lock */ = {
+		07E547E5243F009E02AD9C92 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -351,22 +354,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BE0A8A112AB36CFFD27B77A5 /* [CP] Embed Pods Frameworks */ = {
+		0ABAC6F223BAB75100B5E20C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -375,9 +379,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5194DC622C46BB3000083D8 /* RhymeHelper.swift in Sources */,
+				E5194DC622C46BB3000083D8 /* RhymeHelper (Old).swift in Sources */,
 				E5E921DA2318CD660088E2B9 /* BubbleRaps.xcdatamodeld in Sources */,
 				0A97189923D1472E00929A10 /* BubbleVC.swift in Sources */,
+				0A42321D258B29C80040B62F /* RhymeEngine.swift in Sources */,
 				E556CF1A2317728500598405 /* RoundCompletedAlert.swift in Sources */,
 				E5D1454F233D6C1F0060920C /* PurchaseHelper.swift in Sources */,
 				E567EEE7231C9119006C36B0 /* PauseMenu.swift in Sources */,
@@ -385,6 +390,7 @@
 				0A991A6523D6C0E400AA89DF /* UnlockCell.swift in Sources */,
 				E547327922F7DAB5002FF63F /* MenuVC.swift in Sources */,
 				E5CA33D22325D46E002570F9 /* ThemesVC.swift in Sources */,
+				0A423221258B2F9F0040B62F /* Rhyme.swift in Sources */,
 				E54328AF22C1D34300187D44 /* AppDelegate.swift in Sources */,
 				E54B57B822C8405B0014B71C /* Extensions.swift in Sources */,
 				E592E570232D937C0082260D /* UnlockableHelper.swift in Sources */,
@@ -534,12 +540,12 @@
 		};
 		E54328BE22C1D34600187D44 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B944FCC5C699AF137456167 /* Pods-Bubble Raps.debug.xcconfig */;
+			baseConfigurationReference = 15EF4B0BF450D3F2CFF31346 /* Pods-Bubble Raps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Bubble Raps/Bubble Raps.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = VZ4LX93GR9;
 				INFOPLIST_FILE = "$(SRCROOT)/Bubble Raps/Core/Info.plist";
@@ -547,6 +553,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.deltavel.bubbleraps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -558,18 +565,19 @@
 		};
 		E54328BF22C1D34600187D44 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 681A1E0F7B4FDDD263D4B679 /* Pods-Bubble Raps.release.xcconfig */;
+			baseConfigurationReference = 6E33000172D4EB382653A3DA /* Pods-Bubble Raps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Bubble Raps/Bubble Raps.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VZ4LX93GR9;
 				INFOPLIST_FILE = "$(SRCROOT)/Bubble Raps/Core/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.deltavel.bubbleraps;
 				PRODUCT_NAME = "$(TARGET_NAME)";

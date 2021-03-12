@@ -93,7 +93,7 @@ extension ThemesVC: UITableViewDelegate {
 			self.headingView.backgroundColor = color
 		}
 		else {
-			self.presentPurchaseAlert(theme: selectedTheme, cost: 250)
+			self.presentPurchaseAlert(theme: selectedTheme, cost: 100)
 		}
 	}
 	func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -126,7 +126,7 @@ extension ThemesVC: UITableViewDataSource {
 			cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
 		}
 		else {
-			let str = self.unlockable.addBubbleIconTo(String: "250 ", Color: color, Size: nil, Offset: nil)
+			let str = self.unlockable.addBubbleIconTo(String: "100 ", Color: color, Size: nil, Offset: nil)
 			cell.costLabel.attributedText = str
 		}
 		

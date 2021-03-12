@@ -29,6 +29,7 @@ class MainVC: UIViewController {
 	
 	var interstitial: GADInterstitial!
 	
+	let rhymeHelper = RhymeHelper()
 	let unlockable = UnlockableHelper()
 	
 	var isHighscore = false
@@ -46,10 +47,16 @@ class MainVC: UIViewController {
 	
 	var wordsToRhyme = [String]()
 	
+	// MARK: Starting New 'WordPack Struct' Integration
+	
+	var wordPack: WordPack?
+	
 	// MARK: viewDidLoad
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		self.titleLabel.text = "Please Wait..."
 		
 		// MARK: Make Bubbles Bounce Off Edges
 		let bubbleBounds = UIBezierPath(rect: UIScreen.main.bounds)
@@ -62,8 +69,13 @@ class MainVC: UIViewController {
 		// MARK: Handle Themes
 		self.themeHandler()
 		
+		let loadingAlert = self.loadingAlert()
+		self.present(loadingAlert, animated: true, completion: nil)
+		
 		// MARK: Start First Round
 		self.startNextRound(isFirstRound: true)
+		
+		loadingAlert.dismiss(animated: true, completion: nil)
 		
 		// MARK: Setup Ads
 		self.interstitial = self.reloadInterstitial()
@@ -72,26 +84,50 @@ class MainVC: UIViewController {
 	// MARK: Start Round Function
 	
 	private func startNextRound(isFirstRound: Bool) {
-		let allRoundsCompleted: Bool = self.round >= self.wordsToRhyme.count
-		if isFirstRound == false { self.round += 1 }
+		// let allRoundsCompleted: Bool = self.round >= self.wordsToRhyme.count
+		// if isFirstRound == false { self.round += 1 }
 
-		if allRoundsCompleted {
-			self.roundCompleted(isGameOver: true)
-		}
-		else {
-			let nextWord = self.wordsToRhyme[self.round]
-			
-			self.bubblesView.removeBubbles()
-			
-			self.rhyme = RhymeHelper(word: nextWord, howMany: 10)
-			self.potentialRhymesDictionary = self.rhyme.potentialRhymes()
-			self.potentialRhymesArray = Array(self.potentialRhymesDictionary.keys)
-			
-			self.titleLabel.text = nextWord
+		// if allRoundsCompleted {
+		//   self.roundCompleted(isGameOver: true)
+		// }
+		// else {
+		/*
+		if isFirstRound {
+			guard let wordPack = self.wordPack else { print("[ERROR] Unable to Validate Word Pack For First Round"); return }
+			self.round += 1
+			self.titleLabel.text = wordPack.topic
 			self.bubblesView.reload()
-			
 			self.startTimer(fromPause: false)
 		}
+		*/
+		
+		// else {
+		self.round += 1
+		self.correctAnswers = 0
+		
+		self.rhymeHelper.createWordPack { (newPack) in
+			self.bubblesView.removeBubbles()
+			self.wordPack = newPack
+			self.titleLabel.text = newPack.topic
+			self.bubblesView.reload()
+			self.startTimer(fromPause: false)
+		}
+		// }
+			
+			
+			// let nextWord = self.wordsToRhyme[self.round]
+			
+			// self.bubblesView.removeBubbles()
+			
+			// self.rhyme = RhymeHelper()
+			// self.potentialRhymesDictionary = self.rhyme.potentialRhymes(word: nextWord)
+			// self.potentialRhymesArray = Array(self.potentialRhymesDictionary.keys)
+			
+			// self.titleLabel.text = nextWord
+			// self.bubblesView.reload()
+			
+			// self.startTimer(fromPause: false)
+		// }
 	}
 	
 	// MARK: Start Timer
@@ -197,19 +233,16 @@ extension MainVC: ContentBubblesViewDelegate {
     func minimalSizeForBubble(in view: ContentBubblesView) -> CGSize { return CGSize(width: 80, height: 80) }
     func maximumSizeForBubble(in view: ContentBubblesView) -> CGSize { return CGSize(width: 130, height: 130) }
     func contentBubblesView(_ view: ContentBubblesView, didSelectItemAt index: Int) {
-        let wordSelected = self.potentialRhymesArray[index]
-        if self.potentialRhymesDictionary[wordSelected]! { self.correctAnswer(view: view, index: index) }
-        else { self.incorrectAnswer(view: view, index: index) }
+		guard let wordPack = self.wordPack else { print("[ERROR] Unable To Validate Current WordPack."); return }
+		let wordSelected = wordPack.allWords[index]
+		guard let isCorrect = wordPack.rhymeDictionary[wordSelected] else { print("[ERROR] Unable To Find Selected Word: \(wordSelected) In Rhyme Dictionary."); return }
+		if isCorrect { self.correctAnswer(view: view, index: index) } else { self.incorrectAnswer(view: view, index: index) }
     }
 	
 	private func correctAnswer(view: ContentBubblesView, index: Int) {
 		self.correctAnswers += 1
 		self.bubblesView.changeBubble(isCorrect: true, index: index)
-		
-		let allRhymesSelected: Bool = (self.correctAnswers / 5) == (self.round + 1)
-		if allRhymesSelected {
-			self.roundCompleted(isGameOver: false)
-		}
+		if self.correctAnswers == 5 { self.roundCompleted(isGameOver: false) }
 	}
 	
 	private func incorrectAnswer(view: ContentBubblesView, index: Int) {
@@ -217,21 +250,23 @@ extension MainVC: ContentBubblesViewDelegate {
 		self.bubblesView.changeBubble(isCorrect: false, index: index)
 		self.handleLiveCounter()
 		
-		if self.incorrectAnswers >= 3 {
-			self.roundCompleted(isGameOver: true)
-		}
+		if self.incorrectAnswers == 3 { self.roundCompleted(isGameOver: true) }
 	}
 }
 
 // MARK: ContentBubblesViewDataSource Protocol Stubs
 
 extension MainVC: ContentBubblesViewDataSource {
-    func numberOfItems(in view: ContentBubblesView) -> Int { return self.potentialRhymesArray.count }
+	func numberOfItems(in view: ContentBubblesView) -> Int {
+		guard let wordPack = self.wordPack else { print("[ERROR] Unable To Validate Current WordPack."); return 0 }
+		return wordPack.allWords.count
+	}
     func countOfSizes(in view: ContentBubblesView) -> Int { return 3 }
     func addOrUpdateBubbleView(forItemAt index: Int, currentView: BubbleView?) -> BubbleView {
-        var view: BubbleView! = currentView
+		var view: BubbleView! = currentView
+		guard let wordPack = self.wordPack else { print("[ERROR] Unable to Validate Current WordPack."); return view }
 		if let labelView = UINib(nibName: "LabelBubbleView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LabelBubbleView {
-			labelView.label.text = self.potentialRhymesArray[index]
+			labelView.label.text = wordPack.allWords[index]
 			labelView.imageView.image = self.unlockable.bubbleImageFor(Theme: self.unlockable.currentTheme())
 			labelView.imageView.isHidden = false
 			view = labelView
@@ -241,7 +276,8 @@ extension MainVC: ContentBubblesViewDataSource {
 		let randomOrigin = CGPoint(x: CGFloat(drand48() * Double(self.view.frame.width * 2 / 3)), y: CGFloat(drand48() * Double(self.view.frame.height * 2 / 3)))
 		view.frame = CGRect(origin: randomOrigin, size: .zero)
 		
-		if self.potentialRhymesArray[index].count > 8 { view.frame.size = CGSize(width: 110, height: 110) }
+		// Adjust Size of Bubble if Character Count is Greater Than 8
+		if wordPack.allWords[index].count > 8 { view.frame.size = CGSize(width: 110, height: 110) }
 		
 		return view
     }
@@ -253,6 +289,9 @@ extension MainVC: RoundCompletedAlertDelegate {
 	private func roundCompleted(isGameOver: Bool) {
 		self.timer.invalidate()
 		if isGameOver {
+			// Present Game Over Popup
+			self.presentRoundCompletedPopup(isGameOver: isGameOver)
+			
 			// Update High Score
 			self.updateHighScore()
 			
@@ -320,6 +359,14 @@ extension MainVC: PauseMenuDelegate {
 
 extension MainVC: GADInterstitialDelegate {
 	private func presentInterstatial() {
+		guard let interstitial = self.interstitial else {
+			print("[ERROR] self.interstitial is nil.")
+			print("[INFO] Reloading Interstitial Now.")
+			self.interstitial = self.reloadInterstitial()
+			
+			return
+		}
+		
 		if self.interstitial.isReady { interstitial.present(fromRootViewController: self) }
 		else { print("[WARNING] Interstitial Was Not Ready To Present."); self.presentRoundCompletedPopup(isGameOver: true); }
 	}

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import AmazingBubbles
 import GoogleMobileAds
-import Crashlytics
+// import Crashlytics
 
 // MARK: UIViewController Extensions
 
@@ -228,6 +228,7 @@ public class ReachabilityHelper {
 
 // MARK: Crashlytics Extensions
 
+/*
 extension Crashlytics {
 	func testCrashlyticsAlert() -> UIAlertController {
 		let alert = UIAlertController(title: "Test Crashlytics", message: "Pressing The 'Crash' Button Will Immediatly Crash The App. Should Only Be Used To Test Crashlytics Monitoring.", preferredStyle: .actionSheet)
@@ -247,6 +248,7 @@ extension Crashlytics {
 		return alert
 	}
 }
+*/
 
 // MARK: NSAttributedString Extensions
 
