@@ -42,11 +42,6 @@ extension UIViewController {
 		
 		return alert
 	}
-	
-	func present(Interstatial: GADInterstitial) {
-		if Interstatial.isReady { Interstatial.present(fromRootViewController: self) }
-		else { print("Ad wasn't ready") }
-	}
 }
 
 // MARK: UIView Extenions

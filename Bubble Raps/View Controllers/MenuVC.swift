@@ -22,7 +22,7 @@ class MenuVC: UIViewController {
 	let rhymeHelper = RhymeHelper()
 	let unlockable = UnlockableHelper()
 	
-	var rewardedAd: GADRewardedAd!
+	var rewardedAd: GADRewardedAd?
 	
 	var loadingAlert: UIAlertController!
 	
@@ -211,6 +211,8 @@ class MenuVC: UIViewController {
 		else if roundTime == 5 { self.timerLabel.text = "Hard" }
 		else if roundTime == 7 { self.timerLabel.text = "Medium" }
 		else if roundTime == 9 { self.timerLabel.text = "Easy" }
+		
+		self.loadRewardedAd()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -242,39 +244,51 @@ class MenuVC: UIViewController {
 
 // MARK: Setup Rewarded Ad
 
-extension MenuVC: GADRewardedAdDelegate {
-	private func createAndLoadRewardedAd() -> GADRewardedAd {
-		self.present(self.loadingAlert, animated: true, completion: nil)
-		let rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-6543648439575950/6863943940")
-		rewardedAd.load(GADRequest()) { error in
-			if let error = error { print("[ERROR] Rewarded Ad Failed To Load. [MESSAGE] \(error.localizedDescription)") }
-			else { print("[INFO] Rewarded Ad Loaded Successfully."); self.presentRewardedAd() }
-		}
+extension MenuVC: GADFullScreenContentDelegate {
+	
+	private func loadRewardedAd(completion: (() -> ())? = nil) {
+		// self.present(self.loadingAlert, animated: true, completion: nil)
 		
-	  return rewardedAd
+		let adID = "ca-app-pub-6543648439575950/6863943940"
+		let adRequest = GADRequest()
+		
+		GADRewardedAd.load(withAdUnitID: adID, request: adRequest) { ad, error in
+			if let error = error {
+				print("[ERROR] Failed To Load Rewarded Ad. [MESSAGE] \(error.localizedDescription).")
+				return
+			}
+			
+			self.rewardedAd = ad
+			self.rewardedAd?.fullScreenContentDelegate = self
+			
+			completion?()
+		}
 	}
 	
 	private func presentRewardedAd() {
-		if rewardedAd!.isReady {
-			self.loadingAlert.dismiss(animated: true, completion: nil)
-			rewardedAd?.present(fromRootViewController: self, delegate: self)
+		// self.loadingAlert.dismiss(animated: true, completion: nil)
+		
+		if let ad = self.rewardedAd {
+			ad.present(fromRootViewController: self, userDidEarnRewardHandler: {
+				print("[INFO] User Earned Reward.");
+				self.unlockable.addBubbles(Amount: 10)
+				self.adCompletedAlert()
+			})
+		} else {
+			print("[WARNING] Rewarded Ad Not Ready To Present.")
+			self.presentAlert(title: "Oops!", message: "Rewarded Ad Not Ready To Present.", actions: nil)
 		}
-		else { print("[WARNING] Rewarded Ad Not Ready To Present.") }
 	}
-	
-	func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) { self.adCompletedAlert() }
 	
 	func rewardedAd(_ rewardedAd: GADRewardedAd, didFailToPresentWithError error: Error) {
 		print("[ERROR] Could Not Load Rewarded Ad. [MESSAGE] \(error.localizedDescription)")
 	}
-
-	func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) { unlockable.addBubbles(Amount: 10) }
 	
 	private func adRequestAlert() {
 		let alert = UIAlertController(title: "Earn Free Bubbles!!", message: "Watch A Short Video To Earn 10 Free Bubbles", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Watch Video", style: .default) { (action) in
 			alert.dismiss(animated: true, completion: nil)
-			self.rewardedAd = self.createAndLoadRewardedAd()
+			self.presentRewardedAd()
 		});
 		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
 			alert.dismiss(animated: true, completion: nil)
@@ -286,11 +300,16 @@ extension MenuVC: GADRewardedAdDelegate {
 	private func adCompletedAlert() {
 		let alert = UIAlertController(title: "Thanks For Watching!!", message: "10 bubbles have been awarded to your account (unless the ad was closed early)", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Watch Another", style: .default) { (action) in
-			alert.dismiss(animated: true, completion: nil)
-			self.rewardedAd = self.createAndLoadRewardedAd()
+			alert.dismiss(animated: true) {
+				self.loadRewardedAd {
+					self.presentRewardedAd()
+				}
+			}
 		});
 		alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: { (action) in
-			alert.dismiss(animated: true, completion: nil)
+			alert.dismiss(animated: true) {
+				self.loadRewardedAd()
+			}
 		}));
 		
 		self.present(alert, animated: true, completion: nil)

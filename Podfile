@@ -9,12 +9,5 @@ target 'Bubble Raps' do
 
   # Pods for Bubble Raps
   pod 'AmazingBubbles', :git => 'https://github.com/alexander480/AmazingBubbles.git', :commit => '9f0c113b6e3ec2e33a607e185e4d16542fc43b6d'
-  pod 'Alamofire'
-  pod 'SwiftyStoreKit'
-  pod 'Firebase/AdMob'
-  
-  pod 'Fabric'
-  pod 'Crashlytics', '~> 3.14.0'
-  pod 'Firebase/Performance'
-  pod 'Firebase/Analytics'
+  pod 'Google-Mobile-Ads-SDK'
 end

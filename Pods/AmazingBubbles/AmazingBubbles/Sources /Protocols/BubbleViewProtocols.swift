@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public protocol ContentBubblesViewDelegate: class {
+@objc public protocol ContentBubblesViewDelegate: AnyObject {
     @objc optional func minimalSizeForBubble(in view: ContentBubblesView) -> CGSize
     @objc optional func maximumSizeForBubble(in view: ContentBubblesView) -> CGSize
 
@@ -17,7 +17,7 @@ import Foundation
     @objc optional func contentBubblesView(_ view: ContentBubblesView, didChangeSizeForItemAt index: Int)
 }
 
-@objc public protocol ContentBubblesViewDataSource: class {
+@objc public protocol ContentBubblesViewDataSource: AnyObject {
     @objc optional func countOfSizes(in view: ContentBubblesView) -> Int
 
     func numberOfItems(in view: ContentBubblesView) -> Int

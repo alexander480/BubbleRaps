@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol PauseMenuDelegate: class {
+protocol PauseMenuDelegate: AnyObject {
 	func resumeFromPause()
 	func endFromPause()
 }

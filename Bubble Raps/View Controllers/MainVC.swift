@@ -27,7 +27,7 @@ class MainVC: UIViewController {
 	
 	// MARK: Class Variables
 	
-	var interstitial: GADInterstitial!
+	var interstitial: GADInterstitialAd?
 	
 	let rhymeHelper = RhymeHelper()
 	let unlockable = UnlockableHelper()
@@ -78,7 +78,7 @@ class MainVC: UIViewController {
 		loadingAlert.dismiss(animated: true, completion: nil)
 		
 		// MARK: Setup Ads
-		self.interstitial = self.reloadInterstitial()
+		self.loadInterstitial()
     }
 	
 	// MARK: Start Round Function
@@ -261,6 +261,7 @@ extension MainVC: ContentBubblesViewDataSource {
 		guard let wordPack = self.wordPack else { print("[ERROR] Unable To Validate Current WordPack."); return 0 }
 		return wordPack.allWords.count
 	}
+	
     func countOfSizes(in view: ContentBubblesView) -> Int { return 3 }
     func addOrUpdateBubbleView(forItemAt index: Int, currentView: BubbleView?) -> BubbleView {
 		var view: BubbleView! = currentView
@@ -296,7 +297,7 @@ extension MainVC: RoundCompletedAlertDelegate {
 			self.updateHighScore()
 			
 			// MARK: Present Interstatial After Game Over
-			self.presentInterstatial()
+			self.presentInterstitial()
 		}
 		else {
 			// Present Round Completed Popup To Proceed To Next Round
@@ -357,30 +358,41 @@ extension MainVC: PauseMenuDelegate {
 
 // MARK: GADInterstitialDelegate Protocol Stubs
 
-extension MainVC: GADInterstitialDelegate {
-	private func presentInterstatial() {
-		guard let interstitial = self.interstitial else {
-			print("[ERROR] self.interstitial is nil.")
-			print("[INFO] Reloading Interstitial Now.")
-			self.interstitial = self.reloadInterstitial()
-			
-			return
-		}
-		
-		if self.interstitial.isReady { interstitial.present(fromRootViewController: self) }
-		else { print("[WARNING] Interstitial Was Not Ready To Present."); self.presentRoundCompletedPopup(isGameOver: true); }
-	}
+extension MainVC: GADFullScreenContentDelegate {
 	
-	private func reloadInterstitial() -> GADInterstitial {
-		let interstitial = GADInterstitial(adUnitID: "ca-app-pub-6543648439575950/5722893296")
-			interstitial.delegate = self
-			interstitial.load(GADRequest())
+	private func loadInterstitial() {
+		let adID = "ca-app-pub-8123415297019784/4985798738"
+		let adReq = GADRequest()
 		
-		return interstitial
+		GADInterstitialAd.load(withAdUnitID: adID, request: adReq, completionHandler: { (ad, error) in
+			if let error = error {
+				print("[ERROR] Failed To Load Interstitial Ad. [MESSAGE] \(error.localizedDescription).")
+				return
+			}
+			
+			self.interstitial = ad
+			self.interstitial?.fullScreenContentDelegate = self
+		})
 	}
-
-	func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-		self.interstitial = self.reloadInterstitial()
+							   
+	private func presentInterstitial() {
+		if let ad = self.interstitial {
+			print("[INFO] Presenting Interstitial Ad.")
+			ad.present(fromRootViewController: self)
+			
+		} else {
+			print("[WARNING] Interstitial Ad Not Ready.")
+			self.presentRoundCompletedPopup(isGameOver: true)
+		}
+	}
+							   
+	func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+		print("[ERROR] Failed To Present Ad. [MESSAGE] \(error.localizedDescription).")
+	}
+							   
+	func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+		print("[INFO] Did Dismiss Ad.")
+		self.loadInterstitial()
 		self.presentRoundCompletedPopup(isGameOver: true)
 	}
 }

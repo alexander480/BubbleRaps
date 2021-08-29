@@ -1,0 +1,23 @@
+{
+  "name": "AmazingBubbles",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "summary": "Nice Bubble pickers inspired by Apple",
+  "requires_arc": true,
+  "version": "0.0.1",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Alexander Lester": "alexander480@gmail.com"
+  },
+  "homepage": "https://github.com/alexander480/AmazingBubbles",
+  "source": {
+    "git": "https://github.com/GlebRadchenko/AmazingBubbles.git",
+    "tag": "0.0.1"
+  },
+  "frameworks": "UIKit",
+  "source_files": "AmazingBubbles/**/*.{swift}"
+}
