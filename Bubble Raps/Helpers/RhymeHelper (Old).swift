@@ -125,10 +125,10 @@ class RhymeHelper {
 	
 	private func createRhymesFor(Topic: String, completion: @escaping (String, [String]) -> ()) {
 		self.fetchRhymes(word: Topic) { (rhymesArray) in
-			if rhymesArray.count >= 5 {
+			if rhymesArray.count >= numRhymes/*5*/ {
 				print("[SUCCESS] Successfully Validated New Topic Word: \(Topic)")
 				let shuffledArray = rhymesArray.shuffled()
-				let shortenedArray = Array(shuffledArray[0...4])
+				let shortenedArray = Array(shuffledArray[0..<numRhymes/*0...4*/])
 				completion(Topic, shortenedArray)
 			}
 			else {
@@ -174,7 +174,7 @@ class RhymeHelper {
 			case .success(let json):
 				guard let array = json as? [String] else { print("[ERROR] Unable To Convert JSON Response Into String Array."); return }
 				let shuffledArray = array.shuffled()
-				let shortenedArray = Array(shuffledArray[0...4])
+					let shortenedArray = Array(shuffledArray[0..<numRhymes/*0...4*/])
 				completion(shortenedArray)
 			case .failure(let error):
 				print("[ERROR] Unable To Fetch Random Words From API. [MESSAGE] \(error.localizedDescription)")

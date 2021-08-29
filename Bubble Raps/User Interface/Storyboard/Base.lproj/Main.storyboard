@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ABQ-tZ-JBR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19158" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ABQ-tZ-JBR">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19141"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,6 +45,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <viewLayoutGuide key="safeArea" id="3pn-9s-Y3g"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -61,7 +63,6 @@
                                             <constraint firstItem="jlm-r2-Tv5" firstAttribute="top" secondItem="EbT-xc-mGS" secondAttribute="bottom" id="yPS-Ta-LIh"/>
                                             <constraint firstItem="6Ed-cR-8MF" firstAttribute="trailing" secondItem="3pn-9s-Y3g" secondAttribute="trailing" id="zuz-qZ-S7f"/>
                                         </constraints>
-                                        <viewLayoutGuide key="safeArea" id="3pn-9s-Y3g"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="ENi-Wo-BIH" appends="YES" id="WjC-34-dnH"/>
                                         </connections>
@@ -117,6 +118,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <viewLayoutGuide key="safeArea" id="apV-2W-13R"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -146,7 +148,6 @@
                                             <constraint firstItem="GH5-rr-EbR" firstAttribute="bottom" secondItem="apV-2W-13R" secondAttribute="bottom" id="uVR-pF-yb5"/>
                                             <constraint firstItem="g2B-IN-4qM" firstAttribute="top" secondItem="O68-1g-dmy" secondAttribute="bottom" id="zqR-XC-cd2"/>
                                         </constraints>
-                                        <viewLayoutGuide key="safeArea" id="apV-2W-13R"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="rb5-N2-xvv" appends="YES" id="cfW-0V-2f9"/>
                                         </connections>
@@ -198,6 +199,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <viewLayoutGuide key="safeArea" id="7xm-FC-6aW"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -228,7 +230,6 @@
                                             <constraint firstItem="uaf-RM-Z1S" firstAttribute="width" secondItem="Vek-rU-yQT" secondAttribute="width" id="y02-4M-H9s"/>
                                             <constraint firstItem="uHe-6B-FCA" firstAttribute="leading" secondItem="9tN-qy-YaO" secondAttribute="trailing" id="yf3-RR-wlP"/>
                                         </constraints>
-                                        <viewLayoutGuide key="safeArea" id="7xm-FC-6aW"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="r2I-ta-Rrb" appends="YES" id="Bek-TX-VDB"/>
                                         </connections>
@@ -319,6 +320,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="l4w-Aa-lut"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jUY-IU-OJV" firstAttribute="trailing" secondItem="l4w-Aa-lut" secondAttribute="trailing" id="2Em-08-JSd"/>
@@ -341,7 +343,6 @@
                             <constraint firstItem="bRj-l6-eGh" firstAttribute="trailing" secondItem="l4w-Aa-lut" secondAttribute="trailing" id="rDl-43-SQi"/>
                             <constraint firstItem="l4w-Aa-lut" firstAttribute="trailing" secondItem="Itm-DO-d7D" secondAttribute="trailing" constant="10" id="xje-0T-epq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="l4w-Aa-lut"/>
                     </view>
                     <navigationItem key="navigationItem" id="k0o-rW-YSL"/>
                     <connections>
@@ -509,6 +510,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Bx9-LI-xBy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1tt-OQ-tJy"/>
@@ -532,7 +534,6 @@
                             <constraint firstItem="1b8-XL-pxy" firstAttribute="leading" secondItem="VZ6-Dm-Om5" secondAttribute="trailing" constant="8" id="xb7-cn-dLf"/>
                             <constraint firstItem="SNR-IW-gHR" firstAttribute="leading" secondItem="1b8-XL-pxy" secondAttribute="trailing" constant="8" id="xcD-Z7-ydQ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="vmv-RM-yUl"/>
                     <connections>
@@ -617,6 +618,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="0RU-CU-YhM"/>
                         <constraints>
                             <constraint firstItem="0RU-CU-YhM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="da4-Tr-OVr" secondAttribute="trailing" constant="20" id="9mH-18-5CG"/>
                             <constraint firstItem="0RU-CU-YhM" firstAttribute="trailing" secondItem="No8-lc-Zr5" secondAttribute="trailing" constant="20" id="C57-qU-W5K"/>
@@ -626,7 +628,6 @@
                             <constraint firstItem="da4-Tr-OVr" firstAttribute="top" secondItem="No8-lc-Zr5" secondAttribute="bottom" constant="35" id="lJB-5r-Ece"/>
                             <constraint firstItem="No8-lc-Zr5" firstAttribute="leading" secondItem="0RU-CU-YhM" secondAttribute="leading" constant="20" id="sVu-r5-VFy"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="0RU-CU-YhM"/>
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="2r1-Yi-URe" id="Q1J-yh-h4T"/>
@@ -725,11 +726,11 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="kfq-Hl-El5"/>
                         <constraints>
                             <constraint firstItem="El6-cc-tRG" firstAttribute="centerY" secondItem="18S-99-xBo" secondAttribute="centerY" id="6QQ-79-66n"/>
                             <constraint firstItem="El6-cc-tRG" firstAttribute="centerX" secondItem="18S-99-xBo" secondAttribute="centerX" id="iMY-VT-HRM"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="kfq-Hl-El5"/>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="pBE-IO-dcA" id="yuq-kB-Bvg"/>
@@ -823,10 +824,10 @@ to unlock new themes.</string>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Flj-1b-p84">
                                 <rect key="frame" x="0.0" y="225" width="375" height="587"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="UnlockCell" rowHeight="85" id="JFV-0k-LGr" customClass="UnlockCell" customModule="Bubble_Raps" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JFV-0k-LGr" id="l0C-8u-Jdl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
@@ -871,7 +872,7 @@ to unlock new themes.</string>
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="2Xo-my-8DM" secondAttribute="bottom" id="Cnw-Bn-Y1k"/>
                                                 <constraint firstItem="2Xo-my-8DM" firstAttribute="top" secondItem="l0C-8u-Jdl" secondAttribute="top" constant="10" id="JHl-b2-AJD"/>
@@ -888,6 +889,7 @@ to unlock new themes.</string>
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="8iT-Ql-BJg"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2LR-aN-L2K" firstAttribute="top" secondItem="QtC-Q8-aOa" secondAttribute="top" id="HdQ-Ib-fWp"/>
@@ -898,7 +900,6 @@ to unlock new themes.</string>
                             <constraint firstItem="2LR-aN-L2K" firstAttribute="trailing" secondItem="8iT-Ql-BJg" secondAttribute="trailing" id="uvc-BN-8UA"/>
                             <constraint firstItem="2LR-aN-L2K" firstAttribute="leading" secondItem="8iT-Ql-BJg" secondAttribute="leading" id="w2G-MW-k8g"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8iT-Ql-BJg"/>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="lCg-zS-Zfo" id="CdJ-7w-pUd"/>
@@ -991,10 +992,10 @@ new themes and word packs.</string>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CZc-D6-nSt">
                                 <rect key="frame" x="0.0" y="225" width="375" height="587"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="UnlockCell" rowHeight="85" id="EeP-5v-3bF" customClass="UnlockCell" customModule="Bubble_Raps" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EeP-5v-3bF" id="vd9-3z-M9d">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
@@ -1039,7 +1040,7 @@ new themes and word packs.</string>
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="AvQ-wo-iAf" secondAttribute="trailing" id="86z-QP-bPt"/>
                                                 <constraint firstAttribute="bottom" secondItem="AvQ-wo-iAf" secondAttribute="bottom" id="Ek7-Aw-M48"/>
@@ -1056,6 +1057,7 @@ new themes and word packs.</string>
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="dTK-j0-M9Z"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="z5H-zB-A9v" firstAttribute="leading" secondItem="dTK-j0-M9Z" secondAttribute="leading" id="JbZ-tv-1dc"/>
@@ -1066,7 +1068,6 @@ new themes and word packs.</string>
                             <constraint firstItem="CZc-D6-nSt" firstAttribute="top" secondItem="z5H-zB-A9v" secondAttribute="bottom" id="hQw-wa-LGd"/>
                             <constraint firstItem="CZc-D6-nSt" firstAttribute="trailing" secondItem="dTK-j0-M9Z" secondAttribute="trailing" id="jvJ-iI-nq0"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="dTK-j0-M9Z"/>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="8i3-tg-5dH" id="5m8-Mq-EgQ"/>
@@ -1159,10 +1160,10 @@ to unlock new themes.</string>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cx5-qn-8vd">
                                 <rect key="frame" x="0.0" y="225" width="375" height="587"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="UnlockCell" rowHeight="85" id="lap-eK-RUI" customClass="UnlockCell" customModule="Bubble_Raps" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lap-eK-RUI" id="M5c-j0-9ny">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
@@ -1207,7 +1208,7 @@ to unlock new themes.</string>
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="L8q-Ot-IUD" firstAttribute="leading" secondItem="M5c-j0-9ny" secondAttribute="leading" id="EXE-tO-LwZ"/>
                                                 <constraint firstItem="L8q-Ot-IUD" firstAttribute="top" secondItem="M5c-j0-9ny" secondAttribute="top" constant="10" id="ZBi-U5-Qd9"/>
@@ -1224,6 +1225,7 @@ to unlock new themes.</string>
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Jwb-Op-1Gc"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ITj-K5-r5d" firstAttribute="top" secondItem="BZc-c3-UYb" secondAttribute="top" id="9Vn-L9-DFY"/>
@@ -1234,7 +1236,6 @@ to unlock new themes.</string>
                             <constraint firstItem="ITj-K5-r5d" firstAttribute="leading" secondItem="Jwb-Op-1Gc" secondAttribute="leading" id="u5T-LA-cIw"/>
                             <constraint firstAttribute="bottom" secondItem="Cx5-qn-8vd" secondAttribute="bottom" id="zQY-vv-yI5"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Jwb-Op-1Gc"/>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="rEt-SP-F1k" id="2Ag-kh-Qif"/>
@@ -1248,6 +1249,17 @@ to unlock new themes.</string>
             <point key="canvasLocation" x="-735" y="815"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="IEY-hV-DG9">
+            <size key="intrinsicContentSize" width="52" height="21.666666666666668"/>
+        </designable>
+        <designable name="X7F-zO-hdK">
+            <size key="intrinsicContentSize" width="46.333333333333336" height="22"/>
+        </designable>
+        <designable name="o5E-2U-prg">
+            <size key="intrinsicContentSize" width="47.333333333333336" height="21.666666666666668"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Back Tab" width="63" height="45"/>
         <image name="Back To Menu Button" width="265" height="55"/>
@@ -1268,5 +1280,8 @@ to unlock new themes.</string>
         <image name="Resume Button" width="265" height="55"/>
         <image name="Word Pack Tab" width="63" height="45"/>
         <image name="pause-icon" width="32" height="32"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

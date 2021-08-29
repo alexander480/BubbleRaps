@@ -10,6 +10,8 @@ import UIKit
 import AmazingBubbles
 import GoogleMobileAds
 
+let numRhymes = 10
+
 class MainVC: UIViewController {
 	
 	// MARK: Storyboard Outlets
@@ -33,6 +35,7 @@ class MainVC: UIViewController {
 	let unlockable = UnlockableHelper()
 	
 	var isHighscore = false
+	var score = 0
 	var round = 0
 	var correctAnswers = 0
 	var incorrectAnswers = 0
@@ -240,6 +243,7 @@ extension MainVC: ContentBubblesViewDelegate {
     }
 	
 	private func correctAnswer(view: ContentBubblesView, index: Int) {
+		self.score += 1
 		self.correctAnswers += 1
 		self.bubblesView.changeBubble(isCorrect: true, index: index)
 		if self.correctAnswers == 5 { self.roundCompleted(isGameOver: false) }
@@ -290,8 +294,8 @@ extension MainVC: RoundCompletedAlertDelegate {
 	private func roundCompleted(isGameOver: Bool) {
 		self.timer.invalidate()
 		if isGameOver {
-			// Present Game Over Popup
-			self.presentRoundCompletedPopup(isGameOver: isGameOver)
+			// Add Coins
+			self.unlockable.addBubbles(Amount: self.score)
 			
 			// Update High Score
 			self.updateHighScore()
@@ -299,10 +303,9 @@ extension MainVC: RoundCompletedAlertDelegate {
 			// MARK: Present Interstatial After Game Over
 			self.presentInterstitial()
 		}
-		else {
-			// Present Round Completed Popup To Proceed To Next Round
-			self.presentRoundCompletedPopup(isGameOver: isGameOver)
-		}
+		
+		// Present Round Completed Popup To Proceed To Next Round
+		self.presentRoundCompletedPopup(isGameOver: isGameOver)
 	}
 	
 	private func presentRoundCompletedPopup(isGameOver: Bool) {
@@ -315,7 +318,7 @@ extension MainVC: RoundCompletedAlertDelegate {
 			roundCompletedPopup.delegate = self
 			roundCompletedPopup.isGameOver = isGameOver
 			roundCompletedPopup.isHighScore = self.isHighscore
-			roundCompletedPopup.currentScore = self.correctAnswers
+			roundCompletedPopup.currentScore = self.score
 		
 		self.present(roundCompletedPopup, animated: true, completion: nil)
 	}
@@ -323,9 +326,9 @@ extension MainVC: RoundCompletedAlertDelegate {
 	// Update High Score
 	private func updateHighScore() {
 		let currentHighScore = UserDefaults.standard.integer(forKey: "highScore")
-		if self.correctAnswers > currentHighScore {
+		if self.score > currentHighScore {
 			self.isHighscore = true;
-			UserDefaults.standard.set(self.correctAnswers, forKey: "highScore")
+			UserDefaults.standard.set(self.score, forKey: "highScore")
 		}
 	}
 	
@@ -346,14 +349,14 @@ extension MainVC: PauseMenuDelegate {
 			menu.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
 			
 			menu.delegate = self
-			menu.currentScore = self.correctAnswers
+			menu.currentScore = self.score
 			
 			self.present(menu, animated: true, completion: nil)
 		}
 	}
 	
 	func resumeFromPause() { self.startTimer(fromPause: true) }
-	func endFromPause() { self.performSegue(withIdentifier: "BackToMenu", sender: self) }
+	func endFromPause() { self.unlockable.addBubbles(Amount: self.score); self.performSegue(withIdentifier: "BackToMenu", sender: self) }
 }
 
 // MARK: GADInterstitialDelegate Protocol Stubs

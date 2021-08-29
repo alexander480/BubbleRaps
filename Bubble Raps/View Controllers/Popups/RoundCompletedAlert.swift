@@ -47,8 +47,6 @@ class RoundCompletedAlert: UIViewController {
 	// MARK: User Interface Functions
 	
 	private func setupUserInterface() {
-		let coinsEarned = self.coinsEarned()
-		
 		if self.isGameOver {
 			self.backgroundImageView.image = #imageLiteral(resourceName: "Game Over Popup Background")
 			self.nextButton.setBackgroundImageForAllStates(image: #imageLiteral(resourceName: "Game Over Button"))
@@ -56,8 +54,7 @@ class RoundCompletedAlert: UIViewController {
 			if self.isHighScore { self.titleLabel.text = "New High Score!!"; self.subtitleLabel.text = "\(self.currentScore) Correct Answers" }
 			else { self.titleLabel.text = "Game Over"; self.subtitleLabel.text = "\(self.currentScore) Correct Answers" }
 			
-			self.coinLabel.attributedText = self.coinsEarnedString(Number: coinsEarned)
-			self.unlockable.addBubbles(Amount: coinsEarned)
+			self.coinLabel.attributedText = self.coinsEarnedString(Number: self.currentScore)
 		}
 		else {
 			self.backgroundImageView.image = #imageLiteral(resourceName: "Next Round Popup Background")
@@ -66,7 +63,7 @@ class RoundCompletedAlert: UIViewController {
 			self.titleLabel.text = "Round Completed!"
 			self.subtitleLabel.text = "\(self.currentScore) Correct Answers"
 			
-			self.coinLabel.attributedText = self.coinsEarnedString(Number: coinsEarned)
+			self.coinLabel.attributedText = self.coinsEarnedString(Number: self.currentScore)
 		}
 		
 		let blurEffect = UIBlurEffect(style: .dark)
@@ -89,13 +86,5 @@ class RoundCompletedAlert: UIViewController {
 		}
 		
 		return str
-	}
-	
-	// MARK: Utility Functions
-	
-	private func coinsEarned() -> Int {
-		let roundTime = UserDefaults.standard.integer(forKey: "roundTime")
-		let coinsEarnedDict = [9: 1, 7: 2, 5: 3]
-		return (self.currentScore / 5) * (coinsEarnedDict[roundTime] ?? 1)
 	}
 }

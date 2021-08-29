@@ -288,7 +288,9 @@ extension MenuVC: GADFullScreenContentDelegate {
 		let alert = UIAlertController(title: "Earn Free Bubbles!!", message: "Watch A Short Video To Earn 10 Free Bubbles", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Watch Video", style: .default) { (action) in
 			alert.dismiss(animated: true, completion: nil)
-			self.presentRewardedAd()
+			self.loadRewardedAd {
+				self.presentRewardedAd()
+			}
 		});
 		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
 			alert.dismiss(animated: true, completion: nil)
