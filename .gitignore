@@ -1,0 +1,5 @@
+
+*.playground
+Icon?
+Pods/
+GoogleService-Info.plist
