@@ -10,7 +10,7 @@ import UIKit
 import AmazingBubbles
 import GoogleMobileAds
 
-let numRhymes = 10
+let numRhymes = 5
 
 class MainVC: UIViewController {
 	
@@ -72,39 +72,21 @@ class MainVC: UIViewController {
 		// MARK: Handle Themes
 		self.themeHandler()
 		
+		// MARK: Setup Ads
+		self.loadInterstitial()
+		
 		let loadingAlert = self.loadingAlert()
 		self.present(loadingAlert, animated: true, completion: nil)
 		
 		// MARK: Start First Round
-		self.startNextRound(isFirstRound: true)
-		
-		loadingAlert.dismiss(animated: true, completion: nil)
-		
-		// MARK: Setup Ads
-		self.loadInterstitial()
+		self.startNextRound(isFirstRound: true) {
+			loadingAlert.dismiss(animated: true, completion: nil)
+		}
     }
 	
 	// MARK: Start Round Function
 	
-	private func startNextRound(isFirstRound: Bool) {
-		// let allRoundsCompleted: Bool = self.round >= self.wordsToRhyme.count
-		// if isFirstRound == false { self.round += 1 }
-
-		// if allRoundsCompleted {
-		//   self.roundCompleted(isGameOver: true)
-		// }
-		// else {
-		/*
-		if isFirstRound {
-			guard let wordPack = self.wordPack else { print("[ERROR] Unable to Validate Word Pack For First Round"); return }
-			self.round += 1
-			self.titleLabel.text = wordPack.topic
-			self.bubblesView.reload()
-			self.startTimer(fromPause: false)
-		}
-		*/
-		
-		// else {
+	private func startNextRound(isFirstRound: Bool, completion: (() -> ())?) {
 		self.round += 1
 		self.correctAnswers = 0
 		
@@ -114,23 +96,8 @@ class MainVC: UIViewController {
 			self.titleLabel.text = newPack.topic
 			self.bubblesView.reload()
 			self.startTimer(fromPause: false)
+			completion?()
 		}
-		// }
-			
-			
-			// let nextWord = self.wordsToRhyme[self.round]
-			
-			// self.bubblesView.removeBubbles()
-			
-			// self.rhyme = RhymeHelper()
-			// self.potentialRhymesDictionary = self.rhyme.potentialRhymes(word: nextWord)
-			// self.potentialRhymesArray = Array(self.potentialRhymesDictionary.keys)
-			
-			// self.titleLabel.text = nextWord
-			// self.bubblesView.reload()
-			
-			// self.startTimer(fromPause: false)
-		// }
 	}
 	
 	// MARK: Start Timer
@@ -153,11 +120,11 @@ class MainVC: UIViewController {
 			if self.timeLeft <= 0 {
 				self.roundCompleted(isGameOver: true)
 			}
-			else if self.timeLeft <= 5 {
-				self.timerLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-				self.timerLabel.borderColor = #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1)
-				self.timerLabel.textColor = #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1)
-			}
+//			else if self.timeLeft <= 5 {
+//				self.timerLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//				self.timerLabel.borderColor = #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1)
+//				self.timerLabel.textColor = #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1)
+//			}
 			else {
 				self.timerLabel.backgroundColor = mainColor
 				self.timerLabel.borderColor = borderColor
@@ -219,6 +186,9 @@ class MainVC: UIViewController {
 		
 		self.pauseButton.backgroundColor = mainColor
 		self.pauseButton.borderColor = borderColor
+		
+		self.timerLabel.backgroundColor = mainColor
+		self.timerLabel.borderColor = borderColor
 		
 		self.titleView.backgroundColor = mainColor
 		self.titleView.borderColor = borderColor
@@ -333,7 +303,15 @@ extension MainVC: RoundCompletedAlertDelegate {
 	}
 	
 	// Proceed To Next Screen
-	func nextRoundClicked() { self.startNextRound(isFirstRound: false) }
+	func nextRoundClicked() {
+		let loadingAlert = self.loadingAlert()
+		self.present(loadingAlert, animated: true, completion: nil)
+		
+		self.startNextRound(isFirstRound: false) {
+			loadingAlert.dismiss(animated: true, completion: nil)
+		}
+	}
+	
 	func gameOverClicked() { self.performSegue(withIdentifier: "BackToMenu", sender: self) }
 }
 
