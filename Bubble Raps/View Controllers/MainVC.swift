@@ -31,7 +31,6 @@ class MainVC: UIViewController {
 	
 	var interstitial: GADInterstitialAd?
 	
-	let rhymeHelper = RhymeHelper()
 	let unlockable = UnlockableHelper()
 	
 	var isHighscore = false
@@ -43,12 +42,9 @@ class MainVC: UIViewController {
 	var timer = Timer()
 	var roundTime = 0
 	var timeLeft = 0
-	
-	var rhyme:RhymeHelper!
+
 	var potentialRhymesDictionary:[String:Bool]!
 	var potentialRhymesArray:[String]!
-	
-	var wordsToRhyme = [String]()
 	
 	// MARK: Starting New 'WordPack Struct' Integration
 	
@@ -90,7 +86,7 @@ class MainVC: UIViewController {
 		self.round += 1
 		self.correctAnswers = 0
 		
-		self.rhymeHelper.createWordPack { (newPack) in
+		RhymeHelper.createWordPack { (newPack) in
 			self.bubblesView.removeBubbles()
 			self.wordPack = newPack
 			self.titleLabel.text = newPack.topic

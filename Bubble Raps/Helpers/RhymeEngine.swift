@@ -17,8 +17,9 @@ enum RhymeType: String {
 }
 
 struct RhymeEngine {
-	static func fetchRhymesFor(_ word: String, rhymeType: RhymeType = .perfect, completion: @escaping ([Rhyme]) -> ()) {
-		let param = "?\(rhymeType.rawValue)=\(word)"
+	
+	func fetchRhymesFor(_ topic: String, rhymeType: RhymeType = .perfect, completion: @escaping ([Rhyme]) -> ()) {
+		let param = "?\(rhymeType.rawValue)=\(topic)"
 		AF.request("https://api.datamuse.com/words\(param)", method: .get).validate().responseDecodable(of: [Rhyme].self) { response in
 			print(response)
 		}

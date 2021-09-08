@@ -15,19 +15,21 @@ import GoogleMobileAds
 
 // TODO: Save Last Chosen Word Pack
 
+var theme = Themes()
+var packs = Packs()
+
 class MenuVC: UIViewController {
 	
 	// MARK: Class Variables
-	
-	let rhymeHelper = RhymeHelper()
-	let unlockable = UnlockableHelper()
-	
+
+	var selectedPack = "Standard" {
+		didSet { packs.current = self }
+	}
+	var packIndex = 0 // Used For Cycling Through Word Packs On Menu //
+
 	var rewardedAd: GADRewardedAd?
 	
 	var loadingAlert: UIAlertController!
-	
-	var selectedPack = "Standard"
-	var selectedPackIndex = 0
 	
 	// MARK: Storyboard Outlets
 	
@@ -144,12 +146,13 @@ class MenuVC: UIViewController {
 		// self.present(crashlyticsAlert, animated: true, completion: nil)
 		
 		// MARK: Uncomment The Following Line To Add 250 Bubbles To Account
-		// self.unlockable.addBubbles(Amount: 250)
+		UnlockableHelper.addBubbles(Amount: 250)
 		
 		// Update Displayed Bubbles Balance
-		// self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+		self.bubbleButton.setAttributedTitleForAllStates(title: UnlockableHelper.bubbleBalanceWithIcon())
 		
-		// print("[INFO] Current Bubble Balance: \(self.unlockable.currentBubbleBalance())")
+		print("[DEV] Manually Added Bubble Currency.")
+		print("[INFO] Current Bubble Balance: \(UnlockableHelper.currentBubbleBalance())")
 		
 		// MARK: Uncomment Following Lines To Reset Currently Unlocked Packs
 		// UserDefaults.standard.set(["Standard"], forKey: "unlockedPacks")
@@ -159,31 +162,35 @@ class MenuVC: UIViewController {
 		// MARK: Uncomment Following Lines To Reset Currently Unlocked Themes
 		// UserDefaults.standard.set(["Purpink"], forKey: "unlockedThemes")
 		// self.unlockable.validateUnlockedThemes()
-		// print("[INFO] Unlocked Themes: \(self.unlockable.currentlyUnlockedThemes())")
+		// print("[INFO] Unlocked Themes: \(self.unlockable.unlockedThemes())")
 	}
 	
 	@IBOutlet weak var packDecreaseArrow: UIButton!
 	@IBAction func packDecrease(_ sender: Any) {
-		/*
-		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
-		var nextPack = "nil"
-		
-		if self.selectedPackIndex <= 0 { self.selectedPackIndex = unlockedPacks.count - 1; nextPack = unlockedPacks[self.selectedPackIndex] }
-		else { self.selectedPackIndex -= 1; nextPack = unlockedPacks[self.selectedPackIndex] }
-		
-		self.packLabel.text = nextPack
-		*/
+		self.packIndex -= 1
+		if (self.packIndex == 0) {
+			self.selectedPack = packs.unlocked[self.packIndex]
+			self.packLabel.text = self.selectedPack
+			self.packIndex = packs.unlocked.count - 1
+		}
+		else {
+			self.selectedPack = packs.unlocked[self.packIndex]
+			self.packLabel.text = self.selectedPack
+		}
 	}
 	
 	@IBOutlet weak var packIncreaseArrow: UIButton!
 	@IBAction func packIncrease(_ sender: Any) {
-		/*
-		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
-		
-		self.selectedPackIndex += 1
-		if self.selectedPackIndex > unlockedPacks.count - 1 { self.selectedPackIndex = 0 }
-		self.packLabel.text = unlockedPacks[self.selectedPackIndex]
-		*/
+		self.packIndex += 1
+		if (self.packIndex == (packs.unlocked.count - 1)) {
+			self.selectedPack = packs.unlocked[self.packIndex]
+			self.packLabel.text = self.selectedPack
+			self.packIndex = 0
+		}
+		else {
+			self.selectedPack = packs.unlocked[self.packIndex]
+			self.packLabel.text = self.selectedPack
+		}
 	}
 	
 	// MARK: Class Functions
@@ -192,15 +199,10 @@ class MenuVC: UIViewController {
 		super.viewDidLoad()
 		
 		self.loadingAlert = self.loadingAlert()
-
-		// Validate unlockedThemes and unlockedPacks
-		self.unlockable.validateUnlockedThemes()
-		self.unlockable.validateUnlockedPacks()
 		
 		// Setup Theme Related UI Elements
-		let currentTheme = self.unlockable.currentTheme()
-		self.themeButton.setImageForAllStates(image: self.unlockable.tabImageFor(Theme: currentTheme))
-		self.logoImage.image = self.unlockable.logoImageFor(Theme: currentTheme)
+		self.themeButton.setImageForAllStates(image: theme.assets.tabImage)
+		self.logoImage.image = theme.assets.logoImage)
 		
 		// Display High Score
 		self.scoreLabel.text = String(describing: UserDefaults.standard.integer(forKey: "highScore"))
@@ -216,7 +218,7 @@ class MenuVC: UIViewController {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
-		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+		self.bubbleButton.setAttributedTitleForAllStates(title: UnlockableHelper.bubbleBalanceWithIcon())
 	}
 
 	private func resetHighScore() {
@@ -271,7 +273,7 @@ extension MenuVC: GADFullScreenContentDelegate {
 		if let ad = self.rewardedAd {
 			ad.present(fromRootViewController: self, userDidEarnRewardHandler: {
 				print("[INFO] User Earned Reward.");
-				self.unlockable.addBubbles(Amount: 10)
+				UnlockableHelper.addBubbles(Amount: 10)
 				self.adCompletedAlert()
 			})
 		} else {

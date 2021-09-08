@@ -9,46 +9,53 @@
 import Foundation
 import Alamofire
 
-struct WordPack {
+struct RhymePack {
 	var topic: String
-	var rhymes: [String]
-	var notRhymes: [String]
-	var allWords: [String]
 	var rhymeDictionary: [String: Bool]
 }
 
 // MARK: TODO: Validate Word To Rhyme
 
-class RhymeHelper {
+struct RhymeHelper {
 	
-	func createWordPack(completion: @escaping (WordPack) -> ()) {
-		var topicWord = ""
-		var rhymes = [String]()
-		var notRhymes = [String]()
-		var rhymeDictionary = [String: Bool]()
+	static func createWordPack(forTopic: String?, completion: @escaping (RhymePack) -> ()) {
 		
-		self.fetchRandomTopicWord { (randomWord) in
-			self.createRhymesFor(Topic: randomWord) { (validatedTopic, rhymesArray) in
-				print("[SUCCESS] Successfully Validated A New Topic: \(validatedTopic)")
-				topicWord = validatedTopic
-				
-				print("[SUCCESS] Successfully Fetched Rhyme Array: \(rhymesArray)")
-				rhymes = rhymesArray
-				
-				self.fetchNotRhymes { (notRhymesArray) in
-					print("[SUCCESS] Successfully Fetched Not Rhymes Array: \(notRhymesArray)")
-					notRhymes = notRhymesArray
-					
+		if let forTopic = forTopic {
+			print("[SUCCESS] Successfully Validated Topic: \(forTopic).")
+			
+			RhymeHelper.createRhymesFor(Topic: forTopic) { (topic, rhymes) in
+				print("[SUCCESS] Successfully Fetched Rhyme Array: \(rhymes)")
+
+				RhymeHelper.fetchNotRhymes { notRhymes in
+					print("[SUCCESS] Successfully Fetched Not Rhymes Array: \(notRhymes)")
+
 					let dict = self.createRhymeDictionary(rhymes: rhymes, notRhymes: notRhymes)
-					
 					print("[SUCCESS] Created Rhyme Dictionary. [INFO] \(dict)")
-					rhymeDictionary = dict
 					
-					let allWords = Array(rhymeDictionary.keys)
-					let pack = WordPack(topic: topicWord, rhymes: rhymes, notRhymes: notRhymes, allWords: allWords, rhymeDictionary: rhymeDictionary)
+					let pack = RhymePack(topic: topic, rhymeDictionary: dict)
 					
 					print("[SUCCESS] Created Word Pack. [INFO] \(pack)")
 					completion(pack)
+				}
+			}
+			
+		} else {
+			self.fetchRandomTopicWord { (randomWord) in
+				self.createRhymesFor(Topic: randomWord) { (topic, rhymes) in
+					print("[SUCCESS] Successfully Validated A New Topic: \(topic)")
+					print("[SUCCESS] Successfully Fetched Rhyme Array: \(rhymes)")
+					
+					self.fetchNotRhymes { (notRhymes) in
+						print("[SUCCESS] Successfully Fetched Not Rhymes Array: \(notRhymes)")
+
+						let dict = self.createRhymeDictionary(rhymes: rhymes, notRhymes: notRhymes)
+						print("[SUCCESS] Created Rhyme Dictionary. [INFO] \(dict)")
+						
+						let pack = RhymePack(topic: topic, rhymeDictionary: dict)
+						
+						print("[SUCCESS] Created Word Pack. [INFO] \(pack)")
+						completion(pack)
+					}
 				}
 			}
 		}
@@ -109,7 +116,7 @@ class RhymeHelper {
 	}
 */
 	
-	private func fetchRandomTopicWord(completion: @escaping (String) -> ()) {
+	static func fetchRandomTopicWord(completion: @escaping (String) -> ()) {
 		AF.request("https://random-word-api.herokuapp.com/word?number=1", method: .get).validate().responseJSON { (JSONResponse) in
 			switch JSONResponse.result {
 			case .success(let json):
@@ -123,7 +130,7 @@ class RhymeHelper {
 		}
 	}
 	
-	private func createRhymesFor(Topic: String, completion: @escaping (String, [String]) -> ()) {
+	static func createRhymesFor(Topic: String, completion: @escaping (String, [String]) -> ()) {
 		self.fetchRhymes(word: Topic) { (rhymesArray) in
 			if rhymesArray.count >= numRhymes/*5*/ {
 				print("[SUCCESS] Successfully Validated New Topic Word: \(Topic)")
@@ -144,7 +151,7 @@ class RhymeHelper {
 		}
 	}
 	
-	private func fetchRhymes(word: String, completion: @escaping ([String]) -> ()) {
+	static func fetchRhymes(word: String, completion: @escaping ([String]) -> ()) {
 		let urlString = "https://api.datamuse.com/words?rel_rhy=" + word
 		AF.request(urlString, method: .get).validate().responseJSON { (JSONResponse) in
 			switch JSONResponse.result {
@@ -168,7 +175,7 @@ class RhymeHelper {
 		}
 	}
 	
-	func fetchNotRhymes(completion: @escaping ([String]) -> ()) {
+	static func fetchNotRhymes(completion: @escaping ([String]) -> ()) {
 		AF.request("https://random-word-api.herokuapp.com/word?number=20", method: .get).validate().responseJSON { (JSONResponse) in
 			switch JSONResponse.result {
 			case .success(let json):
@@ -183,7 +190,7 @@ class RhymeHelper {
 		}
 	}
 	
-	func createRhymeDictionary(rhymes: [String], notRhymes: [String]) -> [String: Bool] {
+	static func createRhymeDictionary(rhymes: [String], notRhymes: [String]) -> [String: Bool] {
 		var dict = [String: Bool]()
 		
 		for x in rhymes { dict.updateValue(true, forKey: x) }
