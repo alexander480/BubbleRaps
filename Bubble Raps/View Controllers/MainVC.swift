@@ -101,9 +101,8 @@ class MainVC: UIViewController {
 	private func startTimer(fromPause: Bool) {
 		if fromPause == false { self.timeLeft = self.roundTime }
 		
-		let currentTheme = self.unlockable.currentTheme()
-		let mainColor = self.unlockable.colorFor(Theme: currentTheme)
-		let borderColor = self.unlockable.borderColorFor(Theme: currentTheme)
+		let mainColor = theme.assets.primaryColor
+		let borderColor = theme.assets.secondaryColor
 		
 		self.timerLabel.text = String(describing: self.timeLeft)
 		self.timerLabel.backgroundColor = mainColor
@@ -134,7 +133,7 @@ class MainVC: UIViewController {
 	// MARK: Handle Live Counter
 	
 	private func handleLiveCounter() {
-		let mainColor = self.unlockable.colorForCurrentTheme()
+		let mainColor = theme.assets.primaryColor
 		
 		if self.incorrectAnswers == 0 {
 			let str = NSMutableAttributedString(string: "● ● ●")
@@ -169,9 +168,8 @@ class MainVC: UIViewController {
 	// MARK: Theme Handler
 	
 	private func themeHandler() {
-		let currentTheme = self.unlockable.currentTheme()
-		let mainColor = self.unlockable.colorFor(Theme: currentTheme)
-		let borderColor = self.unlockable.borderColorFor(Theme: currentTheme)
+		let mainColor = theme.assets.primaryColor
+		let borderColor = theme.assets.secondaryColor
 				
 		let str = NSMutableAttributedString(string: "● ● ●")
 		str.addAttribute(.foregroundColor, value: mainColor, range: NSRange(location: 0, length: 1))
@@ -238,7 +236,7 @@ extension MainVC: ContentBubblesViewDataSource {
 		guard let wordPack = self.wordPack else { print("[ERROR] Unable to Validate Current WordPack."); return view }
 		if let labelView = UINib(nibName: "LabelBubbleView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LabelBubbleView {
 			labelView.label.text = wordPack.allWords[index]
-			labelView.imageView.image = self.unlockable.bubbleImageFor(Theme: self.unlockable.currentTheme())
+			labelView.imageView.image = theme.assets.bubbleImage
 			labelView.imageView.isHidden = false
 			view = labelView
 		}
@@ -261,7 +259,7 @@ extension MainVC: RoundCompletedAlertDelegate {
 		self.timer.invalidate()
 		if isGameOver {
 			// Add Coins
-			self.unlockable.addBubbles(Amount: self.score)
+			UnlockableHelper.addBubbles(Amount: self.score)
 			
 			// Update High Score
 			self.updateHighScore()
@@ -330,7 +328,7 @@ extension MainVC: PauseMenuDelegate {
 	}
 	
 	func resumeFromPause() { self.startTimer(fromPause: true) }
-	func endFromPause() { self.unlockable.addBubbles(Amount: self.score); self.performSegue(withIdentifier: "BackToMenu", sender: self) }
+	func endFromPause() { UnlockableHelper.addBubbles(Amount: self.score); self.performSegue(withIdentifier: "BackToMenu", sender: self) }
 }
 
 // MARK: GADInterstitialDelegate Protocol Stubs

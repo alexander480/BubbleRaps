@@ -49,6 +49,6 @@ class PauseMenu: UIViewController {
 		self.titleLabel.text = String(describing: self.currentScore)
 		self.subtitleLabel.text = "Correct Answers"
 		
-		self.pauseView.backgroundColor = self.unlockable.colorForCurrentTheme()
+		self.pauseView.backgroundColor = theme.assets.primary
 	}
 }

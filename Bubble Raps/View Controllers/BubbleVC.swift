@@ -48,8 +48,8 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
-		self.headingView.backgroundColor = self.unlockable.colorForCurrentTheme()
-		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+		self.headingView.backgroundColor = theme.assets.primaryColor
+		self.bubbleButton.setAttributedTitleForAllStates(title: UnlockableHelper.bubbleBalanceWithIcon())
 	}
 	
 	override func viewWillLayoutSubviews() {
@@ -93,7 +93,7 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 					loadingAlert.dismiss(animated: true, completion: nil)
 					if didComplete {
 						self.presentAlert(title: "Purchase Complete!", message: "\(selectedAmount) bubbles have been added to your account", actions: nil)
-						self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+						self.bubbleButton.setAttributedTitleForAllStates(title: UnlockableHelper.bubbleBalanceWithIcon())
 					}
 				}
 			}
@@ -106,12 +106,12 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	private func cycleThroughColors(i: Int) -> UIColor? {
 		let rowCount = self.bubbleAmounts.count - 1
 		if i > rowCount {
-			let key = self.unlockable.allThemes[i - rowCount]
-			return self.unlockable.colorFor(Theme: key)
+			let key = UnlockableHelper.allThemes[i - rowCount]
+			return ThemeAssets(currentTheme: key).primaryColor
 		}
 		else {
-			let key = self.unlockable.allThemes[i]
-			return self.unlockable.colorFor(Theme: key)
+			let key = UnlockableHelper.allThemes[i]
+			return ThemeAssets(currentTheme: key).primaryColor
 		}
 	}
 	

@@ -156,13 +156,11 @@ class MenuVC: UIViewController {
 		
 		// MARK: Uncomment Following Lines To Reset Currently Unlocked Packs
 		// UserDefaults.standard.set(["Standard"], forKey: "unlockedPacks")
-		// self.unlockable.validateUnlockedPacks()
-		// print("[INFO] Unlocked Word Packs: \(self.unlockable.currentlyUnlockedPacks())")
+		// print("[INFO] Unlocked Word Packs: \(UnlockableHelper.currentlyUnlockedPacks())")
 		
 		// MARK: Uncomment Following Lines To Reset Currently Unlocked Themes
 		// UserDefaults.standard.set(["Purpink"], forKey: "unlockedThemes")
-		// self.unlockable.validateUnlockedThemes()
-		// print("[INFO] Unlocked Themes: \(self.unlockable.unlockedThemes())")
+		// print("[INFO] Unlocked Themes: \(UnlockableHelper.unlockedThemes())")
 	}
 	
 	@IBOutlet weak var packDecreaseArrow: UIButton!
@@ -232,7 +230,7 @@ class MenuVC: UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "BeginSegue" {
 			if let vc = segue.destination as? MainVC /*, let packName = self.packLabel.text*/ {
-				// vc.wordsToRhyme = self.unlockable.getShuffledWordPack(Named: packName)
+				// vc.wordsToRhyme = UnlockableHelper.getShuffledWordPack(Named: packName)
 				
 				// MARK: Starting New Integration
 				rhymeHelper.createWordPack { (wordPack) in

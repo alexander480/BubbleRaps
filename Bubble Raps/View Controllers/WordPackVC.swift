@@ -51,8 +51,8 @@ class WordPackVC: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		self.headingView.backgroundColor = self.unlockable.colorForCurrentTheme()
-		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+		self.headingView.backgroundColor = theme.assets.primaryColor
+		self.bubbleButton.setAttributedTitleForAllStates(title: UnlockableHelper.bubbleBalanceWithIcon())
 	}
 	
 	override func viewWillLayoutSubviews() {
@@ -66,13 +66,13 @@ class WordPackVC: UIViewController {
 	private func presentPurchaseAlert(pack: String, cost: Int) {
 		let alert = UIAlertController(title: "Purchase \(pack) Word Pack", message: "This word pack costs \(cost) bubbles.", preferredStyle: .alert)
 		let purchaseAction = UIAlertAction(title: "Purchase", style: .default) { (action) in
-			switch self.unlockable.purchasePack(Named: pack, Cost: cost) {
+			switch UnlockableHelper.purchasePack(Named: pack, Cost: cost) {
 			case .success:
-				self.presentAlert(title: "\(pack) Word Pack Unlocked!", message: "\(self.unlockable.currentBubbleBalance()) bubbles remaining.", actions: nil)
-				self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+				self.presentAlert(title: "\(pack) Word Pack Unlocked!", message: "\(UnlockableHelper.currentBubbleBalance()) bubbles remaining.", actions: nil)
+				self.bubbleButton.setAttributedTitleForAllStates(title:UnlockableHelper.bubbleBalanceWithIcon())
 				self.tableView.reloadData()
 			case .notEnoughBubbles:
-				self.presentAlert(title: "Not Enough Bubbless!", message: "You need \(cost - self.unlockable.currentBubbleBalance()) more bubbles to unlock this word pack.", actions: nil)
+				self.presentAlert(title: "Not Enough Bubbless!", message: "You need \(cost - UnlockableHelper.currentBubbleBalance()) more bubbles to unlock this word pack.", actions: nil)
 			case .alreadyUnlocked:
 				self.presentAlert(title: "You Have Already Unlocked This Word Pack!", message: "Go get yourself something nice, you've got enough bubbles (;", actions: nil)
 			}
@@ -92,8 +92,8 @@ class WordPackVC: UIViewController {
 
 extension WordPackVC: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
-		let selectedPack = self.wordPacks.keys[indexPath.section]
+		let unlockedPacks = packs.unlocked
+		let selectedPack = UnlockableHelper.allPacks[indexPath.section]
 		print("[INFO] \(selectedPack) Word Pack Selected")
 		
 		if unlockedPacks.contains(selectedPack) {
@@ -111,7 +111,7 @@ extension WordPackVC: UITableViewDataSource {
 	func numberOfSections(in tableView: UITableView) -> Int { return wordPacks.keys.count }
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return 1 }
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
+		let unlockedPacks = packs.unlocked
 		let selectedPack = self.wordPacks.keys[indexPath.section]
 		let color = self.cycleThroughColors(i: indexPath.section) ?? #colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1)
 		
@@ -119,7 +119,7 @@ extension WordPackVC: UITableViewDataSource {
 			cell.title.text = selectedPack
 			cell.cellView.backgroundColor = color
 		
-		cell.costLabel.attributedText = self.unlockable.addBubbleIconTo(String: "750 ", Color: color, Size: nil, Offset: nil)
+		cell.costLabel.attributedText = UnlockableHelper.addBubbleIconTo(String: "750 ", Color: color, Size: nil, Offset: nil)
 		
 		if unlockedPacks.contains(selectedPack) {
 			cell.costLabel.text = "●"
@@ -130,14 +130,14 @@ extension WordPackVC: UITableViewDataSource {
 	}
 	
 	private func cycleThroughColors(i: Int) -> UIColor? {
-		let themesCount = self.unlockable.allThemes.count - 1
+		let themesCount = UnlockableHelper.allThemes.count - 1
 		if i > themesCount {
-			let key = self.unlockable.allThemes[i - themesCount]
-			return self.unlockable.colorFor(Theme: key)
+			let key = UnlockableHelper.allThemes[i - themesCount]
+			return ThemeAssets(currentTheme: key).primaryColor
 		}
 		else {
-			let key = self.unlockable.allThemes[i]
-			return self.unlockable.colorFor(Theme: key)
+			let key = UnlockableHelper.allThemes[i]
+			return ThemeAssets(currentTheme: key).primaryColor
 		}
 	}
 }

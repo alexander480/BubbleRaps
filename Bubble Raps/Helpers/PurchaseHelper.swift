@@ -24,7 +24,7 @@ class PurchaseHelper: NSObject {
 					SwiftyStoreKit.finishTransaction(product.transaction)
 				}
 				else {
-					self.unlockable.addBubbles(Amount: BubbleAmount)
+					UnlockableHelper.addBubbles(Amount: BubbleAmount)
 					print("[SUCCESS] Bubble Purchase Completed")
 					Completion(true)
 				}
