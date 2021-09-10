@@ -17,6 +17,7 @@
 		0A66493223DAC1BE00060259 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A66493123DAC1BE00060259 /* GoogleService-Info.plist */; };
 		0A97189923D1472E00929A10 /* BubbleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97189823D1472E00929A10 /* BubbleVC.swift */; };
 		0A991A6523D6C0E400AA89DF /* UnlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A991A6423D6C0E400AA89DF /* UnlockCell.swift */; };
+		0AA017D926EB04E100BBCDC7 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA017D826EB04E100BBCDC7 /* LoadingScreen.swift */; };
 		0ABAC6F123BAB65B00B5E20C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */; };
 		870E460DF011F86A37A6F2DE /* Pods_Bubble_Raps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17818C9F4D5B7BA2266EBA49 /* Pods_Bubble_Raps.framework */; };
 		E5194DC622C46BB3000083D8 /* RhymeHelper (Old).swift in Sources */ = {isa = PBXBuildFile; fileRef = E5194DC522C46BB3000083D8 /* RhymeHelper (Old).swift */; };
@@ -55,6 +56,7 @@
 		0A97189823D1472E00929A10 /* BubbleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleVC.swift; sourceTree = "<group>"; };
 		0A991A6423D6C0E400AA89DF /* UnlockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockCell.swift; sourceTree = "<group>"; };
 		0A9BFC0623DAA2DB00E959E4 /* Bubble Raps.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bubble Raps.entitlements"; sourceTree = "<group>"; };
+		0AA017D826EB04E100BBCDC7 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		0ABDEC7623E7C2B4009BFCAE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		17818C9F4D5B7BA2266EBA49 /* Pods_Bubble_Raps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bubble_Raps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +238,7 @@
 			children = (
 				E567EEE6231C9119006C36B0 /* PauseMenu.swift */,
 				E556CF192317728500598405 /* RoundCompletedAlert.swift */,
+				0AA017D826EB04E100BBCDC7 /* LoadingScreen.swift */,
 			);
 			path = Popups;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				E5CA5C4023206CEE009AAE96 /* LargeMenuView.swift in Sources */,
 				E5CA33D42325D47B002570F9 /* WordPackVC.swift in Sources */,
 				E5976E1A2310CDCB005C8D1D /* LabelBubbleView.swift in Sources */,
+				0AA017D926EB04E100BBCDC7 /* LoadingScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -383,3 +383,12 @@ extension Data {
 		return array
 	}
 }
+
+
+// MARK: Array Extension
+
+extension Array {
+	var lastIndex: Int {
+		get { return (self.isEmpty) ? 0 : self.count - 1 }
+	}
+}

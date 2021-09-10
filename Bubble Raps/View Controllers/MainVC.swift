@@ -30,6 +30,7 @@ class MainVC: UIViewController {
 	// MARK: Class Variables
 	
 	var interstitial: GADInterstitialAd?
+	// var loadingScreen: LoadingScreen?
 	
 	let rhymeHelper = RhymeHelper()
 	let unlockable = UnlockableHelper()
@@ -61,6 +62,20 @@ class MainVC: UIViewController {
 		
 		self.titleLabel.text = "Please Wait..."
 		
+		// MARK: Initialize LoadingScreen
+		
+//		if let loadingScreen = self.storyboard?.instantiateViewController(withIdentifier: "LoadingScreenStoryboard") as? LoadingScreen {
+//			loadingScreen.providesPresentationContextTransitionStyle = true
+//			loadingScreen.definesPresentationContext = true
+//			loadingScreen.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//			loadingScreen.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+//
+//			self.loadingScreen = loadingScreen
+//		}
+//		else {
+//			print("[ERROR] Failed To Validate LoadingScreen.")
+//		}
+		
 		// MARK: Make Bubbles Bounce Off Edges
 		let bubbleBounds = UIBezierPath(rect: UIScreen.main.bounds)
 		self.bubblesView.collisionBehavior.addBoundary(withIdentifier: "ScreenBounds" as NSCopying, for: bubbleBounds)
@@ -75,25 +90,18 @@ class MainVC: UIViewController {
 		// MARK: Setup Ads
 		self.loadInterstitial()
 		
-		let loadingAlert = self.loadingAlert()
-		self.present(loadingAlert, animated: true, completion: nil)
+		// self.showLoadingScreen()
 		
 		// MARK: Start First Round
-		self.startNextRound(isFirstRound: true) {
-			loadingAlert.dismiss(animated: true, completion: nil)
-		}
+		self.startNextRound(isFirstRound: true) { /* self.hideLoadingScreen() */ }
     }
 	
 	// MARK: Start Round Function
 	
 	// Proceed To Next Screen
 	func nextRoundClicked() {
-		let loadingAlert = self.loadingAlert()
-		self.present(loadingAlert, animated: true, completion: nil)
-		
-		self.startNextRound(isFirstRound: false) {
-			loadingAlert.dismiss(animated: true, completion: nil)
-		}
+		// self.showLoadingScreen()
+		self.startNextRound(isFirstRound: false) { /* self.hideLoadingScreen() */ }
 	}
 	
 	private func startNextRound(isFirstRound: Bool, completion: (() -> ())?) {
@@ -268,7 +276,6 @@ extension MainVC: ContentBubblesViewDataSource {
 		view.frame = CGRect(origin: randomOrigin, size: .zero)
 		
 		// Adjust Size of Bubble if Character Count is Greater Than 8
-		
 		var textWidth = UILabel.textWidth(font: font, text: rhymeWord) + 20 /* extra space for bubble border */
 		if textWidth < 80 { textWidth = 80 }
 		view.frame.size = CGSize(width: textWidth, height: textWidth)
@@ -388,3 +395,8 @@ extension MainVC: GADFullScreenContentDelegate {
 		self.presentRoundCompletedPopup(isGameOver: true)
 	}
 }
+//
+//extension MainVC {
+//	private func showLoadingScreen() { if let loadingScreen = self.loadingScreen { self.present(loadingScreen, animated: true, completion: nil) } }
+//	private func hideLoadingScreen() { if let _ = self.loadingScreen { self.loadingScreen?.dismiss(animated: true, completion: nil) } }
+//}

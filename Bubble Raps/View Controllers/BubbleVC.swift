@@ -43,6 +43,9 @@ class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		// Disable Dark Mode Support
+		overrideUserInterfaceStyle = .light
+		
 		self.tableView.delegate = self
 		self.tableView.dataSource = self
 	}

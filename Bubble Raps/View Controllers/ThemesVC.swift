@@ -11,6 +11,8 @@ import UIKit
 
 class ThemesVC: UIViewController {
 	
+	let themeCost = 250
+	
 	@IBOutlet weak var headingView: UIView!
 	
 	@IBOutlet weak var backButton: UIButton!
@@ -38,6 +40,9 @@ class ThemesVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		// Disable Dark Mode Support
+		overrideUserInterfaceStyle = .light
+		
 		self.tableView.delegate = self
 		self.tableView.dataSource = self
 		
@@ -52,16 +57,16 @@ class ThemesVC: UIViewController {
 		self.headingView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
 	}
 	
-	private func presentPurchaseAlert(theme: String, cost: Int) {
-			let alert = UIAlertController(title: "Purchase \(theme) Theme", message: "This theme costs \(cost) bubbles.", preferredStyle: .alert)
-			let purchaseAction = UIAlertAction(title: "Purchase", style: .default) { (action) in
-				switch self.unlockable.purchaseTheme(Named: theme, Cost: cost) {
+	private func presentThemePurchaseAlert(theme: String) {
+		let alert = UIAlertController(title: "Unlock \(theme) Theme", message: "\(self.themeCost) Bubbles", preferredStyle: .actionSheet)
+			let purchaseAction = UIAlertAction(title: "Confirm", style: .default) { (action) in
+				switch self.unlockable.purchaseTheme(Named: theme, Cost: self.themeCost) {
 				case .success:
 					self.presentAlert(title: "\(theme) Theme Unlocked!", message: "You have \(self.unlockable.currentBubbleBalance()) bubbles remaining.", actions: nil)
 					self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 					self.tableView.reloadData()
 				case .notEnoughBubbles:
-					self.presentAlert(title: "Not Enough Bubbles!", message: "You need \(cost - self.unlockable.currentBubbleBalance()) more bubbles to unlock this theme.", actions: nil)
+					self.presentAlert(title: "Not Enough Bubbles!", message: "You need \(self.themeCost - self.unlockable.currentBubbleBalance()) more bubbles to unlock this theme.", actions: nil)
 				case .alreadyUnlocked:
 					self.presentAlert(title: "You Have Already Unlocked This Theme!", message: "Get yourself something nice, you've got enough bubbles (;", actions: nil)
 				}
@@ -90,10 +95,11 @@ extension ThemesVC: UITableViewDelegate {
 				cell.costLabel.text = "●"
 				cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
 			}
+			
 			self.headingView.backgroundColor = color
 		}
 		else {
-			self.presentPurchaseAlert(theme: selectedTheme, cost: 100)
+			self.presentThemePurchaseAlert(theme: selectedTheme)
 		}
 	}
 	func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -126,7 +132,7 @@ extension ThemesVC: UITableViewDataSource {
 			cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
 		}
 		else {
-			let str = self.unlockable.addBubbleIconTo(String: "100 ", Color: color, Size: nil, Offset: nil)
+			let str = self.unlockable.addBubbleIconTo(String: "\(self.themeCost) ", Color: color, Size: nil, Offset: nil)
 			cell.costLabel.attributedText = str
 		}
 		

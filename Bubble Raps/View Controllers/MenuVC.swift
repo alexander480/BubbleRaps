@@ -24,7 +24,7 @@ class MenuVC: UIViewController {
 	
 	var rewardedAd: GADRewardedAd?
 	
-	var loadingAlert: UIAlertController!
+	// var loadingScreen: LoadingScreen?
 	
 	var selectedPack = "Standard"
 	var selectedPackIndex = 0
@@ -143,46 +143,49 @@ class MenuVC: UIViewController {
 		// self.present(crashlyticsAlert, animated: true, completion: nil)
 		
 		// MARK: Uncomment The Following Line To Add 250 Bubbles To Account
-		// self.unlockable.addBubbles(Amount: 250)
+//		self.unlockable.addBubbles(Amount: 250)
 		
 		// Update Displayed Bubbles Balance
-		// self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
-		
-		// print("[INFO] Current Bubble Balance: \(self.unlockable.currentBubbleBalance())")
+//		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+//
+//		print("[DEV] Manually Add Currency.")
+//		print("[INFO] Current Bubble Balance: \(self.unlockable.currentBubbleBalance())")
 		
 		// MARK: Uncomment Following Lines To Reset Currently Unlocked Packs
-		// UserDefaults.standard.set(["Standard"], forKey: "unlockedPacks")
-		// self.unlockable.validateUnlockedPacks()
-		// print("[INFO] Unlocked Word Packs: \(self.unlockable.currentlyUnlockedPacks())")
+//		UserDefaults.standard.set(["Standard"], forKey: "unlockedPacks")
+//		self.unlockable.validateUnlockedPacks()
+//		print("[DEV] Manually Reset Unlocked Packs.")
+//		print("[INFO] Unlocked Word Packs: \(self.unlockable.currentlyUnlockedPacks())")
 		
 		// MARK: Uncomment Following Lines To Reset Currently Unlocked Themes
-		// UserDefaults.standard.set(["Purpink"], forKey: "unlockedThemes")
-		// self.unlockable.validateUnlockedThemes()
-		// print("[INFO] Unlocked Themes: \(self.unlockable.currentlyUnlockedThemes())")
+//		UserDefaults.standard.set(["Purpink"], forKey: "unlockedThemes")
+//		self.unlockable.validateUnlockedThemes()
+//		print("[DEV] Manually Reset Unlocked Themes.")
+//		print("[INFO] Unlocked Themes: \(self.unlockable.currentlyUnlockedThemes())")
 	}
 	
 	@IBOutlet weak var packDecreaseArrow: UIButton!
 	@IBAction func packDecrease(_ sender: Any) {
-		/*
 		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
-		var nextPack = "nil"
-		
-		if self.selectedPackIndex <= 0 { self.selectedPackIndex = unlockedPacks.count - 1; nextPack = unlockedPacks[self.selectedPackIndex] }
-		else { self.selectedPackIndex -= 1; nextPack = unlockedPacks[self.selectedPackIndex] }
-		
-		self.packLabel.text = nextPack
-		*/
+
+		// Decrease Index Or Return To End
+		if (self.selectedPackIndex <= 0) { self.selectedPackIndex = unlockedPacks.lastIndex }
+		else { self.selectedPackIndex -= 1 }
+
+		let newPack = unlockedPacks[self.selectedPackIndex]
+		self.packLabel.text = newPack
 	}
 	
 	@IBOutlet weak var packIncreaseArrow: UIButton!
 	@IBAction func packIncrease(_ sender: Any) {
-		/*
 		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
 		
-		self.selectedPackIndex += 1
-		if self.selectedPackIndex > unlockedPacks.count - 1 { self.selectedPackIndex = 0 }
-		self.packLabel.text = unlockedPacks[self.selectedPackIndex]
-		*/
+		// Increase Index Or Return To Beginning
+		if (self.selectedPackIndex >= unlockedPacks.lastIndex) { self.selectedPackIndex = 0 }
+		else { self.selectedPackIndex += 1 }
+		
+		let newPack = unlockedPacks[self.selectedPackIndex]
+		self.packLabel.text = newPack
 	}
 	
 	// MARK: Class Functions
@@ -190,8 +193,24 @@ class MenuVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.loadingAlert = self.loadingAlert()
+		// MARK: Initialize LoadingScreen
 
+//		if let loadingScreenVC = self.storyboard?.instantiateViewController(withIdentifier: "LoadingScreenStoryboard") as? LoadingScreen {
+//			loadingScreenVC.providesPresentationContextTransitionStyle = true
+//			loadingScreenVC.definesPresentationContext = true
+//			loadingScreenVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//			loadingScreenVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+//
+//			self.loadingScreen = loadingScreenVC
+//		}
+//		else {
+//			print("[ERROR] Failed To Validate LoadingScreen.")
+//		}
+		
+		
+		// Disable Dark Mode Support
+		overrideUserInterfaceStyle = .light
+		
 		// Validate unlockedThemes and unlockedPacks
 		self.unlockable.validateUnlockedThemes()
 		self.unlockable.validateUnlockedPacks()
@@ -242,8 +261,6 @@ class MenuVC: UIViewController {
 extension MenuVC: GADFullScreenContentDelegate {
 	
 	private func loadRewardedAd(completion: (() -> ())? = nil) {
-		// self.present(self.loadingAlert, animated: true, completion: nil)
-		
 		let adID = "ca-app-pub-6543648439575950/6863943940"
 		let adRequest = GADRequest()
 		
@@ -261,12 +278,10 @@ extension MenuVC: GADFullScreenContentDelegate {
 	}
 	
 	private func presentRewardedAd() {
-		// self.loadingAlert.dismiss(animated: true, completion: nil)
-		
 		if let ad = self.rewardedAd {
 			ad.present(fromRootViewController: self, userDidEarnRewardHandler: {
 				print("[INFO] User Earned Reward.");
-				self.unlockable.addBubbles(Amount: 10)
+				self.unlockable.addBubbles(Amount: 100)
 				self.adCompletedAlert()
 			})
 		} else {
@@ -280,7 +295,7 @@ extension MenuVC: GADFullScreenContentDelegate {
 	}
 	
 	private func adRequestAlert() {
-		let alert = UIAlertController(title: "Earn Free Bubbles!!", message: "Watch A Short Video To Earn 10 Free Bubbles", preferredStyle: .alert)
+		let alert = UIAlertController(title: "Earn Free Bubbles!!", message: "Watch A Short Video To Earn 100 Free Bubbles", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Watch Video", style: .default) { (action) in
 			alert.dismiss(animated: true, completion: nil)
 			self.loadRewardedAd {
@@ -295,7 +310,7 @@ extension MenuVC: GADFullScreenContentDelegate {
 	}
 	
 	private func adCompletedAlert() {
-		let alert = UIAlertController(title: "Thanks For Watching!!", message: "10 bubbles have been awarded to your account (unless the ad was closed early)", preferredStyle: .alert)
+		let alert = UIAlertController(title: "Thanks For Watching!!", message: "100 bubbles have been awarded to your account (unless the ad was closed early)", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Watch Another", style: .default) { (action) in
 			alert.dismiss(animated: true) {
 				self.loadRewardedAd {
@@ -312,3 +327,8 @@ extension MenuVC: GADFullScreenContentDelegate {
 		self.present(alert, animated: true, completion: nil)
 	}
 }
+
+//extension MenuVC {
+//	private func showLoadingScreen() { if let loadingScreen = self.loadingScreen { self.present(loadingScreen, animated: true, completion: nil) } }
+//	private func hideLoadingScreen() { if let _ = self.loadingScreen { self.loadingScreen?.dismiss(animated: true, completion: nil) } }
+//}
