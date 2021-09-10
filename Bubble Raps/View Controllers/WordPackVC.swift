@@ -93,7 +93,7 @@ class WordPackVC: UIViewController {
 extension WordPackVC: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
-		let selectedPack = self.wordPacks.keys[indexPath.section]
+		let selectedPack = WordPacks.keys[indexPath.section]
 		print("[INFO] \(selectedPack) Word Pack Selected")
 		
 		if unlockedPacks.contains(selectedPack) {
@@ -108,11 +108,11 @@ extension WordPackVC: UITableViewDelegate {
 // MARK: UITableViewDataSource
 
 extension WordPackVC: UITableViewDataSource {
-	func numberOfSections(in tableView: UITableView) -> Int { return wordPacks.keys.count }
+	func numberOfSections(in tableView: UITableView) -> Int { return WordPacks.keys.count }
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return 1 }
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
-		let selectedPack = self.wordPacks.keys[indexPath.section]
+		let selectedPack = WordPacks.keys[indexPath.section]
 		let color = self.cycleThroughColors(i: indexPath.section) ?? #colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1)
 		
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: "UnlockCell", for: indexPath) as! UnlockCell

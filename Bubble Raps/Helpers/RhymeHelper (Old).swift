@@ -21,34 +21,45 @@ struct WordPack {
 
 class RhymeHelper {
 	
-	func createWordPack(completion: @escaping (WordPack) -> ()) {
-		var topicWord = ""
-		var rhymes = [String]()
-		var notRhymes = [String]()
-		var rhymeDictionary = [String: Bool]()
-		
-		self.fetchRandomTopicWord { (randomWord) in
-			self.createRhymesFor(Topic: randomWord) { (validatedTopic, rhymesArray) in
-				print("[SUCCESS] Successfully Validated A New Topic: \(validatedTopic)")
-				topicWord = validatedTopic
+	func createWordPack(topicWord: String?, completion: @escaping (WordPack) -> ()) {
+
+		if let topicWord = topicWord {
+			self.createRhymesFor(Topic: topicWord) { (topic, rhymes) in
+				print("[SUCCESS] Successfully Validated A New Topic: \(topic)")
+				print("[SUCCESS] Successfully Fetched Rhyme Array: \(rhymes)")
 				
-				print("[SUCCESS] Successfully Fetched Rhyme Array: \(rhymesArray)")
-				rhymes = rhymesArray
-				
-				self.fetchNotRhymes { (notRhymesArray) in
-					print("[SUCCESS] Successfully Fetched Not Rhymes Array: \(notRhymesArray)")
-					notRhymes = notRhymesArray
+				self.fetchNotRhymes { (notRhymes) in
+					print("[SUCCESS] Successfully Fetched Not Rhymes Array: \(notRhymes)")
 					
 					let dict = self.createRhymeDictionary(rhymes: rhymes, notRhymes: notRhymes)
-					
 					print("[SUCCESS] Created Rhyme Dictionary. [INFO] \(dict)")
-					rhymeDictionary = dict
 					
-					let allWords = Array(rhymeDictionary.keys)
-					let pack = WordPack(topic: topicWord, rhymes: rhymes, notRhymes: notRhymes, allWords: allWords, rhymeDictionary: rhymeDictionary)
+					let allWords = Array(dict.keys)
+					let pack = WordPack(topic: topic, rhymes: rhymes, notRhymes: notRhymes, allWords: allWords, rhymeDictionary: dict)
 					
 					print("[SUCCESS] Created Word Pack. [INFO] \(pack)")
 					completion(pack)
+				}
+			}
+			
+		} else {
+			self.fetchRandomTopicWord { (randomWord) in
+				self.createRhymesFor(Topic: randomWord) { (topic, rhymes) in
+					print("[SUCCESS] Successfully Validated A New Topic: \(topic)")
+					print("[SUCCESS] Successfully Fetched Rhyme Array: \(rhymes)")
+					
+					self.fetchNotRhymes { (notRhymes) in
+						print("[SUCCESS] Successfully Fetched Not Rhymes Array: \(notRhymes)")
+						
+						let dict = self.createRhymeDictionary(rhymes: rhymes, notRhymes: notRhymes)
+						print("[SUCCESS] Created Rhyme Dictionary. [INFO] \(dict)")
+						
+						let allWords = Array(dict.keys)
+						let pack = WordPack(topic: topic, rhymes: rhymes, notRhymes: notRhymes, allWords: allWords, rhymeDictionary: dict)
+						
+						print("[SUCCESS] Created Word Pack. [INFO] \(pack)")
+						completion(pack)
+					}
 				}
 			}
 		}
@@ -153,13 +164,15 @@ class RhymeHelper {
 				var rhymes = [String]()
 				for rhymeObject in data {
 					if let rhymeWord = rhymeObject["word"] as? String {
-						if rhymeWord.contains(" ") { print("[WARNING] Removing Multi-Word Rhyme") }
-						else if rhymeWord.contains(word) { print("[WARNING] Removing Rhyme That Contains Original Word") }
+						if rhymeWord.contains(" ") { print("[INFO] Removing Multi-Word Rhyme") }
+						else if rhymeWord.count > 10 { print("[INFO] Removing Rhyme Containing More Than 12 Letters") }
+						else if rhymeWord.contains(word) { print("[INFO] Removing Rhyme That Contains Original Word") }
 						else { rhymes.append(rhymeWord) }
 					}
 				}
 				
-				completion(rhymes)
+				let shuffledRhymes = rhymes.shuffled()
+				completion(shuffledRhymes)
 			case .failure(let error):
 				print("[ERROR] Error Fetching Rhymes From API. [MESSAGE] \(error.localizedDescription)")
 				

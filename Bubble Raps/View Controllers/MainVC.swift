@@ -48,7 +48,7 @@ class MainVC: UIViewController {
 	var potentialRhymesDictionary:[String:Bool]!
 	var potentialRhymesArray:[String]!
 	
-	var wordsToRhyme = [String]()
+	var topicWords = WordPacks.standard.shuffled()
 	
 	// MARK: Starting New 'WordPack Struct' Integration
 	
@@ -86,11 +86,22 @@ class MainVC: UIViewController {
 	
 	// MARK: Start Round Function
 	
+	// Proceed To Next Screen
+	func nextRoundClicked() {
+		let loadingAlert = self.loadingAlert()
+		self.present(loadingAlert, animated: true, completion: nil)
+		
+		self.startNextRound(isFirstRound: false) {
+			loadingAlert.dismiss(animated: true, completion: nil)
+		}
+	}
+	
 	private func startNextRound(isFirstRound: Bool, completion: (() -> ())?) {
 		self.round += 1
 		self.correctAnswers = 0
 		
-		self.rhymeHelper.createWordPack { (newPack) in
+		let newTopic = self.topicWords.popLast()
+		self.rhymeHelper.createWordPack(topicWord: newTopic) { (newPack) in
 			self.bubblesView.removeBubbles()
 			self.wordPack = newPack
 			self.titleLabel.text = newPack.topic
@@ -204,7 +215,7 @@ class MainVC: UIViewController {
 
 extension MainVC: ContentBubblesViewDelegate {
     func minimalSizeForBubble(in view: ContentBubblesView) -> CGSize { return CGSize(width: 80, height: 80) }
-    func maximumSizeForBubble(in view: ContentBubblesView) -> CGSize { return CGSize(width: 130, height: 130) }
+    func maximumSizeForBubble(in view: ContentBubblesView) -> CGSize { return CGSize(width: 160, height: 160) }
     func contentBubblesView(_ view: ContentBubblesView, didSelectItemAt index: Int) {
 		guard let wordPack = self.wordPack else { print("[ERROR] Unable To Validate Current WordPack."); return }
 		let wordSelected = wordPack.allWords[index]
@@ -239,9 +250,14 @@ extension MainVC: ContentBubblesViewDataSource {
     func countOfSizes(in view: ContentBubblesView) -> Int { return 3 }
     func addOrUpdateBubbleView(forItemAt index: Int, currentView: BubbleView?) -> BubbleView {
 		var view: BubbleView! = currentView
+		
 		guard let wordPack = self.wordPack else { print("[ERROR] Unable to Validate Current WordPack."); return view }
-		if let labelView = UINib(nibName: "LabelBubbleView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LabelBubbleView {
-			labelView.label.text = wordPack.allWords[index]
+		let rhymeWord = wordPack.allWords[index]
+		
+		let font = UIFont.systemFont(ofSize: 17.0)
+		if let labelView = UINib(nibName: "LabelBubbleView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LabelBubbleView  {
+			labelView.label.font = font
+			labelView.label.text = rhymeWord
 			labelView.imageView.image = self.unlockable.bubbleImageFor(Theme: self.unlockable.currentTheme())
 			labelView.imageView.isHidden = false
 			view = labelView
@@ -252,7 +268,10 @@ extension MainVC: ContentBubblesViewDataSource {
 		view.frame = CGRect(origin: randomOrigin, size: .zero)
 		
 		// Adjust Size of Bubble if Character Count is Greater Than 8
-		if wordPack.allWords[index].count > 8 { view.frame.size = CGSize(width: 110, height: 110) }
+		
+		var textWidth = UILabel.textWidth(font: font, text: rhymeWord) + 20 /* extra space for bubble border */
+		if textWidth < 80 { textWidth = 80 }
+		view.frame.size = CGSize(width: textWidth, height: textWidth)
 		
 		return view
     }
@@ -302,15 +321,7 @@ extension MainVC: RoundCompletedAlertDelegate {
 		}
 	}
 	
-	// Proceed To Next Screen
-	func nextRoundClicked() {
-		let loadingAlert = self.loadingAlert()
-		self.present(loadingAlert, animated: true, completion: nil)
-		
-		self.startNextRound(isFirstRound: false) {
-			loadingAlert.dismiss(animated: true, completion: nil)
-		}
-	}
+	
 	
 	func gameOverClicked() { self.performSegue(withIdentifier: "BackToMenu", sender: self) }
 }

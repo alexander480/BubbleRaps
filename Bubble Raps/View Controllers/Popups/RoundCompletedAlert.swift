@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol RoundCompletedAlertDelegate: class {
+protocol RoundCompletedAlertDelegate: AnyObject {
 	func nextRoundClicked()
 	func gameOverClicked()
 }

@@ -68,7 +68,6 @@ class MenuVC: UIViewController {
 	@IBOutlet weak var beginButton: UIButton!
 	@IBAction func beginAction(_ sender: Any) {
 		if ReachabilityHelper.isConnectedToNetwork() {
-			// MARK: Segue Often Crashes App For Some Reason
 			self.performSegue(withIdentifier: "BeginSegue", sender: self)
 		}
 		else { self.presentAlert(title: "No Internet Connection!", message: "Please connect to the internet", actions: nil) }
@@ -226,20 +225,16 @@ class MenuVC: UIViewController {
 	}
 	
 	// MARK: Prepare For Segue
-	/*
+	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "BeginSegue" {
-			if let vc = segue.destination as? MainVC /*, let packName = self.packLabel.text*/ {
-				// vc.wordsToRhyme = self.unlockable.getShuffledWordPack(Named: packName)
-				
-				// MARK: Starting New Integration
-				rhymeHelper.createWordPack { (wordPack) in
-					vc.wordPack = wordPack
+			if let vc = segue.destination as? MainVC, let selectedPack = self.packLabel.text {
+				if let topicWords = WordPacks.packs[selectedPack] {
+					vc.topicWords = topicWords.shuffled()
 				}
 			}
 		}
 	}
-	*/
 }
 
 // MARK: Setup Rewarded Ad
