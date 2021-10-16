@@ -14,7 +14,6 @@ Bubble Raps is an educational rhyming game app. This game is intended to help pe
 
 ---
 
-
 <!--
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
