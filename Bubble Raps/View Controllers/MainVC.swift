@@ -45,15 +45,22 @@ class MainVC: UIViewController {
 	var roundTime = 0
 	var timeLeft = 0
 	
-	var rhyme:RhymeHelper!
-	var potentialRhymesDictionary:[String:Bool]!
-	var potentialRhymesArray:[String]!
-	
+	var rhyme: RhymeHelper!
+
 	var topicWords = WordPacks.standard.shuffled()
 	
 	// MARK: Starting New 'WordPack Struct' Integration
 	
-	var wordPack: WordPack?
+	var wordPack: WordPack? {
+		willSet {
+			self.bubblesView.removeBubbles()
+		}
+		didSet {
+			self.titleLabel.text = wordPack?.topic
+			self.bubblesView.reload()
+			self.startTimer(fromPause: false)
+		}
+	}
 	
 	// MARK: viewDidLoad
 	
@@ -109,12 +116,8 @@ class MainVC: UIViewController {
 		self.correctAnswers = 0
 		
 		let newTopic = self.topicWords.popLast()
-		self.rhymeHelper.createWordPack(topicWord: newTopic) { (newPack) in
-			self.bubblesView.removeBubbles()
+		RhymeHelper.createWordPack(topicWord: newTopic) { (newPack) in
 			self.wordPack = newPack
-			self.titleLabel.text = newPack.topic
-			self.bubblesView.reload()
-			self.startTimer(fromPause: false)
 			completion?()
 		}
 	}
