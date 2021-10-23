@@ -19,7 +19,7 @@ class LoadingScreenVC: UIViewController {
 		
 		let blurEffect = UIBlurEffect(style: .light)
 		let blurEffectView = UIVisualEffectView(effect: blurEffect)
-			blurEffectView.frame = self.view.frame
+		blurEffectView.frame = self.view.frame
 		
 		self.view.insertSubview(blurEffectView, at: 0)
 		
@@ -27,4 +27,3 @@ class LoadingScreenVC: UIViewController {
 		self.titleLabel.text = "Loading..."
 	}
 }
-
