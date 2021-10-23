@@ -171,13 +171,13 @@
 		E54328AD22C1D34300187D44 /* Bubble Raps */ = {
 			isa = PBXGroup;
 			children = (
+				0ABDEC7623E7C2B4009BFCAE /* README.md */,
 				E51682A22307B42B00BB4713 /* Core */,
 				0A9BFC0623DAA2DB00E959E4 /* Bubble Raps.entitlements */,
 				E5194DC722C475EC000083D8 /* User Interface */,
 				E547327A22F7DAC0002FF63F /* View Controllers */,
 				E5CA5C3A232048C6009AAE96 /* Helpers */,
 				E54EEBF1231E1EFE002981F6 /* Snippets.rtf */,
-				0ABDEC7623E7C2B4009BFCAE /* README.md */,
 			);
 			path = "Bubble Raps";
 			sourceTree = "<group>";
