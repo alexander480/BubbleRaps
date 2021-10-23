@@ -8,9 +8,11 @@
 
 import UIKit
 
-class LoadingScreenVC: UIViewController {
+class LoadingScreen: UIViewController {
 	@IBOutlet weak var containerView: UIView!
 	@IBOutlet weak var titleLabel: UILabel!
+	
+	let unlockable = UnlockableHelper()
 	
 	// MARK: Override Functions
 	
@@ -19,11 +21,11 @@ class LoadingScreenVC: UIViewController {
 		
 		let blurEffect = UIBlurEffect(style: .light)
 		let blurEffectView = UIVisualEffectView(effect: blurEffect)
-		blurEffectView.frame = self.view.frame
+			blurEffectView.frame = self.view.frame
 		
 		self.view.insertSubview(blurEffectView, at: 0)
 		
-		self.containerView.backgroundColor = Theme.primary()
+		self.containerView.backgroundColor = self.unlockable.colorForCurrentTheme()
 		self.titleLabel.text = "Loading..."
 	}
 }

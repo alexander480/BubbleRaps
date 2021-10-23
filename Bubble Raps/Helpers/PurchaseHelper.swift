@@ -13,6 +13,9 @@ import SwiftyStoreKit
 // Maybe Allow People To Purchase Hints or Additional Time
 
 class PurchaseHelper: NSObject {
+	
+	let unlockable = UnlockableHelper()
+	
 	func purchase(Product: SKProduct, BubbleAmount: Int, Completion: @escaping (Bool) -> Void) {
 		SwiftyStoreKit.purchaseProduct(Product, quantity: 1, atomically: true) { result in
 			switch result {
@@ -21,7 +24,7 @@ class PurchaseHelper: NSObject {
 					SwiftyStoreKit.finishTransaction(product.transaction)
 				}
 				else {
-					Currency.addBubbles(Amount: BubbleAmount)
+					self.unlockable.addBubbles(Amount: BubbleAmount)
 					print("[SUCCESS] Bubble Purchase Completed")
 					Completion(true)
 				}

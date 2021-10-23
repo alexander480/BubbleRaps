@@ -30,6 +30,7 @@ class RoundCompletedAlert: UIViewController {
 	
 	// MARK: Class Variables
 	
+	let unlockable = UnlockableHelper()
 	var delegate: RoundCompletedAlertDelegate?
 	
 	var isHighScore = false

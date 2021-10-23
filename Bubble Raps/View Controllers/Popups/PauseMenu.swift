@@ -30,6 +30,8 @@ class PauseMenu: UIViewController {
 	
 	// MARK: Class Variables
 	
+	let unlockable = UnlockableHelper()
+	
 	var delegate: PauseMenuDelegate?
 	var currentScore = 0
 	
@@ -44,7 +46,7 @@ class PauseMenu: UIViewController {
 		
 		self.view.insertSubview(blurEffectView, at: 0)
 		
-		self.pauseView.backgroundColor = Theme.primary()
+		self.pauseView.backgroundColor = self.unlockable.colorForCurrentTheme()
 		
 		self.titleLabel.text = String(describing: self.currentScore)
 		self.subtitleLabel.text = "Correct Answers"

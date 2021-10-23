@@ -38,7 +38,8 @@ class WordPackVC: UIViewController {
 	
 	// MARK: Local Variables
 	
-	let wordPacks = Packs()
+	let wordPacks = WordPacks()
+	let unlockable = UnlockableHelper()
 	
 	var selectedPack = ""
 	
@@ -56,8 +57,8 @@ class WordPackVC: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		self.headingView.backgroundColor = Theme.primary()
-		self.bubbleButton.setAttributedTitleForAllStates(title: Currency.bubbleBalanceWithIcon())
+		self.headingView.backgroundColor = self.unlockable.colorForCurrentTheme()
+		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 	}
 	
 	override func viewWillLayoutSubviews() {
@@ -71,15 +72,15 @@ class WordPackVC: UIViewController {
 	private func presentPackPurchaseAlert(pack: String) {
 		let alert = UIAlertController(title: "Unlock \(pack) Word Pack", message: "\(self.packCost) Bubbles", preferredStyle: .actionSheet)
 		let purchaseAction = UIAlertAction(title: "Confirm", style: .default) { (action) in
-			switch Packs.purchase(pack) {
-				case .success:
-					self.presentAlert(title: "\(pack) Word Pack Unlocked!", message: "\(Currency.currentBubbleBalance()) bubbles remaining.", actions: nil)
-					self.bubbleButton.setAttributedTitleForAllStates(title: Currency.bubbleBalanceWithIcon())
-					self.tableView.reloadData()
-				case .notEnoughBubbles:
-					self.presentAlert(title: "Not Enough Bubbles!", message: "You need \(self.packCost - Currency.currentBubbleBalance()) more bubbles to unlock this word pack.", actions: nil)
-				case .alreadyUnlocked:
-					self.presentAlert(title: "You Have Already Unlocked This Word Pack!", message: "Go get yourself something nice, you've got enough bubbles (;", actions: nil)
+			switch self.unlockable.purchasePack(Named: pack, Cost: self.packCost) {
+			case .success:
+				self.presentAlert(title: "\(pack) Word Pack Unlocked!", message: "\(self.unlockable.currentBubbleBalance()) bubbles remaining.", actions: nil)
+				self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+				self.tableView.reloadData()
+			case .notEnoughBubbles:
+				self.presentAlert(title: "Not Enough Bubbles!", message: "You need \(self.packCost - self.unlockable.currentBubbleBalance()) more bubbles to unlock this word pack.", actions: nil)
+			case .alreadyUnlocked:
+				self.presentAlert(title: "You Have Already Unlocked This Word Pack!", message: "Go get yourself something nice, you've got enough bubbles (;", actions: nil)
 			}
 			alert.dismiss(animated: true, completion: nil)
 		}
@@ -97,8 +98,8 @@ class WordPackVC: UIViewController {
 
 extension WordPackVC: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let unlockedPacks = Packs.unlocked()
-		let selectedPack = Packs.keys[indexPath.section]
+		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
+		let selectedPack = WordPacks.keys[indexPath.section]
 		print("[INFO] \(selectedPack) Word Pack Selected")
 		
 		if unlockedPacks.contains(selectedPack) {
@@ -115,18 +116,18 @@ extension WordPackVC: UITableViewDelegate {
 // MARK: UITableViewDataSource
 
 extension WordPackVC: UITableViewDataSource {
-	func numberOfSections(in tableView: UITableView) -> Int { return Packs.keys.count }
+	func numberOfSections(in tableView: UITableView) -> Int { return WordPacks.keys.count }
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return 1 }
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let unlockedPacks = Packs.unlocked()
-		let selectedPack = Packs.keys[indexPath.section]
+		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
+		let selectedPack = WordPacks.keys[indexPath.section]
 		let color = self.cycleThroughColors(i: indexPath.section) ?? #colorLiteral(red: 0.937254902, green: 0.7607843137, blue: 1, alpha: 1)
 		
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: "UnlockCell", for: indexPath) as! UnlockCell
 			cell.title.text = selectedPack
 			cell.cellView.backgroundColor = color
 		
-		cell.costLabel.attributedText = Theme.addBubbleIconTo("\(packCost) ", color: color)
+		cell.costLabel.attributedText = self.unlockable.addBubbleIconTo(String: "\(packCost) ", Color: color, Size: nil, Offset: nil)
 		
 		if unlockedPacks.contains(selectedPack) {
 			cell.costLabel.text = "●"
@@ -137,11 +138,15 @@ extension WordPackVC: UITableViewDataSource {
 	}
 	
 	private func cycleThroughColors(i: Int) -> UIColor? {
-		let allThemes = Theme.allThemes
-		let themeCount = Theme.allThemes.count - 1
-		
-		if i > themeCount { return Theme.color(forTheme: allThemes[i - themeCount]) }
-		else { return Theme.color(forTheme: allThemes[i]) }
+		let themesCount = self.unlockable.allThemes.count - 1
+		if i > themesCount {
+			let key = self.unlockable.allThemes[i - themesCount]
+			return self.unlockable.colorFor(Theme: key)
+		}
+		else {
+			let key = self.unlockable.allThemes[i]
+			return self.unlockable.colorFor(Theme: key)
+		}
 	}
 }
 

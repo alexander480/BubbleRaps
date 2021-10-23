@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BubbleVC: UIViewController {
+class BubbleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
 	// MARK: Storyboard Outlets
 	
@@ -32,6 +32,7 @@ class BubbleVC: UIViewController {
 	
 	// MARK: Class Variables
 	
+	let unlockable = UnlockableHelper()
 	let purchase = PurchaseHelper()
 	
 	let bubbleAmounts = [5000, 3000, 1750, 750]
@@ -50,8 +51,8 @@ class BubbleVC: UIViewController {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
-		self.headingView.backgroundColor = Theme.primary()
-		self.bubbleButton.setAttributedTitleForAllStates(title: Currency.bubbleBalanceWithIcon())
+		self.headingView.backgroundColor = self.unlockable.colorForCurrentTheme()
+		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 	}
 	
 	override func viewWillLayoutSubviews() {
@@ -61,57 +62,6 @@ class BubbleVC: UIViewController {
 		self.headingView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
 	}
 	
-	
-	
-	private func cycleThroughColors(i: Int) -> UIColor? {
-		let rowCount = self.bubbleAmounts.count - 1
-		if i > rowCount {
-			let key = Theme.allThemes[i - rowCount]
-			return Theme.color(forTheme: key)
-		}
-		else {
-			let key = Theme.allThemes[i]
-			return Theme.color(forTheme: key)
-		}
-	}
-	
-	private func addBubbleIconTo(String: String, Color: UIColor) -> NSMutableAttributedString {
-		let str = NSMutableAttributedString(string: String)
-		if let font = UIFont(name: "AvenirNext-HeavyItalic", size: 22.0) {
-			str.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.length))
-			str.addAttribute(.foregroundColor, value: Color, range: NSRange(location: 0, length: str.length))
-			str.add(Image: #imageLiteral(resourceName: "White Icon"), WithOffset: -6.00)
-		}
-		
-		return str
-	}
-}
-
-extension BubbleVC: UITableViewDelegate {
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let index = indexPath.row
-		let selectedAmount = self.bubbleAmounts[index]
-		let loadingAlert = self.loadingAlert()
-		
-		self.present(loadingAlert, animated: true, completion: nil)
-		self.purchase.productFor(BubbleAmount: selectedAmount) { (product) in
-			if let product = product {
-				self.purchase.purchase(Product: product, BubbleAmount: selectedAmount) { (didComplete) in
-					loadingAlert.dismiss(animated: true, completion: nil)
-					if didComplete {
-						self.presentAlert(title: "Purchase Complete!", message: "\(selectedAmount) bubbles have been added to your account", actions: nil)
-						self.bubbleButton.setAttributedTitleForAllStates(title: Currency.bubbleBalanceWithIcon())
-					}
-				}
-			}
-			else {
-				self.presentAlert(title: "Could Not Complete Purchase", message: "Please try again", actions: nil)
-			}
-		}
-	}
-}
-
-extension BubbleVC: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.bubbleAmounts.count
 	}
@@ -124,13 +74,58 @@ extension BubbleVC: UITableViewDataSource {
 		let cost = self.bubbleCosts[index]
 		
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: "UnlockCell", for: indexPath) as! UnlockCell
-		cell.title.attributedText = self.addBubbleIconTo(String: "\(bubbleAmount) ", Color: UIColor.white)
-		cell.cellView.backgroundColor = color
+			cell.title.attributedText = self.addBubbleIconTo(String: "\(bubbleAmount) ", Color: UIColor.white)
+			cell.cellView.backgroundColor = color
 		
 		cell.costLabel.font = UIFont(name: "AvenirNext-Bold", size: 16.0)
 		cell.costLabel.textColor = color
 		cell.costLabel.text = cost
 		
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let index = indexPath.row
+		let selectedAmount = self.bubbleAmounts[index]
+		let loadingAlert = self.loadingAlert()
+		
+		self.present(loadingAlert, animated: true, completion: nil)
+		self.purchase.productFor(BubbleAmount: selectedAmount) { (product) in
+			if let product = product {
+				self.purchase.purchase(Product: product, BubbleAmount: selectedAmount) { (didComplete) in
+					loadingAlert.dismiss(animated: true, completion: nil)
+					if didComplete {
+						self.presentAlert(title: "Purchase Complete!", message: "\(selectedAmount) bubbles have been added to your account", actions: nil)
+						self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+					}
+				}
+			}
+			else {
+				self.presentAlert(title: "Could Not Complete Purchase", message: "Please try again", actions: nil)
+			}
+		}
+	}
+	
+	private func cycleThroughColors(i: Int) -> UIColor? {
+		let rowCount = self.bubbleAmounts.count - 1
+		if i > rowCount {
+			let key = self.unlockable.allThemes[i - rowCount]
+			return self.unlockable.colorFor(Theme: key)
+		}
+		else {
+			let key = self.unlockable.allThemes[i]
+			return self.unlockable.colorFor(Theme: key)
+		}
+	}
+	
+	private func addBubbleIconTo(String: String, Color: UIColor) -> NSMutableAttributedString {
+		let str = NSMutableAttributedString(string: String)
+		if let font = UIFont(name: "AvenirNext-HeavyItalic", size: 22.0) {
+			str.addAttribute(.font, value: font, range: NSRange(location: 0, length: str.length))
+			str.addAttribute(.foregroundColor, value: Color, range: NSRange(location: 0, length: str.length))
+			str.add(Image: #imageLiteral(resourceName: "White Icon"), WithOffset: -6.00)
+		}
+		
+		return str
 	}
 }

@@ -20,25 +20,14 @@ class MenuVC: UIViewController {
 	// MARK: Class Variables
 	
 	let rhymeHelper = RhymeHelper()
-	
-	
-	var selectedPackIndex = 0
-	
-	var selectedPack = "Standard" { didSet { self.topicWords = Packs.allPacks[selectedPack] } }
-	
-	var topicWords = Packs.standard {
-		didSet {
-			
-		}
-	}
-	
-	var firstWordPack
+	let unlockable = UnlockableHelper()
 	
 	var rewardedAd: GADRewardedAd?
 	
 	// var loadingScreen: LoadingScreen?
 	
-	
+	var selectedPack = "Standard"
+	var selectedPackIndex = 0
 	
 	// MARK: Storyboard Outlets
 	
@@ -154,28 +143,30 @@ class MenuVC: UIViewController {
 		// self.present(crashlyticsAlert, animated: true, completion: nil)
 		
 		// MARK: Uncomment The Following Line To Add 250 Bubbles To Account
-//		Currency.addBubbles(Amount: 250)
+//		self.unlockable.addBubbles(Amount: 250)
 		
 		// Update Displayed Bubbles Balance
-//		self.bubbleButton.setAttributedTitleForAllStates(title: Currency.bubbleBalanceWithIcon())
+//		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 //
 //		print("[DEV] Manually Add Currency.")
-//		print("[INFO] Current Bubble Balance: \(Currency.currentBubbleBalance())")
+//		print("[INFO] Current Bubble Balance: \(self.unlockable.currentBubbleBalance())")
 		
 		// MARK: Uncomment Following Lines To Reset Currently Unlocked Packs
 //		UserDefaults.standard.set(["Standard"], forKey: "unlockedPacks")
+//		self.unlockable.validateUnlockedPacks()
 //		print("[DEV] Manually Reset Unlocked Packs.")
-//		print("[INFO] Unlocked Word Packs: \(Packs.unlocked())")
+//		print("[INFO] Unlocked Word Packs: \(self.unlockable.currentlyUnlockedPacks())")
 		
 		// MARK: Uncomment Following Lines To Reset Currently Unlocked Themes
 //		UserDefaults.standard.set(["Purpink"], forKey: "unlockedThemes")
+//		self.unlockable.validateUnlockedThemes()
 //		print("[DEV] Manually Reset Unlocked Themes.")
-//		print("[INFO] Unlocked Themes: \(Theme.unlockedThemes())")
+//		print("[INFO] Unlocked Themes: \(self.unlockable.currentlyUnlockedThemes())")
 	}
 	
 	@IBOutlet weak var packDecreaseArrow: UIButton!
 	@IBAction func packDecrease(_ sender: Any) {
-		let unlockedPacks = Packs.unlocked()
+		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
 
 		// Decrease Index Or Return To End
 		if (self.selectedPackIndex <= 0) { self.selectedPackIndex = unlockedPacks.lastIndex }
@@ -187,7 +178,7 @@ class MenuVC: UIViewController {
 	
 	@IBOutlet weak var packIncreaseArrow: UIButton!
 	@IBAction func packIncrease(_ sender: Any) {
-		let unlockedPacks = Packs.unlocked()
+		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
 		
 		// Increase Index Or Return To Beginning
 		if (self.selectedPackIndex >= unlockedPacks.lastIndex) { self.selectedPackIndex = 0 }
@@ -216,12 +207,18 @@ class MenuVC: UIViewController {
 //			print("[ERROR] Failed To Validate LoadingScreen.")
 //		}
 		
+		
 		// Disable Dark Mode Support
 		overrideUserInterfaceStyle = .light
 		
+		// Validate unlockedThemes and unlockedPacks
+		self.unlockable.validateUnlockedThemes()
+		self.unlockable.validateUnlockedPacks()
+		
 		// Setup Theme Related UI Elements
-		self.themeButton.setImageForAllStates(image: Theme.tabImage())
-		self.logoImage.image = Theme.logoImage()
+		let currentTheme = self.unlockable.currentTheme()
+		self.themeButton.setImageForAllStates(image: self.unlockable.tabImageFor(Theme: currentTheme))
+		self.logoImage.image = self.unlockable.logoImageFor(Theme: currentTheme)
 		
 		// Display High Score
 		self.scoreLabel.text = String(describing: UserDefaults.standard.integer(forKey: "highScore"))
@@ -237,7 +234,7 @@ class MenuVC: UIViewController {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
-		self.bubbleButton.setAttributedTitleForAllStates(title: Currency.bubbleBalanceWithIcon())
+		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 	}
 
 	private func resetHighScore() {
@@ -251,14 +248,7 @@ class MenuVC: UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "BeginSegue" {
 			if let vc = segue.destination as? MainVC, let selectedPack = self.packLabel.text {
-				if let topics = Packs.allPacks[selectedPack] {
-					var topicWords = topics.shuffled()
-					
-					let firstTopic = topicWords.removeFirst()
-					self.rhymeHelper.createWordPack(topicWord: firstTopic) { wordPack in
-						<#code#>
-					}
-					
+				if let topicWords = WordPacks.packs[selectedPack] {
 					vc.topicWords = topicWords.shuffled()
 				}
 			}
@@ -291,7 +281,7 @@ extension MenuVC: GADFullScreenContentDelegate {
 		if let ad = self.rewardedAd {
 			ad.present(fromRootViewController: self, userDidEarnRewardHandler: {
 				print("[INFO] User Earned Reward.");
-				Currency.addBubbles(Amount: 100)
+				self.unlockable.addBubbles(Amount: 100)
 				self.adCompletedAlert()
 			})
 		} else {

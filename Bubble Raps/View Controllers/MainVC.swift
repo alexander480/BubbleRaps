@@ -28,23 +28,13 @@ class MainVC: UIViewController {
 	@IBAction func pauseAction(_ sender: Any) { self.presentPauseMenu() }
 	
 	// MARK: Class Variables
-
-	// -- Theme Colors
-	let primary = Theme.primary()
-	let secondary = Theme.secondary()
 	
-	// -- Views
 	var interstitial: GADInterstitialAd?
-	var loadingView: LoadingView?
+	// var loadingScreen: LoadingScreen?
 	
-	// -- Helpers
 	let rhymeHelper = RhymeHelper()
+	let unlockable = UnlockableHelper()
 	
-	// -- Rhymes
-	var wordPack: WordPack?
-	var topicWords = Packs.standard.shuffled()
-	
-	// -- Game Variables
 	var isHighscore = false
 	var score = 0
 	var round = 0
@@ -54,17 +44,16 @@ class MainVC: UIViewController {
 	var timer = Timer()
 	var roundTime = 0
 	var timeLeft = 0
-
+	
+	var rhyme:RhymeHelper!
+	var potentialRhymesDictionary:[String:Bool]!
+	var potentialRhymesArray:[String]!
+	
+	var topicWords = WordPacks.standard.shuffled()
+	
 	// MARK: Starting New 'WordPack Struct' Integration
 	
-	// We Wait For Both Of These To Become True Before Starting Game (Timer)
-	var isReady = false {
-		didSet { if (isReady && shouldStart) { self.startTimer(fromPause: false); self.isReady = false; self.shouldStart = false; } }
-	}
-	
-	var shouldStart = false {
-		didSet { if (shouldStart && isReady) { self.startTimer(fromPause: false); self.isReady = false; self.shouldStart = false; } }
-	}
+	var wordPack: WordPack?
 	
 	// MARK: viewDidLoad
 	
@@ -73,9 +62,19 @@ class MainVC: UIViewController {
 		
 		self.titleLabel.text = "Please Wait..."
 		
-		// MARK: Setup LoadingView
-		let loadingView = LoadingView(frame: self.view.frame)
-		self.loadingView = loadingView
+		// MARK: Initialize LoadingScreen
+		
+//		if let loadingScreen = self.storyboard?.instantiateViewController(withIdentifier: "LoadingScreenStoryboard") as? LoadingScreen {
+//			loadingScreen.providesPresentationContextTransitionStyle = true
+//			loadingScreen.definesPresentationContext = true
+//			loadingScreen.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//			loadingScreen.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+//
+//			self.loadingScreen = loadingScreen
+//		}
+//		else {
+//			print("[ERROR] Failed To Validate LoadingScreen.")
+//		}
 		
 		// MARK: Make Bubbles Bounce Off Edges
 		let bubbleBounds = UIBezierPath(rect: UIScreen.main.bounds)
@@ -85,31 +84,38 @@ class MainVC: UIViewController {
 		self.roundTime = UserDefaults.standard.integer(forKey: "roundTime")
 		self.timeLeft = roundTime
 		
-		// MARK: Handle Theme
+		// MARK: Handle Themes
 		self.themeHandler()
 		
 		// MARK: Setup Ads
 		self.loadInterstitial()
 		
+		// self.showLoadingScreen()
+		
 		// MARK: Start First Round
-		self.loadNextRound()
-		self.shouldStart = true
+		self.startNextRound(isFirstRound: true) { /* self.hideLoadingScreen() */ }
     }
 	
 	// MARK: Start Round Function
 	
-	private func loadNextRound(isFirstRound: Bool = false) {
+	// Proceed To Next Screen
+	func nextRoundClicked() {
+		// self.showLoadingScreen()
+		self.startNextRound(isFirstRound: false) { /* self.hideLoadingScreen() */ }
+	}
+	
+	private func startNextRound(isFirstRound: Bool, completion: (() -> ())?) {
 		self.round += 1
 		self.correctAnswers = 0
 		
 		let newTopic = self.topicWords.popLast()
 		self.rhymeHelper.createWordPack(topicWord: newTopic) { (newPack) in
-			self.wordPack = newPack
-			self.titleLabel.text = self.wordPack?.topic
-			
 			self.bubblesView.removeBubbles()
+			self.wordPack = newPack
+			self.titleLabel.text = newPack.topic
 			self.bubblesView.reload()
-			self.isReady = true
+			self.startTimer(fromPause: false)
+			completion?()
 		}
 	}
 	
@@ -118,24 +124,29 @@ class MainVC: UIViewController {
 	private func startTimer(fromPause: Bool) {
 		if fromPause == false { self.timeLeft = self.roundTime }
 		
+		let currentTheme = self.unlockable.currentTheme()
+		let mainColor = self.unlockable.colorFor(Theme: currentTheme)
+		let borderColor = self.unlockable.borderColorFor(Theme: currentTheme)
+		
 		self.timerLabel.text = String(describing: self.timeLeft)
-		self.timerLabel.backgroundColor = self.primary
-		self.timerLabel.borderColor = self.secondary
+		self.timerLabel.backgroundColor = mainColor
+		self.timerLabel.borderColor = borderColor
 		self.timerLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 		
 		self.timer = Timer.init(timeInterval: 1.0, repeats: true, block: { (timr) in
 			self.timeLeft -= 1
 			self.timerLabel.text = String(describing: self.timeLeft)
-			
-			if self.timeLeft <= 0 { self.roundCompleted(isGameOver: true) }
+			if self.timeLeft <= 0 {
+				self.roundCompleted(isGameOver: true)
+			}
 //			else if self.timeLeft <= 5 {
 //				self.timerLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 //				self.timerLabel.borderColor = #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1)
 //				self.timerLabel.textColor = #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1)
 //			}
 			else {
-				self.timerLabel.backgroundColor = self.primary
-				self.timerLabel.borderColor = self.secondary
+				self.timerLabel.backgroundColor = mainColor
+				self.timerLabel.borderColor = borderColor
 				self.timerLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 			}
 		})
@@ -146,23 +157,25 @@ class MainVC: UIViewController {
 	// MARK: Handle Live Counter
 	
 	private func handleLiveCounter() {
+		let mainColor = self.unlockable.colorForCurrentTheme()
+		
 		if self.incorrectAnswers == 0 {
 			let str = NSMutableAttributedString(string: "● ● ●")
-				str.addAttribute(.foregroundColor, value: self.primary, range: NSRange(location: 0, length: 1))
-				str.addAttribute(.foregroundColor, value: self.primary, range: NSRange(location: 2, length: 1))
-				str.addAttribute(.foregroundColor, value: self.primary, range: NSRange(location: 4, length: 1))
+				str.addAttribute(.foregroundColor, value: mainColor, range: NSRange(location: 0, length: 1))
+				str.addAttribute(.foregroundColor, value: mainColor, range: NSRange(location: 2, length: 1))
+				str.addAttribute(.foregroundColor, value: mainColor, range: NSRange(location: 4, length: 1))
 			self.livesLabel.attributedText = str
 		}
 		else if self.incorrectAnswers == 1 {
 			let str = NSMutableAttributedString(string: "● ● ○")
-				str.addAttribute(.foregroundColor, value: self.primary, range: NSRange(location: 0, length: 1))
-				str.addAttribute(.foregroundColor, value: self.primary, range: NSRange(location: 2, length: 1))
+				str.addAttribute(.foregroundColor, value: mainColor, range: NSRange(location: 0, length: 1))
+				str.addAttribute(.foregroundColor, value: mainColor, range: NSRange(location: 2, length: 1))
 				str.addAttribute(.foregroundColor, value: #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1), range: NSRange(location: 4, length: 1))
 			self.livesLabel.attributedText = str
 		}
 		else if self.incorrectAnswers == 2 {
 			let str = NSMutableAttributedString(string: "● ○ ○")
-				str.addAttribute(.foregroundColor, value: self.primary, range: NSRange(location: 0, length: 1))
+				str.addAttribute(.foregroundColor, value: mainColor, range: NSRange(location: 0, length: 1))
 				str.addAttribute(.foregroundColor, value: #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1), range: NSRange(location: 2, length: 1))
 				str.addAttribute(.foregroundColor, value: #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1), range: NSRange(location: 4, length: 1))
 			self.livesLabel.attributedText = str
@@ -179,21 +192,25 @@ class MainVC: UIViewController {
 	// MARK: Theme Handler
 	
 	private func themeHandler() {
+		let currentTheme = self.unlockable.currentTheme()
+		let mainColor = self.unlockable.colorFor(Theme: currentTheme)
+		let borderColor = self.unlockable.borderColorFor(Theme: currentTheme)
+				
 		let str = NSMutableAttributedString(string: "● ● ●")
-		str.addAttribute(.foregroundColor, value: self.primary, range: NSRange(location: 0, length: 1))
-			str.addAttribute(.foregroundColor, value: self.primary, range: NSRange(location: 2, length: 1))
-			str.addAttribute(.foregroundColor, value: self.primary, range: NSRange(location: 4, length: 1))
+		str.addAttribute(.foregroundColor, value: mainColor, range: NSRange(location: 0, length: 1))
+			str.addAttribute(.foregroundColor, value: mainColor, range: NSRange(location: 2, length: 1))
+			str.addAttribute(.foregroundColor, value: mainColor, range: NSRange(location: 4, length: 1))
 		
 		self.livesLabel.attributedText = str
 		
-		self.pauseButton.backgroundColor = self.primary
-		self.pauseButton.borderColor = self.secondary
+		self.pauseButton.backgroundColor = mainColor
+		self.pauseButton.borderColor = borderColor
 		
-		self.timerLabel.backgroundColor = self.primary
-		self.timerLabel.borderColor = self.secondary
+		self.timerLabel.backgroundColor = mainColor
+		self.timerLabel.borderColor = borderColor
 		
-		self.titleView.backgroundColor = self.primary
-		self.titleView.borderColor = self.secondary
+		self.titleView.backgroundColor = mainColor
+		self.titleView.borderColor = borderColor
 	}
 	
 	private func cleanup() {
@@ -210,29 +227,19 @@ extension MainVC: ContentBubblesViewDelegate {
     func contentBubblesView(_ view: ContentBubblesView, didSelectItemAt index: Int) {
 		guard let wordPack = self.wordPack else { print("[ERROR] Unable To Validate Current WordPack."); return }
 		let wordSelected = wordPack.allWords[index]
-		
 		guard let isCorrect = wordPack.rhymeDictionary[wordSelected] else { print("[ERROR] Unable To Find Selected Word: \(wordSelected) In Rhyme Dictionary."); return }
-		
 		if isCorrect { self.correctAnswer(view: view, index: index) } else { self.incorrectAnswer(view: view, index: index) }
     }
 	
 	private func correctAnswer(view: ContentBubblesView, index: Int) {
 		self.score += 1
 		self.correctAnswers += 1
-		
-		// Disable Already Selected Bubble
-		view.bubbleViews[index].isUserInteractionEnabled = false
-		
 		self.bubblesView.changeBubble(isCorrect: true, index: index)
 		if self.correctAnswers == 5 { self.roundCompleted(isGameOver: false) }
 	}
 	
 	private func incorrectAnswer(view: ContentBubblesView, index: Int) {
 		self.incorrectAnswers += 1
-		
-		// Disable Already Selected Bubble
-		view.bubbleViews[index].isUserInteractionEnabled = false
-		
 		self.bubblesView.changeBubble(isCorrect: false, index: index)
 		self.handleLiveCounter()
 		
@@ -248,8 +255,8 @@ extension MainVC: ContentBubblesViewDataSource {
 		return wordPack.allWords.count
 	}
 	
-	func countOfSizes(in view: ContentBubblesView) -> Int { return 3 }
-	func addOrUpdateBubbleView(forItemAt index: Int, currentView: BubbleView?) -> BubbleView {
+    func countOfSizes(in view: ContentBubblesView) -> Int { return 3 }
+    func addOrUpdateBubbleView(forItemAt index: Int, currentView: BubbleView?) -> BubbleView {
 		var view: BubbleView! = currentView
 		
 		guard let wordPack = self.wordPack else { print("[ERROR] Unable to Validate Current WordPack."); return view }
@@ -259,7 +266,7 @@ extension MainVC: ContentBubblesViewDataSource {
 		if let labelView = UINib(nibName: "LabelBubbleView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LabelBubbleView  {
 			labelView.label.font = font
 			labelView.label.text = rhymeWord
-			labelView.imageView.image = Theme.bubbleImage()
+			labelView.imageView.image = self.unlockable.bubbleImageFor(Theme: self.unlockable.currentTheme())
 			labelView.imageView.isHidden = false
 			view = labelView
 		}
@@ -274,31 +281,23 @@ extension MainVC: ContentBubblesViewDataSource {
 		view.frame.size = CGSize(width: textWidth, height: textWidth)
 		
 		return view
-	}
+    }
 }
 
 // MARK: RoundCompletedAlertDelegate Protocol Stubs
 
 extension MainVC: RoundCompletedAlertDelegate {
-	func nextRoundClicked() {
-		self.shouldStart = true
-	}
-	
 	private func roundCompleted(isGameOver: Bool) {
 		self.timer.invalidate()
-		
-		if (isGameOver) {
+		if isGameOver {
 			// Add Coins
-			Currency.addBubbles(Amount: self.score)
+			self.unlockable.addBubbles(Amount: self.score)
 			
 			// Update High Score
 			self.updateHighScore()
 			
 			// MARK: Present Interstatial After Game Over
 			self.presentInterstitial()
-		}
-		else {
-			self.loadNextRound()
 		}
 		
 		// Present Round Completed Popup To Proceed To Next Round
@@ -329,6 +328,8 @@ extension MainVC: RoundCompletedAlertDelegate {
 		}
 	}
 	
+	
+	
 	func gameOverClicked() { self.performSegue(withIdentifier: "BackToMenu", sender: self) }
 }
 
@@ -351,7 +352,7 @@ extension MainVC: PauseMenuDelegate {
 	}
 	
 	func resumeFromPause() { self.startTimer(fromPause: true) }
-	func endFromPause() { Currency.addBubbles(Amount: self.score); self.performSegue(withIdentifier: "BackToMenu", sender: self) }
+	func endFromPause() { self.unlockable.addBubbles(Amount: self.score); self.performSegue(withIdentifier: "BackToMenu", sender: self) }
 }
 
 // MARK: GADInterstitialDelegate Protocol Stubs
@@ -394,12 +395,8 @@ extension MainVC: GADFullScreenContentDelegate {
 		self.presentRoundCompletedPopup(isGameOver: true)
 	}
 }
-
-extension MainVC {
-	private func showLoadingView() {
-		if let loadingView = self.loadingView { self.view.addSubview(loadingView); self.view.bringSubviewToFront(loadingView) }
-		else { print("[ERROR] Failed To Validate LoadingView.") }
-	}
-	
-	private func hideLoadingView() { self.loadingView?.removeFromSuperview() }
-}
+//
+//extension MainVC {
+//	private func showLoadingScreen() { if let loadingScreen = self.loadingScreen { self.present(loadingScreen, animated: true, completion: nil) } }
+//	private func hideLoadingScreen() { if let _ = self.loadingScreen { self.loadingScreen?.dismiss(animated: true, completion: nil) } }
+//}
