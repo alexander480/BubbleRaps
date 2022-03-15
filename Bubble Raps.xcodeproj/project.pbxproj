@@ -171,8 +171,8 @@
 		E54328AD22C1D34300187D44 /* Bubble Raps */ = {
 			isa = PBXGroup;
 			children = (
-				E51682A22307B42B00BB4713 /* Core */,
 				0A9BFC0623DAA2DB00E959E4 /* Bubble Raps.entitlements */,
+				E51682A22307B42B00BB4713 /* Core */,
 				E5194DC722C475EC000083D8 /* User Interface */,
 				E547327A22F7DAC0002FF63F /* View Controllers */,
 				E5CA5C3A232048C6009AAE96 /* Helpers */,

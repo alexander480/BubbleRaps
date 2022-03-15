@@ -8,10 +8,14 @@
 
 import Foundation
 
-struct Rhyme {
+struct Rhyme: CustomStringConvertible {
 	let word: String
 	let score: Double
 	let numSyllables: Int
+	
+	var description: String {
+		return "Word: \(word) Score: \(score). Syllables: \(numSyllables)"
+	}
 	
 	init(word: String, score: Double, numSyllables: Int) {
 		self.word = word

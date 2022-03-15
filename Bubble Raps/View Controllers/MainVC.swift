@@ -229,6 +229,7 @@ extension MainVC: ContentBubblesViewDelegate {
 		let wordSelected = wordPack.allWords[index]
 		guard let isCorrect = wordPack.rhymeDictionary[wordSelected] else { print("[ERROR] Unable To Find Selected Word: \(wordSelected) In Rhyme Dictionary."); return }
 		if isCorrect { self.correctAnswer(view: view, index: index) } else { self.incorrectAnswer(view: view, index: index) }
+		view.isUserInteractionEnabled = false
     }
 	
 	private func correctAnswer(view: ContentBubblesView, index: Int) {
