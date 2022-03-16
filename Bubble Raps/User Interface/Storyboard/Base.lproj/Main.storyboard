@@ -554,14 +554,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="da4-Tr-OVr">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="da4-Tr-OVr">
                                 <rect key="frame" x="20" y="558" width="340" height="200"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Next Round Popup Background" translatesAutoresizingMaskIntoConstraints="NO" id="2r1-Yi-URe">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="340" height="200"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMU-8Z-TbJ">
-                                        <rect key="frame" x="123.66666666666666" y="36" width="67" height="33"/>
+                                        <rect key="frame" x="136.66666666666666" y="36" width="67" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="tqh-fo-zf0"/>
                                         </constraints>
@@ -570,7 +570,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9q5-LQ-Es1">
-                                        <rect key="frame" x="136.66666666666666" y="72" width="41" height="22"/>
+                                        <rect key="frame" x="149.66666666666666" y="72" width="41" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="mte-95-YVR"/>
                                         </constraints>
@@ -579,7 +579,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efv-O5-0Xf">
-                                        <rect key="frame" x="20" y="119" width="274" height="63"/>
+                                        <rect key="frame" x="20" y="119" width="300" height="63"/>
                                         <state key="normal" backgroundImage="Next Round Button"/>
                                         <connections>
                                             <action selector="nextButtonAction:" destination="O6p-PJ-AmR" eventType="touchUpInside" id="E3K-We-uoE"/>
@@ -608,7 +608,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0 🅒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="No8-lc-Zr5">
-                                <rect key="frame" x="20" y="495" width="335" height="28"/>
+                                <rect key="frame" x="20" y="495" width="340" height="28"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
