@@ -161,6 +161,7 @@ class RhymeHelper {
 			switch JSONResponse.result {
 			case .success(let json):
 				guard let data = json as? [[String: Any]] else { print("[ERROR] Unable To Convert JSON Response Into [[String: Any]]."); return }
+				
 				var rhymes = [String]()
 				for rhymeObject in data {
 					if let rhymeWord = rhymeObject["word"] as? String {
