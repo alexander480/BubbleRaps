@@ -17,6 +17,11 @@ struct WordPack {
 	var rhymeDictionary: [String: Bool]
 }
 
+enum APIType {
+	case randomWordAPI
+	case local
+}
+
 // MARK: TODO: Validate Word To Rhyme
 
 class RhymeHelper {
@@ -28,7 +33,7 @@ class RhymeHelper {
 				print("[SUCCESS] Successfully Validated A New Topic: \(topic)")
 				print("[SUCCESS] Successfully Fetched Rhyme Array: \(rhymes)")
 				
-				self.fetchNotRhymes { (notRhymes) in
+				self.fetchNotRhymes(wordLength: topic.count, api: .local) { (notRhymes) in
 					print("[SUCCESS] Successfully Fetched Not Rhymes Array: \(notRhymes)")
 					
 					let dict = self.createRhymeDictionary(rhymes: rhymes, notRhymes: notRhymes)
@@ -48,7 +53,7 @@ class RhymeHelper {
 					print("[SUCCESS] Successfully Validated A New Topic: \(topic)")
 					print("[SUCCESS] Successfully Fetched Rhyme Array: \(rhymes)")
 					
-					self.fetchNotRhymes { (notRhymes) in
+					self.fetchNotRhymes(wordLength: topic.count, api: .local) { (notRhymes) in
 						print("[SUCCESS] Successfully Fetched Not Rhymes Array: \(notRhymes)")
 						
 						let dict = self.createRhymeDictionary(rhymes: rhymes, notRhymes: notRhymes)
@@ -120,8 +125,12 @@ class RhymeHelper {
 	}
 */
 	
-	private func fetchRandomTopicWord(completion: @escaping (String) -> ()) {
-		AF.request("https://random-word-api.herokuapp.com/word?number=1", method: .get).validate().responseJSON { (JSONResponse) in
+	private func fetchRandomTopicWord(wordLength: Int? = nil, completion: @escaping (String) -> ()) {
+		var url = "https://random-word-api.herokuapp.com/word?number=1"
+		
+		if let wordLength = wordLength { url = "https://random-word-api.herokuapp.com/word?number=1&length=\(wordLength)" }
+		
+		AF.request(url, method: .get).validate().responseJSON { (JSONResponse) in
 			switch JSONResponse.result {
 			case .success(let json):
 				guard let wordArray = json as? [String] else { print("[ERROR] Unable To Convert JSON Response Into String Array."); return }
@@ -182,18 +191,47 @@ class RhymeHelper {
 		}
 	}
 	
-	func fetchNotRhymes(completion: @escaping ([String]) -> ()) {
-		AF.request("https://random-word-api.herokuapp.com/word?number=20", method: .get).validate().responseJSON { (JSONResponse) in
-			switch JSONResponse.result {
-			case .success(let json):
-				guard let array = json as? [String] else { print("[ERROR] Unable To Convert JSON Response Into String Array."); return }
-				let shuffledArray = array.shuffled()
-					let shortenedArray = Array(shuffledArray[0..<numRhymes/*0...4*/])
-				completion(shortenedArray)
-			case .failure(let error):
-				print("[ERROR] Unable To Fetch Random Words From API. [MESSAGE] \(error.localizedDescription)")
-				return
-			}
+	func fetchNotRhymes(count: Int = 20, wordLength: Int? = nil, api: APIType = .randomWordAPI, completion: @escaping ([String]) -> ()) {
+		switch api {
+			case .randomWordAPI:
+				var url = "https://random-word-api.herokuapp.com/word?number=\(count)"
+				
+				if let wordLength = wordLength { url = "https://random-word-api.herokuapp.com/word?number=\(count)&length=\(wordLength)" }
+				
+				AF.request(url, method: .get).validate().responseJSON { (JSONResponse) in
+					switch JSONResponse.result {
+					case .success(let json):
+						guard let array = json as? [String] else { print("[ERROR] Unable To Convert JSON Response Into String Array."); return }
+						let shuffledArray = array.shuffled()
+						let shortenedArray = Array(shuffledArray[0..<numRhymes/*0...4*/])
+						completion(shortenedArray)
+					case .failure(let error):
+						print("[ERROR] Unable To Fetch Random Words From API. [MESSAGE] \(error.localizedDescription)")
+						return
+					}
+				}
+			case .local:
+				var randomWords: [String] = []
+				
+				guard let allRandomWordsPath = Bundle.main.path(forResource: "allRandomWords", ofType: "json") else {
+					print("[ERROR] Failed To Fetch Random Words. [MESSAGE] Failed To Validate Path To allRandomWords.json.")
+					return
+				}
+				
+				do {
+					let data = try Data(contentsOf: URL(fileURLWithPath: allRandomWordsPath))
+					let allWords = try JSONDecoder().decode([String].self, from: data)
+					let shuffledArr = allWords.shuffled()
+					let shortenedArr = Array(shuffledArr[0..<numRhymes/*0...4*/])
+					
+					randomWords = shortenedArr /* Array(shuffledWords.prefix(count)) */
+				}
+				catch {
+					print("[ERROR] Failed To Fetch Random Words. [MESSAGE] Failed To Decode allRandomWords.json: \(error)")
+					return
+				}
+				
+				completion(randomWords)
 		}
 	}
 	

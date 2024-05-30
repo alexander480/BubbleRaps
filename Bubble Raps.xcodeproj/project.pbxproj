@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,13 @@
 		0A991A6523D6C0E400AA89DF /* UnlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A991A6423D6C0E400AA89DF /* UnlockCell.swift */; };
 		0AA017D926EB04E100BBCDC7 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA017D826EB04E100BBCDC7 /* LoadingScreen.swift */; };
 		0ABAC6F123BAB65B00B5E20C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */; };
+		0AE338BC2BD25816007B7ECF /* allRandomWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338BB2BD25816007B7ECF /* allRandomWords.json */; };
+		0AE338C02BD28446007B7ECF /* daleChallWordPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338BF2BD28446007B7ECF /* daleChallWordPacks.json */; };
+		0AE338C62BD28865007B7ECF /* carsWordPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C12BD28865007B7ECF /* carsWordPacks.json */; };
+		0AE338C72BD28865007B7ECF /* fashionWordPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C22BD28865007B7ECF /* fashionWordPacks.json */; };
+		0AE338C82BD28865007B7ECF /* footballWordPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C32BD28865007B7ECF /* footballWordPacks.json */; };
+		0AE338C92BD28865007B7ECF /* jewelryWordPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C42BD28865007B7ECF /* jewelryWordPacks.json */; };
+		0AE338CA2BD28865007B7ECF /* moneyWordPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C52BD28865007B7ECF /* moneyWordPacks.json */; };
 		870E460DF011F86A37A6F2DE /* Pods_Bubble_Raps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17818C9F4D5B7BA2266EBA49 /* Pods_Bubble_Raps.framework */; };
 		E5194DC622C46BB3000083D8 /* RhymeHelper (Old).swift in Sources */ = {isa = PBXBuildFile; fileRef = E5194DC522C46BB3000083D8 /* RhymeHelper (Old).swift */; };
 		E54328AF22C1D34300187D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54328AE22C1D34300187D44 /* AppDelegate.swift */; };
@@ -59,6 +66,13 @@
 		0AA017D826EB04E100BBCDC7 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		0ABDEC7623E7C2B4009BFCAE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		0AE338BB2BD25816007B7ECF /* allRandomWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = allRandomWords.json; sourceTree = "<group>"; };
+		0AE338BF2BD28446007B7ECF /* daleChallWordPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = daleChallWordPacks.json; sourceTree = "<group>"; };
+		0AE338C12BD28865007B7ECF /* carsWordPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = carsWordPacks.json; path = "Bubble Raps/WordPacks/carsWordPacks.json"; sourceTree = SOURCE_ROOT; };
+		0AE338C22BD28865007B7ECF /* fashionWordPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fashionWordPacks.json; path = "Bubble Raps/WordPacks/fashionWordPacks.json"; sourceTree = SOURCE_ROOT; };
+		0AE338C32BD28865007B7ECF /* footballWordPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = footballWordPacks.json; path = "Bubble Raps/WordPacks/footballWordPacks.json"; sourceTree = SOURCE_ROOT; };
+		0AE338C42BD28865007B7ECF /* jewelryWordPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = jewelryWordPacks.json; path = "Bubble Raps/WordPacks/jewelryWordPacks.json"; sourceTree = SOURCE_ROOT; };
+		0AE338C52BD28865007B7ECF /* moneyWordPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = moneyWordPacks.json; path = "Bubble Raps/WordPacks/moneyWordPacks.json"; sourceTree = SOURCE_ROOT; };
 		17818C9F4D5B7BA2266EBA49 /* Pods_Bubble_Raps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bubble_Raps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68407D6540D63C8FE6369D80 /* Pods-Bubble Raps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.release.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.release.xcconfig"; sourceTree = "<group>"; };
 		762A3397C2C9874E8368BC1C /* Pods-Bubble Raps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.debug.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +124,20 @@
 				0A991A6423D6C0E400AA89DF /* UnlockCell.swift */,
 			);
 			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		0AE338CB2BD28873007B7ECF /* WordPacks */ = {
+			isa = PBXGroup;
+			children = (
+				0AE338BF2BD28446007B7ECF /* daleChallWordPacks.json */,
+				0AE338BB2BD25816007B7ECF /* allRandomWords.json */,
+				0AE338C12BD28865007B7ECF /* carsWordPacks.json */,
+				0AE338C22BD28865007B7ECF /* fashionWordPacks.json */,
+				0AE338C32BD28865007B7ECF /* footballWordPacks.json */,
+				0AE338C42BD28865007B7ECF /* jewelryWordPacks.json */,
+				0AE338C52BD28865007B7ECF /* moneyWordPacks.json */,
+			);
+			path = WordPacks;
 			sourceTree = "<group>";
 		};
 		2BD80767A36E83AB0757E40F /* Frameworks */ = {
@@ -172,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				0A9BFC0623DAA2DB00E959E4 /* Bubble Raps.entitlements */,
+				0AE338CB2BD28873007B7ECF /* WordPacks */,
 				E51682A22307B42B00BB4713 /* Core */,
 				E5194DC722C475EC000083D8 /* User Interface */,
 				E547327A22F7DAC0002FF63F /* View Controllers */,
@@ -335,11 +364,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AE338C72BD28865007B7ECF /* fashionWordPacks.json in Resources */,
+				0AE338C92BD28865007B7ECF /* jewelryWordPacks.json in Resources */,
 				E54328B922C1D34600187D44 /* LaunchScreen.storyboard in Resources */,
+				0AE338C02BD28446007B7ECF /* daleChallWordPacks.json in Resources */,
 				E54328B622C1D34600187D44 /* Assets.xcassets in Resources */,
 				E54328B422C1D34300187D44 /* Main.storyboard in Resources */,
 				E5DC489F22C5ACB60059DD72 /* LabelBubbleView.xib in Resources */,
+				0AE338C62BD28865007B7ECF /* carsWordPacks.json in Resources */,
+				0AE338C82BD28865007B7ECF /* footballWordPacks.json in Resources */,
+				0AE338BC2BD25816007B7ECF /* allRandomWords.json in Resources */,
 				E54EEBF2231E1EFE002981F6 /* Snippets.rtf in Resources */,
+				0AE338CA2BD28865007B7ECF /* moneyWordPacks.json in Resources */,
 				E5CA5C3E23206CD6009AAE96 /* LargeMenuView.xib in Resources */,
 				0A66493223DAC1BE00060259 /* GoogleService-Info.plist in Resources */,
 			);
@@ -576,7 +612,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
@@ -605,7 +641,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",

@@ -25,12 +25,6 @@ struct Rhyme: CustomStringConvertible {
 }
 
 extension Rhyme: Decodable {
-	enum RhymeKeys: String, CodingKey { // declaring our keys
-		case word = "word"
-		case score = "score"
-		case numSyllables = "numSyllables"
-	  }
-	
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: RhymeKeys.self) // defining our (keyed) container
 		let word: String = try container.decode(String.self, forKey: .word) // extracting the data
@@ -39,5 +33,11 @@ extension Rhyme: Decodable {
 		
 		self.init(word: word, score: score, numSyllables: numSyllables)
 	}
+	
+	enum RhymeKeys: String, CodingKey {
+		case word = "word"
+		case score = "score"
+		case numSyllables = "numSyllables"
+	  }
 }
 

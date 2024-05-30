@@ -209,7 +209,7 @@ class MenuVC: UIViewController {
 		
 		
 		// Disable Dark Mode Support
-		overrideUserInterfaceStyle = .light
+		// overrideUserInterfaceStyle = .light
 		
 		// Validate unlockedThemes and unlockedPacks
 		self.unlockable.validateUnlockedThemes()
@@ -249,6 +249,7 @@ class MenuVC: UIViewController {
 		if segue.identifier == "BeginSegue" {
 			if let vc = segue.destination as? MainVC, let selectedPack = self.packLabel.text {
 				if let topicWords = WordPacks.packs[selectedPack] {
+					vc.selectedPack = selectedPack
 					vc.topicWords = topicWords.shuffled()
 				}
 			}

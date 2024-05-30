@@ -49,11 +49,26 @@ class MainVC: UIViewController {
 	var potentialRhymesDictionary:[String:Bool]!
 	var potentialRhymesArray:[String]!
 	
+	var selectedPack = "Standard"
 	var topicWords = WordPacks.standard.shuffled()
 	
 	// MARK: Starting New 'WordPack Struct' Integration
 	
 	var wordPack: WordPack?
+	
+	var nextWordPack: WordPack? {
+		didSet {
+			print("[INFO] Creating nextWordPack.")
+			let newTopic = topicWords.popLast()
+			if nextWordPack == nil {
+				let newTopic = self.topicWords.popLast()
+				self.rhymeHelper.createWordPack(topicWord: newTopic) { wordPack in
+					self.nextWordPack = wordPack
+					print("[INFO] Created nextWordPack.")
+				}
+			}
+		}
+	}
 	
 	// MARK: viewDidLoad
 	
@@ -93,7 +108,13 @@ class MainVC: UIViewController {
 		// self.showLoadingScreen()
 		
 		// MARK: Start First Round
-		self.startNextRound(isFirstRound: true) { /* self.hideLoadingScreen() */ }
+		let start = CFAbsoluteTimeGetCurrent()
+		self.startNextRound(isFirstRound: true) {
+			/* self.hideLoadingScreen() */
+			let diff = CFAbsoluteTimeGetCurrent() - start
+			print("Took \(diff) seconds")
+		}
+		
     }
 	
 	// MARK: Start Round Function
@@ -108,14 +129,38 @@ class MainVC: UIViewController {
 		self.round += 1
 		self.correctAnswers = 0
 		
-		let newTopic = self.topicWords.popLast()
-		self.rhymeHelper.createWordPack(topicWord: newTopic) { (newPack) in
+		// Check For Already Loaded WordPack
+		if let newWordPack = nextWordPack {
+			print("[INFO] Loading nextWordPack.")
 			self.bubblesView.removeBubbles()
-			self.wordPack = newPack
-			self.titleLabel.text = newPack.topic
+			
+			self.wordPack = newWordPack
+			self.nextWordPack = nil
+			
+			self.titleLabel.text = newWordPack.topic
 			self.bubblesView.reload()
+			
 			self.startTimer(fromPause: false)
+			
 			completion?()
+		}
+		else {
+			print("[INFO] nextWordPack Not Available, Creating New wordPack.")
+			let newTopic = self.topicWords.popLast()
+			
+			self.rhymeHelper.createWordPack(topicWord: newTopic) { (newPack) in
+				self.bubblesView.removeBubbles()
+				
+				self.wordPack = newPack
+				self.nextWordPack = nil // Create New nextWordPack
+				
+				self.titleLabel.text = newPack.topic
+				self.bubblesView.reload()
+				
+				self.startTimer(fromPause: false)
+				
+				completion?()
+			}
 		}
 	}
 	
