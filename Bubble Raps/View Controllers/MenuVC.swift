@@ -85,12 +85,13 @@ class MenuVC: UIViewController {
 
 	@IBOutlet var scorePress: UILongPressGestureRecognizer!
 	@IBAction func scorePressAction(_ sender: Any) {
-		#warning("DELETE THIS BEFORE RELEASE")
-		self.resetHighScore()
-		UserDefaults.standard.set(nil, forKey: "unlockedPacks")
-		UserDefaults.standard.set(nil, forKey: "unlockedThemes")
-		UserDefaults.standard.set(nil, forKey: "theme")
-		UserDefaults.standard.set(nil, forKey: "bubbles")
+//		#warning("DELETE THIS BEFORE RELEASE")
+//		self.resetHighScore()
+//		UserDefaults.standard.set(nil, forKey: "unlockedPacks")
+//		UserDefaults.standard.set(nil, forKey: "unlockedThemes")
+//		UserDefaults.standard.set(nil, forKey: "theme")
+//		UserDefaults.standard.set(nil, forKey: "bubbles")
+//		print("[DEV] Reset All Progress.")
 
 	}
 	
@@ -351,6 +352,54 @@ class MenuVC: UIViewController {
 		self.unlockable.validateUnlockedThemes()
 		self.unlockable.validateUnlockedPacks()
 		
+//		// Setup Theme Related UI Elements
+//		let currentTheme = self.unlockable.currentTheme()
+//		self.themeButton.setImageForAllStates(image: self.unlockable.tabImageFor(Theme: currentTheme))
+//		self.logoImage.image = self.unlockable.logoImageFor(Theme: currentTheme)
+//		
+//		// Show "Unlock Themes" If No Themes Have Been Unlocked
+//		let unlockedThemes = self.unlockable.currentlyUnlockedThemes()
+//		if unlockedThemes.count == 1 {
+//			self.themeSelectorLabel.text = "Unlock Themes"
+//			self.themeSelectorDecreaseArrow.isHidden = true
+//			self.themeSelectorIncreaseArrow.isHidden = true
+//		}
+//		else {
+//			self.themeSelectorLabel.text = currentTheme
+//			self.themeSelectorDecreaseArrow.isHidden = false
+//			self.themeSelectorIncreaseArrow.isHidden = false
+//			self.themeSelectorView.backgroundColor = self.unlockable.colorFor(Theme: currentTheme)
+//		}
+//		
+//		// Show "Unlock Categories" If No Categories Have Been Unlocked
+//		let unlockedCategories = self.unlockable.currentlyUnlockedPacks()
+//		if unlockedCategories.count == 1 {
+//			self.categorySelectorLabel.text = "Unlock Categories"
+//			self.categorySelectorDecreaseArrow.isHidden = true
+//			self.categorySelectorIncreaseArrow.isHidden = true
+//		}
+//		else {
+//			self.categorySelectorLabel.text = self.selectedCategory
+//			self.categorySelectorDecreaseArrow.isHidden = false
+//			self.categorySelectorIncreaseArrow.isHidden = false
+//		}
+		
+		// Display High Score
+		self.scoreLabel.text = String(describing: UserDefaults.standard.integer(forKey: "highScore"))
+		
+		// Recover Previous Timer Setting
+		let roundTime = UserDefaults.standard.integer(forKey: "roundTime")
+		if roundTime == 0 { self.timerLabel.text = "Easy"; UserDefaults.standard.set(20, forKey: "roundTime") }
+		else if roundTime == 10 { self.timerLabel.text = "Hard" }
+		else if roundTime == 15 { self.timerLabel.text = "Medium" }
+		else if roundTime == 20 { self.timerLabel.text = "Easy" }
+		
+		self.loadRewardedAd()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+		
 		// Setup Theme Related UI Elements
 		let currentTheme = self.unlockable.currentTheme()
 		self.themeButton.setImageForAllStates(image: self.unlockable.tabImageFor(Theme: currentTheme))
@@ -360,9 +409,14 @@ class MenuVC: UIViewController {
 		let unlockedThemes = self.unlockable.currentlyUnlockedThemes()
 		if unlockedThemes.count == 1 {
 			self.themeSelectorLabel.text = "Unlock Themes"
+			self.themeSelectorDecreaseArrow.isHidden = true
+			self.themeSelectorIncreaseArrow.isHidden = true
+			self.themeSelectorView.backgroundColor = self.unlockable.colorFor(Theme: "Dark Purpink")
 		}
 		else {
 			self.themeSelectorLabel.text = currentTheme
+			self.themeSelectorDecreaseArrow.isHidden = false
+			self.themeSelectorIncreaseArrow.isHidden = false
 			self.themeSelectorView.backgroundColor = self.unlockable.colorFor(Theme: currentTheme)
 		}
 		
@@ -370,23 +424,14 @@ class MenuVC: UIViewController {
 		let unlockedCategories = self.unlockable.currentlyUnlockedPacks()
 		if unlockedCategories.count == 1 {
 			self.categorySelectorLabel.text = "Unlock Categories"
+			self.categorySelectorDecreaseArrow.isHidden = true
+			self.categorySelectorIncreaseArrow.isHidden = true
 		}
-		
-		// Display High Score
-		self.scoreLabel.text = String(describing: UserDefaults.standard.integer(forKey: "highScore"))
-		
-		// Recover Previous Timer Setting
-		let roundTime = UserDefaults.standard.integer(forKey: "roundTime")
-		if roundTime == 0 { self.timerLabel.text = "Medium"; UserDefaults.standard.set(15, forKey: "roundTime") }
-		else if roundTime == 20 { self.timerLabel.text = "Hard" }
-		else if roundTime == 15 { self.timerLabel.text = "Medium" }
-		else if roundTime == 10 { self.timerLabel.text = "Easy" }
-		
-		self.loadRewardedAd()
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
+		else {
+			self.categorySelectorLabel.text = self.selectedCategory
+			self.categorySelectorDecreaseArrow.isHidden = false
+			self.categorySelectorIncreaseArrow.isHidden = false
+		}
 	}
 
 	private func resetHighScore() {
