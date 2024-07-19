@@ -6,6 +6,9 @@
 //  Copyright © 2019 Delta Vel. All rights reserved.
 //
 
+// TODO: !! Fix Selection Icons !!
+// TODO: Add Watch Video / Purchase Bubbles Call To Action
+
 import Foundation
 import UIKit
 
@@ -66,7 +69,7 @@ class ThemesVC: UIViewController {
 					self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 					self.tableView.reloadData()
 				case .notEnoughBubbles:
-					self.presentAlert(title: "Not Enough Bubbles!", message: "You need \(self.themeCost - self.unlockable.currentBubbleBalance()) more bubbles to unlock this theme.", actions: nil)
+					self.presentAlert(title: "Not Enough Bubbles!", message: "You need \(self.themeCost - self.unlockable.currentBubbleBalance()) more bubbles to unlock this theme. You can purchase bubbles from the main menu, or watch a 30 second ad for 100 free bubbles.", actions: nil)
 				case .alreadyUnlocked:
 					self.presentAlert(title: "You Have Already Unlocked This Theme!", message: "Get yourself something nice, you've got enough bubbles (;", actions: nil)
 				}
@@ -80,27 +83,36 @@ class ThemesVC: UIViewController {
 			
 			self.present(alert, animated: true, completion: nil)
 	}
+	
+	private func presentNotEnoughBubblesAlert() {
+		// TODO: Add "Purchase Bubbles" && "Watch Ad" Actions
+	}
 }
 
 extension ThemesVC: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let selectedTheme = self.themes[indexPath.row]
 		let unlockedThemes = self.unlockable.currentlyUnlockedThemes()
-		let color = self.unlockable.colorFor(Theme: selectedTheme)
-		
-		if unlockedThemes.contains(selectedTheme) {
-			print("[INFO] \(selectedTheme) Theme Selected.")
-			self.unlockable.changeTheme(To: selectedTheme)
-			if let cell = self.tableView.cellForRow(at: indexPath) as? UnlockCell {
-				cell.costLabel.text = "●"
-				cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
-			}
-			
-			self.headingView.backgroundColor = color
-		}
-		else {
+		if !unlockedThemes.contains(selectedTheme) {
 			self.presentThemePurchaseAlert(theme: selectedTheme)
 		}
+//		let selectedTheme = self.themes[indexPath.row]
+//		let unlockedThemes = self.unlockable.currentlyUnlockedThemes()
+//		let color = self.unlockable.colorFor(Theme: selectedTheme)
+//		
+//		if unlockedThemes.contains(selectedTheme) {
+//			print("[INFO] \(selectedTheme) Theme Selected.")
+//			self.unlockable.changeTheme(To: selectedTheme)
+//			if let cell = self.tableView.cellForRow(at: indexPath) as? UnlockCell {
+//				cell.costLabel.text = "●"
+//				cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
+//			}
+//			
+//			self.headingView.backgroundColor = color
+//		}
+//		else {
+//			self.presentThemePurchaseAlert(theme: selectedTheme)
+//		}
 	}
 	func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
 		if let cell = self.tableView.cellForRow(at: indexPath) as? UnlockCell {
@@ -124,12 +136,19 @@ extension ThemesVC: UITableViewDataSource {
 		cell.cellView.backgroundColor = color
 		
 		if selectedTheme == currentTheme {
-			cell.costLabel.text = " "
-			cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
+//			cell.costLabel.text = "􀎥"
+//			cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
+//			cell.costLabel.textColor = .white
+//			cell.costLabel.backgroundColor = .green
+			cell.costLabel.isHidden = true
+			
 		}
 		else if unlockedThemes.contains(selectedTheme) && !(selectedTheme == currentTheme) {
-			cell.costLabel.text = " "
-			cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
+//			cell.costLabel.text = "􀎥"
+//			cell.costLabel.font = UIFont(name: "Avenir Next Medium", size: 32.0)
+//			cell.costLabel.textColor = .white
+//			cell.costLabel.backgroundColor = .green
+			cell.costLabel.isHidden = true
 		}
 		else {
 			let str = self.unlockable.addBubbleIconTo(String: "\(self.themeCost) ", Color: color, Size: nil, Offset: nil)

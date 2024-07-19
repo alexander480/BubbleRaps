@@ -210,7 +210,6 @@ extension UnlockableHelper {
 
 // MARK: WordPacks Struct
 
-
 struct WordPacks {
 	static let keys = ["Standard", "Football", "Fashion", "Jewelry", "Money", "Cars"]
 	
@@ -230,6 +229,7 @@ struct WordPacks {
 	
 	static let standard = ["shine", "made", "trust", "grand", "shed", "dance", "shape", "vapor", "fight", "cold", "grapple", "unicorn", "automobile", "amazing", "sunny", "extension", "amaze", "focus", "noise", "scent", "shave", "control", "human", "crown", "shuffle", "amazing", "rhyme", "grind", "chance", "grand"]
 	
+	static let keyToFileNameDict: [String: String] = ["Standard": "daleChallRhymeBundle", "Football": "footballRhymeBundle", "Fashion": "fashionRhymeBundle", "Jewelry": "jewelryRhymeBundle", "Money": "moneyRhymeBundle", "Cars": "carsRhymeBundle"]
 	
 	/*
 	let fashion = ["supreme", "leather", "louis", "tailor", "style", "footwear", "brand", "lingerie", "swagger", "dolce", "timberlands", "clothes", "vogue", "designer", "couture", "vuitton", "armani", "menswear", "prada", "trend", "escada", "versace", "glamour", "gucci"]

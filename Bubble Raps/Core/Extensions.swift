@@ -81,7 +81,7 @@ extension EdgeInsetLabel {
 
 @IBDesignable extension UIView {
 	@IBInspectable var isCircular: Bool {
-		set { self.layer.cornerRadius = self.frame.size.width/2; self.clipsToBounds = true }
+		set { self.layer.cornerRadius = self.frame.size.width/2; self.clipsToBounds = true; self.layoutSubviews(); }
 		get { if self.layer.cornerRadius == self.frame.size.width/2 { return true } else { return false } }
 	}
     @IBInspectable var borderColor: UIColor? {
@@ -93,7 +93,7 @@ extension EdgeInsetLabel {
         get { return layer.borderWidth }
     }
     @IBInspectable var cornerRadius: CGFloat {
-        set { layer.cornerRadius = newValue; clipsToBounds = newValue > 0 }
+		set { layer.cornerRadius = newValue; clipsToBounds = newValue > 0; self.layoutSubviews(); }
         get { return layer.cornerRadius }
     }
 	@IBInspectable var shadowPathEqualsFrame: Bool {

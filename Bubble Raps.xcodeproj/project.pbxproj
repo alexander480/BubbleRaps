@@ -14,18 +14,20 @@
 		0A42321D258B29C80040B62F /* RhymeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A42321C258B29C80040B62F /* RhymeEngine.swift */; };
 		0A423221258B2F9F0040B62F /* Rhyme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A423220258B2F9F0040B62F /* Rhyme.swift */; };
 		0A619D2923D92FD9003EA8EC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A619D2823D92FD9003EA8EC /* StoreKit.framework */; };
+		0A65C2C92C2D099A00BE0786 /* RhymePacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65C2C82C2D099A00BE0786 /* RhymePacks.swift */; };
+		0A65C2CB2C2D28E500BE0786 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65C2CA2C2D28E500BE0786 /* Difficulty.swift */; };
 		0A66493223DAC1BE00060259 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A66493123DAC1BE00060259 /* GoogleService-Info.plist */; };
 		0A97189923D1472E00929A10 /* BubbleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97189823D1472E00929A10 /* BubbleVC.swift */; };
 		0A991A6523D6C0E400AA89DF /* UnlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A991A6423D6C0E400AA89DF /* UnlockCell.swift */; };
 		0AA017D926EB04E100BBCDC7 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA017D826EB04E100BBCDC7 /* LoadingScreen.swift */; };
 		0ABAC6F123BAB65B00B5E20C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */; };
 		0AE338BC2BD25816007B7ECF /* allRandomWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338BB2BD25816007B7ECF /* allRandomWords.json */; };
-		0AE338C02BD28446007B7ECF /* daleChallWordPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338BF2BD28446007B7ECF /* daleChallWordPacks.json */; };
-		0AE338C62BD28865007B7ECF /* carsWordPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C12BD28865007B7ECF /* carsWordPacks.json */; };
-		0AE338C72BD28865007B7ECF /* fashionWordPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C22BD28865007B7ECF /* fashionWordPacks.json */; };
-		0AE338C82BD28865007B7ECF /* footballWordPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C32BD28865007B7ECF /* footballWordPacks.json */; };
-		0AE338C92BD28865007B7ECF /* jewelryWordPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C42BD28865007B7ECF /* jewelryWordPacks.json */; };
-		0AE338CA2BD28865007B7ECF /* moneyWordPacks.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C52BD28865007B7ECF /* moneyWordPacks.json */; };
+		0AE338C02BD28446007B7ECF /* daleChallRhymeBundle.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338BF2BD28446007B7ECF /* daleChallRhymeBundle.json */; };
+		0AE338C62BD28865007B7ECF /* carsRhymeBundle.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C12BD28865007B7ECF /* carsRhymeBundle.json */; };
+		0AE338C72BD28865007B7ECF /* fashionRhymeBundle.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C22BD28865007B7ECF /* fashionRhymeBundle.json */; };
+		0AE338C82BD28865007B7ECF /* footballRhymeBundle.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C32BD28865007B7ECF /* footballRhymeBundle.json */; };
+		0AE338C92BD28865007B7ECF /* jewelryRhymeBundle.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C42BD28865007B7ECF /* jewelryRhymeBundle.json */; };
+		0AE338CA2BD28865007B7ECF /* moneyRhymeBundle.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338C52BD28865007B7ECF /* moneyRhymeBundle.json */; };
 		870E460DF011F86A37A6F2DE /* Pods_Bubble_Raps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17818C9F4D5B7BA2266EBA49 /* Pods_Bubble_Raps.framework */; };
 		E5194DC622C46BB3000083D8 /* RhymeHelper (Old).swift in Sources */ = {isa = PBXBuildFile; fileRef = E5194DC522C46BB3000083D8 /* RhymeHelper (Old).swift */; };
 		E54328AF22C1D34300187D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54328AE22C1D34300187D44 /* AppDelegate.swift */; };
@@ -59,6 +61,8 @@
 		0A42321C258B29C80040B62F /* RhymeEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhymeEngine.swift; sourceTree = "<group>"; };
 		0A423220258B2F9F0040B62F /* Rhyme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rhyme.swift; sourceTree = "<group>"; };
 		0A619D2823D92FD9003EA8EC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0A65C2C82C2D099A00BE0786 /* RhymePacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhymePacks.swift; sourceTree = "<group>"; };
+		0A65C2CA2C2D28E500BE0786 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		0A66493123DAC1BE00060259 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A97189823D1472E00929A10 /* BubbleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleVC.swift; sourceTree = "<group>"; };
 		0A991A6423D6C0E400AA89DF /* UnlockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockCell.swift; sourceTree = "<group>"; };
@@ -67,12 +71,12 @@
 		0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		0ABDEC7623E7C2B4009BFCAE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		0AE338BB2BD25816007B7ECF /* allRandomWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = allRandomWords.json; sourceTree = "<group>"; };
-		0AE338BF2BD28446007B7ECF /* daleChallWordPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = daleChallWordPacks.json; sourceTree = "<group>"; };
-		0AE338C12BD28865007B7ECF /* carsWordPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = carsWordPacks.json; path = "Bubble Raps/WordPacks/carsWordPacks.json"; sourceTree = SOURCE_ROOT; };
-		0AE338C22BD28865007B7ECF /* fashionWordPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fashionWordPacks.json; path = "Bubble Raps/WordPacks/fashionWordPacks.json"; sourceTree = SOURCE_ROOT; };
-		0AE338C32BD28865007B7ECF /* footballWordPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = footballWordPacks.json; path = "Bubble Raps/WordPacks/footballWordPacks.json"; sourceTree = SOURCE_ROOT; };
-		0AE338C42BD28865007B7ECF /* jewelryWordPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = jewelryWordPacks.json; path = "Bubble Raps/WordPacks/jewelryWordPacks.json"; sourceTree = SOURCE_ROOT; };
-		0AE338C52BD28865007B7ECF /* moneyWordPacks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = moneyWordPacks.json; path = "Bubble Raps/WordPacks/moneyWordPacks.json"; sourceTree = SOURCE_ROOT; };
+		0AE338BF2BD28446007B7ECF /* daleChallRhymeBundle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = daleChallRhymeBundle.json; sourceTree = "<group>"; };
+		0AE338C12BD28865007B7ECF /* carsRhymeBundle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = carsRhymeBundle.json; path = "Bubble Raps/WordPacks/carsRhymeBundle.json"; sourceTree = SOURCE_ROOT; };
+		0AE338C22BD28865007B7ECF /* fashionRhymeBundle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fashionRhymeBundle.json; path = "Bubble Raps/WordPacks/fashionRhymeBundle.json"; sourceTree = SOURCE_ROOT; };
+		0AE338C32BD28865007B7ECF /* footballRhymeBundle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = footballRhymeBundle.json; path = "Bubble Raps/WordPacks/footballRhymeBundle.json"; sourceTree = SOURCE_ROOT; };
+		0AE338C42BD28865007B7ECF /* jewelryRhymeBundle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = jewelryRhymeBundle.json; path = "Bubble Raps/WordPacks/jewelryRhymeBundle.json"; sourceTree = SOURCE_ROOT; };
+		0AE338C52BD28865007B7ECF /* moneyRhymeBundle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = moneyRhymeBundle.json; path = "Bubble Raps/WordPacks/moneyRhymeBundle.json"; sourceTree = SOURCE_ROOT; };
 		17818C9F4D5B7BA2266EBA49 /* Pods_Bubble_Raps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bubble_Raps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68407D6540D63C8FE6369D80 /* Pods-Bubble Raps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.release.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.release.xcconfig"; sourceTree = "<group>"; };
 		762A3397C2C9874E8368BC1C /* Pods-Bubble Raps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubble Raps.debug.xcconfig"; path = "Target Support Files/Pods-Bubble Raps/Pods-Bubble Raps.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,13 +133,13 @@
 		0AE338CB2BD28873007B7ECF /* WordPacks */ = {
 			isa = PBXGroup;
 			children = (
-				0AE338BF2BD28446007B7ECF /* daleChallWordPacks.json */,
+				0AE338BF2BD28446007B7ECF /* daleChallRhymeBundle.json */,
+				0AE338C12BD28865007B7ECF /* carsRhymeBundle.json */,
+				0AE338C22BD28865007B7ECF /* fashionRhymeBundle.json */,
+				0AE338C32BD28865007B7ECF /* footballRhymeBundle.json */,
+				0AE338C42BD28865007B7ECF /* jewelryRhymeBundle.json */,
+				0AE338C52BD28865007B7ECF /* moneyRhymeBundle.json */,
 				0AE338BB2BD25816007B7ECF /* allRandomWords.json */,
-				0AE338C12BD28865007B7ECF /* carsWordPacks.json */,
-				0AE338C22BD28865007B7ECF /* fashionWordPacks.json */,
-				0AE338C32BD28865007B7ECF /* footballWordPacks.json */,
-				0AE338C42BD28865007B7ECF /* jewelryWordPacks.json */,
-				0AE338C52BD28865007B7ECF /* moneyWordPacks.json */,
 			);
 			path = WordPacks;
 			sourceTree = "<group>";
@@ -275,6 +279,8 @@
 		E5CA5C3A232048C6009AAE96 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0A65C2C82C2D099A00BE0786 /* RhymePacks.swift */,
+				0A65C2CA2C2D28E500BE0786 /* Difficulty.swift */,
 				E5194DC522C46BB3000083D8 /* RhymeHelper (Old).swift */,
 				0A42321C258B29C80040B62F /* RhymeEngine.swift */,
 				0A423220258B2F9F0040B62F /* Rhyme.swift */,
@@ -364,18 +370,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AE338C72BD28865007B7ECF /* fashionWordPacks.json in Resources */,
-				0AE338C92BD28865007B7ECF /* jewelryWordPacks.json in Resources */,
+				0AE338C72BD28865007B7ECF /* fashionRhymeBundle.json in Resources */,
+				0AE338C92BD28865007B7ECF /* jewelryRhymeBundle.json in Resources */,
 				E54328B922C1D34600187D44 /* LaunchScreen.storyboard in Resources */,
-				0AE338C02BD28446007B7ECF /* daleChallWordPacks.json in Resources */,
+				0AE338C02BD28446007B7ECF /* daleChallRhymeBundle.json in Resources */,
 				E54328B622C1D34600187D44 /* Assets.xcassets in Resources */,
 				E54328B422C1D34300187D44 /* Main.storyboard in Resources */,
 				E5DC489F22C5ACB60059DD72 /* LabelBubbleView.xib in Resources */,
-				0AE338C62BD28865007B7ECF /* carsWordPacks.json in Resources */,
-				0AE338C82BD28865007B7ECF /* footballWordPacks.json in Resources */,
+				0AE338C62BD28865007B7ECF /* carsRhymeBundle.json in Resources */,
+				0AE338C82BD28865007B7ECF /* footballRhymeBundle.json in Resources */,
 				0AE338BC2BD25816007B7ECF /* allRandomWords.json in Resources */,
 				E54EEBF2231E1EFE002981F6 /* Snippets.rtf in Resources */,
-				0AE338CA2BD28865007B7ECF /* moneyWordPacks.json in Resources */,
+				0AE338CA2BD28865007B7ECF /* moneyRhymeBundle.json in Resources */,
 				E5CA5C3E23206CD6009AAE96 /* LargeMenuView.xib in Resources */,
 				0A66493223DAC1BE00060259 /* GoogleService-Info.plist in Resources */,
 			);
@@ -432,6 +438,7 @@
 			files = (
 				E5194DC622C46BB3000083D8 /* RhymeHelper (Old).swift in Sources */,
 				E5E921DA2318CD660088E2B9 /* BubbleRaps.xcdatamodeld in Sources */,
+				0A65C2CB2C2D28E500BE0786 /* Difficulty.swift in Sources */,
 				0A97189923D1472E00929A10 /* BubbleVC.swift in Sources */,
 				0A42321D258B29C80040B62F /* RhymeEngine.swift in Sources */,
 				E556CF1A2317728500598405 /* RoundCompletedAlert.swift in Sources */,
@@ -445,6 +452,7 @@
 				E54328AF22C1D34300187D44 /* AppDelegate.swift in Sources */,
 				E54B57B822C8405B0014B71C /* Extensions.swift in Sources */,
 				E592E570232D937C0082260D /* UnlockableHelper.swift in Sources */,
+				0A65C2C92C2D099A00BE0786 /* RhymePacks.swift in Sources */,
 				E5CA5C4023206CEE009AAE96 /* LargeMenuView.swift in Sources */,
 				E5CA33D42325D47B002570F9 /* WordPackVC.swift in Sources */,
 				E5976E1A2310CDCB005C8D1D /* LabelBubbleView.swift in Sources */,
@@ -607,12 +615,13 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = VZ4LX93GR9;
 				INFOPLIST_FILE = "$(SRCROOT)/Bubble Raps/Core/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Bubble Raps";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
@@ -636,12 +645,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VZ4LX93GR9;
 				INFOPLIST_FILE = "$(SRCROOT)/Bubble Raps/Core/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Bubble Raps";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",

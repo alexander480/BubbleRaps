@@ -6,6 +6,9 @@
 //  Copyright © 2019 Delta Vel. All rights reserved.
 //
 
+// TODO: !! Fix Selection Icons !!
+// TODO: Add Kid Friendly Categories Like Fortnite
+// TODO: Add Watch Video / Purchase Bubbles Call To Action
 
 // In Progress Of Creating WordPackPurchase Functions
 
@@ -70,17 +73,17 @@ class WordPackVC: UIViewController {
 	
 	// MARK: Purchase Theme UI Handler
 	private func presentPackPurchaseAlert(pack: String) {
-		let alert = UIAlertController(title: "Unlock \(pack) Word Pack", message: "\(self.packCost) Bubbles", preferredStyle: .actionSheet)
+		let alert = UIAlertController(title: "Unlock \(pack) Category", message: "\(self.packCost) Bubbles", preferredStyle: .actionSheet)
 		let purchaseAction = UIAlertAction(title: "Confirm", style: .default) { (action) in
 			switch self.unlockable.purchasePack(Named: pack, Cost: self.packCost) {
 			case .success:
-				self.presentAlert(title: "\(pack) Word Pack Unlocked!", message: "\(self.unlockable.currentBubbleBalance()) bubbles remaining.", actions: nil)
+				self.presentAlert(title: "\(pack) Category Unlocked!", message: "\(self.unlockable.currentBubbleBalance()) bubbles remaining.", actions: nil)
 				self.bubbleButton.setAttributedTitleForAllStates(title: self.unlockable.bubbleBalanceWithIcon())
 				self.tableView.reloadData()
 			case .notEnoughBubbles:
-				self.presentAlert(title: "Not Enough Bubbles!", message: "You need \(self.packCost - self.unlockable.currentBubbleBalance()) more bubbles to unlock this word pack.", actions: nil)
+				self.presentAlert(title: "Not Enough Bubbles!", message: "You need \(self.packCost - self.unlockable.currentBubbleBalance()) more bubbles to unlock this category. You can purchase bubbles from the main menu, or watch a 30 second ad for 100 free bubbles.", actions: nil)
 			case .alreadyUnlocked:
-				self.presentAlert(title: "You Have Already Unlocked This Word Pack!", message: "Go get yourself something nice, you've got enough bubbles (;", actions: nil)
+				self.presentAlert(title: "You Have Already Unlocked This Category!", message: "Go get yourself something nice, you've got enough bubbles (;", actions: nil)
 			}
 			alert.dismiss(animated: true, completion: nil)
 		}
@@ -92,6 +95,12 @@ class WordPackVC: UIViewController {
 		
 		self.present(alert, animated: true, completion: nil)
 	}
+	
+	private func presentNotEnoughBubblesAlert() {
+		// TODO: Add "Purchase Bubbles" && "Watch Ad" Actions
+		
+		
+	}
 }
 
 // MARK: UITableViewDelegate
@@ -100,13 +109,11 @@ extension WordPackVC: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let unlockedPacks = self.unlockable.currentlyUnlockedPacks()
 		let selectedPack = WordPacks.keys[indexPath.section]
-		print("[INFO] \(selectedPack) Word Pack Selected")
+		let cell = self.tableView.dequeueReusableCell(withIdentifier: "UnlockCell", for: indexPath) as! UnlockCell
 		
-		if unlockedPacks.contains(selectedPack) {
-			if let cell = tableView.cellForRow(at: indexPath) as? UnlockCell { cell.costLabel.text = "●" }
-			self.tableView.reloadData()
-		}
-		else {
+		print("[INFO] \(selectedPack) Category Selected")
+		
+		if !unlockedPacks.contains(selectedPack) {
 			self.presentPackPurchaseAlert(pack: selectedPack)
 		}
 	}
@@ -130,8 +137,7 @@ extension WordPackVC: UITableViewDataSource {
 		cell.costLabel.attributedText = self.unlockable.addBubbleIconTo(String: "\(packCost) ", Color: color, Size: nil, Offset: nil)
 		
 		if unlockedPacks.contains(selectedPack) {
-			cell.costLabel.text = "●"
-			cell.costLabel.textColor = color
+			cell.costLabel.isHidden = true
 		}
 		
 		return cell

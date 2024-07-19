@@ -6,6 +6,10 @@
 //  Copyright © 2019 Delta Vel. All rights reserved.
 //
 
+// TODO: Show "Game Over" Before Showing Ad
+// TODO: Figure Out Ideal Timer Value
+// TODO: Auto Advance To Next Word Without Showing Next Round Popup
+
 import UIKit
 import AmazingBubbles
 import GoogleMobileAds
@@ -32,7 +36,12 @@ class MainVC: UIViewController {
 	var interstitial: GADInterstitialAd?
 	// var loadingScreen: LoadingScreen?
 	
-	let rhymeHelper = RhymeHelper()
+	var selectedCategory = "Standard"
+	
+	var rhymePacks = RhymePacks()
+	var currentRhymePack: RhymePack?
+	
+	// let rhymeHelper = RhymeHelper()
 	let unlockable = UnlockableHelper()
 	
 	var isHighscore = false
@@ -45,35 +54,35 @@ class MainVC: UIViewController {
 	var roundTime = 0
 	var timeLeft = 0
 	
-	var rhyme:RhymeHelper!
-	var potentialRhymesDictionary:[String:Bool]!
-	var potentialRhymesArray:[String]!
-	
-	var selectedPack = "Standard"
-	var topicWords = WordPacks.standard.shuffled()
+	// var rhyme:RhymeHelper!
+	// var potentialRhymesDictionary:[String:Bool]!
+	// var potentialRhymesArray:[String]!
 	
 	// MARK: Starting New 'WordPack Struct' Integration
 	
-	var wordPack: WordPack?
+	// var wordPack: WordPack?
 	
-	var nextWordPack: WordPack? {
-		didSet {
-			print("[INFO] Creating nextWordPack.")
-			let newTopic = topicWords.popLast()
-			if nextWordPack == nil {
-				let newTopic = self.topicWords.popLast()
-				self.rhymeHelper.createWordPack(topicWord: newTopic) { wordPack in
-					self.nextWordPack = wordPack
-					print("[INFO] Created nextWordPack.")
-				}
-			}
-		}
-	}
+//	var nextWordPack: WordPack? {
+//		didSet {
+//			print("[INFO] Creating nextWordPack.")
+//			let newTopic = topicWords.popLast()
+//			if nextWordPack == nil {
+//				let newTopic = self.topicWords.popLast()
+//				self.rhymeHelper.createWordPack(topicWord: newTopic) { wordPack in
+//					self.nextWordPack = wordPack
+//					print("[INFO] Created nextWordPack.")
+//				}
+//			}
+//		}
+//	}
 	
 	// MARK: viewDidLoad
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		// Initialize RhymePacks Object
+		self.rhymePacks = RhymePacks(self.selectedCategory)
 		
 		self.titleLabel.text = "Please Wait..."
 		
@@ -129,39 +138,22 @@ class MainVC: UIViewController {
 		self.round += 1
 		self.correctAnswers = 0
 		
-		// Check For Already Loaded WordPack
-		if let newWordPack = nextWordPack {
-			print("[INFO] Loading nextWordPack.")
-			self.bubblesView.removeBubbles()
+		guard let nextRhymePack = self.rhymePacks.next() else {
+			print("[ERROR] Failed To Fetch Next RhymePack.")
+			// TODO: Show Game Completed Alert Or Something Like That.
 			
-			self.wordPack = newWordPack
-			self.nextWordPack = nil
-			
-			self.titleLabel.text = newWordPack.topic
-			self.bubblesView.reload()
-			
-			self.startTimer(fromPause: false)
-			
-			completion?()
+			return
 		}
-		else {
-			print("[INFO] nextWordPack Not Available, Creating New wordPack.")
-			let newTopic = self.topicWords.popLast()
-			
-			self.rhymeHelper.createWordPack(topicWord: newTopic) { (newPack) in
-				self.bubblesView.removeBubbles()
-				
-				self.wordPack = newPack
-				self.nextWordPack = nil // Create New nextWordPack
-				
-				self.titleLabel.text = newPack.topic
-				self.bubblesView.reload()
-				
-				self.startTimer(fromPause: false)
-				
-				completion?()
-			}
-		}
+		
+		self.bubblesView.removeBubbles()
+		
+		self.currentRhymePack = nextRhymePack
+		self.titleLabel.text = nextRhymePack.topic
+		
+		self.bubblesView.reload()
+		self.startTimer(fromPause: false)
+		
+		completion?()
 	}
 	
 	// MARK: Start Timer
@@ -184,11 +176,11 @@ class MainVC: UIViewController {
 			if self.timeLeft <= 0 {
 				self.roundCompleted(isGameOver: true)
 			}
-//			else if self.timeLeft <= 5 {
-//				self.timerLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//				self.timerLabel.borderColor = #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1)
-//				self.timerLabel.textColor = #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1)
-//			}
+			else if self.timeLeft <= 3 {
+				self.timerLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+				self.timerLabel.borderColor = #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1)
+				self.timerLabel.textColor = #colorLiteral(red: 1, green: 0, blue: 0.06575310382, alpha: 1)
+			}
 			else {
 				self.timerLabel.backgroundColor = mainColor
 				self.timerLabel.borderColor = borderColor
@@ -267,13 +259,41 @@ class MainVC: UIViewController {
 // MARK: ContentBubblesViewDelegate Protocol Stubs
 
 extension MainVC: ContentBubblesViewDelegate {
+	
     func minimalSizeForBubble(in view: ContentBubblesView) -> CGSize { return CGSize(width: 80, height: 80) }
+	
     func maximumSizeForBubble(in view: ContentBubblesView) -> CGSize { return CGSize(width: 160, height: 160) }
+	
     func contentBubblesView(_ view: ContentBubblesView, didSelectItemAt index: Int) {
-		guard let wordPack = self.wordPack else { print("[ERROR] Unable To Validate Current WordPack."); return }
-		let wordSelected = wordPack.allWords[index]
-		guard let isCorrect = wordPack.rhymeDictionary[wordSelected] else { print("[ERROR] Unable To Find Selected Word: \(wordSelected) In Rhyme Dictionary."); return }
-		if isCorrect { self.correctAnswer(view: view, index: index) } else { self.incorrectAnswer(view: view, index: index) }
+		guard let rhymePack = self.currentRhymePack else {
+			print("[ERROR] Failed To Validate Current RhymePack.")
+			return
+		}
+		
+		// TODO: Improve This.
+		guard let labelBubbleView = view.bubbleViews[index] as? LabelBubbleView else {
+			print("[ERROR] Failed To Cast Selected BubbleView As LabelBubbleView.")
+			return
+		}
+		
+		guard let selectedWord = labelBubbleView.label.text else {
+			print("[ERROR] Failed To Validate Text From LabelBubbleView.")
+			return
+		}
+		
+		// let wordSelected = rhymePack.allWords[index]
+		guard let isCorrect = rhymePack.rhymeDictionary[selectedWord] else {
+			print("[ERROR] Unable To Find Selected Word: \(selectedWord) In Rhyme Dictionary.")
+			return
+		}
+		
+		if isCorrect {
+			self.correctAnswer(view: view, index: index)
+		}
+		else {
+			self.incorrectAnswer(view: view, index: index)
+		}
+		
 		view.bubbleViews[index].isUserInteractionEnabled = false
     }
 	
@@ -296,22 +316,43 @@ extension MainVC: ContentBubblesViewDelegate {
 // MARK: ContentBubblesViewDataSource Protocol Stubs
 
 extension MainVC: ContentBubblesViewDataSource {
+	
+	// TODO: Change The Amount Of 'notRhymes' Depending On Difficulty.
 	func numberOfItems(in view: ContentBubblesView) -> Int {
-		guard let wordPack = self.wordPack else { print("[ERROR] Unable To Validate Current WordPack."); return 0 }
-		return wordPack.allWords.count
+//		guard let rhymePack = self.currentRhymePack else {
+//			print("[ERROR] Unable To Validate Current RhymePack.")
+//			return 0
+//		}
+//		
+//		return rhymePack.allWords.count
+		
+		let numRhymes = 5
+		let numNotRhymes = 5
+		
+		return numRhymes + numNotRhymes
 	}
 	
-    func countOfSizes(in view: ContentBubblesView) -> Int { return 3 }
+	func countOfSizes(in view: ContentBubblesView) -> Int { return 3 }
+	
     func addOrUpdateBubbleView(forItemAt index: Int, currentView: BubbleView?) -> BubbleView {
 		var view: BubbleView! = currentView
 		
-		guard let wordPack = self.wordPack else { print("[ERROR] Unable to Validate Current WordPack."); return view }
-		let rhymeWord = wordPack.allWords[index]
+		guard var rhymePack = self.currentRhymePack else {
+			print("[ERROR] Unable to Validate Current RhymePack.")
+			return view
+		}
+		
+		var word = ""
+		
+		// TODO: Change The Amount Of 'notRhymes' Depending On Difficulty.
+		/// Grab 5 Rhyming Words & Additional Not Rhymes Depending On Difficulty
+		if index < 5 { word = rhymePack.rhymes[index] }
+		else { word = rhymePack.notRhymes[index - 5] }
 		
 		let font = UIFont.systemFont(ofSize: 17.0)
 		if let labelView = UINib(nibName: "LabelBubbleView", bundle: nil).instantiate(withOwner: nil, options: nil).first as? LabelBubbleView  {
 			labelView.label.font = font
-			labelView.label.text = rhymeWord
+			labelView.label.text = word
 			labelView.imageView.image = self.unlockable.bubbleImageFor(Theme: self.unlockable.currentTheme())
 			labelView.imageView.isHidden = false
 			view = labelView
@@ -322,7 +363,7 @@ extension MainVC: ContentBubblesViewDataSource {
 		view.frame = CGRect(origin: randomOrigin, size: .zero)
 		
 		// Adjust Size of Bubble if Character Count is Greater Than 8
-		var textWidth = UILabel.textWidth(font: font, text: rhymeWord) + 20 /* extra space for bubble border */
+		var textWidth = UILabel.textWidth(font: font, text: word) + 20 /* extra space for bubble border */
 		if textWidth < 80 { textWidth = 80 }
 		view.frame.size = CGSize(width: textWidth, height: textWidth)
 		

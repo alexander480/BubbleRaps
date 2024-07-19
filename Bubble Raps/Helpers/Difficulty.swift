@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+enum Difficulty: String {
+	case Easy = "Easy"
+	case Medium = "Medium"
+	case Hard = "Hard"
+}

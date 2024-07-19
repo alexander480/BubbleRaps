@@ -1,5 +1,5 @@
 //
-//  RhymeBundle.swift
+//  RhymePacks.swift
 //  Bubble Raps
 //
 //  Created by Alexander Lester on 6/26/24.
@@ -9,10 +9,13 @@
 import Foundation
 
 struct RhymePacks {
-	var data: [RhymePack]
+	private var data: [RhymePack]
+	private var currentIndex = 0
 	
-	init() {
-		guard let jsonFile = Bundle.main.url(forResource: "daleChallRhymeBundles", withExtension: "json") else {
+	init(_ category: String = "Standard") {
+		let fileName = WordPacks.keyToFileNameDict[category]
+		
+		guard let jsonFile = Bundle.main.url(forResource: fileName, withExtension: "json") else {
 			print("[ERROR] Failed To Convert JSON File To RhymePack Array.");
 			self.data = [RhymePack]()
 			return
@@ -30,6 +33,19 @@ struct RhymePacks {
 			print("[ERROR] Failed To Decode JSON File. [MESSAGE] \(error.localizedDescription)")
 			self.data = [RhymePack]()
 		}
+	}
+	
+	mutating func next() -> RhymePack? {
+		guard currentIndex + 1 < data.count else {
+			print("[INFO] Went Through Entire RhymePack Array. Starting Again From The Beginning.")
+			self.currentIndex = 0
+			
+			return self.data[0]
+		}
+		
+		self.currentIndex = currentIndex + 1
+
+		return self.data[self.currentIndex]
 	}
 }
 

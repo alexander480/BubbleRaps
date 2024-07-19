@@ -18,6 +18,9 @@ class RoundCompletedAlert: UIViewController {
 
 	// MARK: IBOutlets
 	
+	@IBOutlet weak var coinValueView: UIView!
+	@IBOutlet weak var coinValueLabel: UILabel!
+	
 	@IBOutlet weak var backgroundImageView: UIImageView!
 	@IBOutlet weak var coinLabel: UILabel!
 	@IBOutlet weak var titleLabel: UILabel!
@@ -54,6 +57,7 @@ class RoundCompletedAlert: UIViewController {
 			if self.isHighScore { self.titleLabel.text = "New High Score!!"; self.subtitleLabel.text = "\(self.currentScore) Correct Answers" }
 			else { self.titleLabel.text = "Game Over"; self.subtitleLabel.text = "\(self.currentScore) Correct Answers" }
 			
+			self.coinValueLabel.text = "+\(self.currentScore)"
 			self.coinLabel.attributedText = self.coinsEarnedString(Number: self.currentScore)
 		}
 		else {
@@ -63,6 +67,7 @@ class RoundCompletedAlert: UIViewController {
 			self.titleLabel.text = "Round Completed!"
 			self.subtitleLabel.text = "\(self.currentScore) Correct Answers"
 			
+			self.coinValueLabel.text = "+\(self.currentScore)"
 			self.coinLabel.attributedText = self.coinsEarnedString(Number: self.currentScore)
 		}
 		
