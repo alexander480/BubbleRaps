@@ -18,6 +18,13 @@ enum UnlockableStatus {
 class UnlockableHelper: NSObject {
 	// MARK: Coin Purchasing Functions
 	
+	// TODO: Don't Show Ads After First Loss When Its Their First Game Of The Day
+	// Only Defaults To True So User Doesn't Get Ad On First Loss
+	var didShowAdLastTime: Bool {
+		get { return UserDefaults.standard.bool(forKey: "didShowAdLastTime") }
+		set { UserDefaults.standard.set(newValue, forKey: "didShowAdLastTime") }
+	}
+	
 	func purchaseTheme(Named: String, Cost: Int) -> UnlockableStatus {
 		if self.doesUserHaveEnoughBubbles(Cost: Cost) {
 			if self.doesUserHaveTheme(Named: Named) {
