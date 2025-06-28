@@ -43,6 +43,10 @@ class PurchaseHelper: NSObject {
 				case .cloudServiceRevoked: print("[ERROR] User has revoked permission to use this cloud service"); Completion(false);
 				default: print((error as NSError).localizedDescription); Completion(false);
 				}
+				case .deferred(purchase: let purchase):
+					// TODO: Handle This Case
+					print("[WARNING] Purchase Defered. [MESSAGE] needsFinishTransaction: \(purchase.needsFinishTransaction).")
+					Completion(false)
 			}
 		}
 	}
