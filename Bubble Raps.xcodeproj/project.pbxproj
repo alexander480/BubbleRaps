@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A00FABA26DAFEA500BBA98B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0A00FAB926DAFEA500BBA98B /* FirebaseAnalytics */; };
-		0A00FABC26DAFEA500BBA98B /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0A00FABB26DAFEA500BBA98B /* FirebaseCrashlytics */; };
 		0A00FABF26DB003400BBA98B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A00FABE26DB003400BBA98B /* Alamofire */; };
 		0A00FAC226DB009900BBA98B /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A00FAC126DB009900BBA98B /* SwiftyStoreKit */; };
 		0A42321D258B29C80040B62F /* RhymeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A42321C258B29C80040B62F /* RhymeEngine.swift */; };
 		0A423221258B2F9F0040B62F /* Rhyme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A423220258B2F9F0040B62F /* Rhyme.swift */; };
 		0A619D2923D92FD9003EA8EC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A619D2823D92FD9003EA8EC /* StoreKit.framework */; };
+		0A647E0F2E1278DC0036F1B0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0A647E0E2E1278DC0036F1B0 /* FirebaseAnalytics */; };
+		0A647E112E1278DC0036F1B0 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0A647E102E1278DC0036F1B0 /* FirebaseCore */; };
 		0A65C2C92C2D099A00BE0786 /* RhymePacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65C2C82C2D099A00BE0786 /* RhymePacks.swift */; };
 		0A65C2CB2C2D28E500BE0786 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65C2CA2C2D28E500BE0786 /* Difficulty.swift */; };
 		0A66493223DAC1BE00060259 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A66493123DAC1BE00060259 /* GoogleService-Info.plist */; };
@@ -111,10 +111,10 @@
 			files = (
 				0A00FABF26DB003400BBA98B /* Alamofire in Frameworks */,
 				0A619D2923D92FD9003EA8EC /* StoreKit.framework in Frameworks */,
-				0A00FABC26DAFEA500BBA98B /* FirebaseCrashlytics in Frameworks */,
+				0A647E0F2E1278DC0036F1B0 /* FirebaseAnalytics in Frameworks */,
 				0A00FAC226DB009900BBA98B /* SwiftyStoreKit in Frameworks */,
+				0A647E112E1278DC0036F1B0 /* FirebaseCore in Frameworks */,
 				0ABAC6F123BAB65B00B5E20C /* AdSupport.framework in Frameworks */,
-				0A00FABA26DAFEA500BBA98B /* FirebaseAnalytics in Frameworks */,
 				870E460DF011F86A37A6F2DE /* Pods_Bubble_Raps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,10 +318,10 @@
 			);
 			name = "Bubble Raps";
 			packageProductDependencies = (
-				0A00FAB926DAFEA500BBA98B /* FirebaseAnalytics */,
-				0A00FABB26DAFEA500BBA98B /* FirebaseCrashlytics */,
 				0A00FABE26DB003400BBA98B /* Alamofire */,
 				0A00FAC126DB009900BBA98B /* SwiftyStoreKit */,
+				0A647E0E2E1278DC0036F1B0 /* FirebaseAnalytics */,
+				0A647E102E1278DC0036F1B0 /* FirebaseCore */,
 			);
 			productName = RhymingBubbles;
 			productReference = E54328AB22C1D34300187D44 /* Bubble Raps.app */;
@@ -352,9 +352,9 @@
 			);
 			mainGroup = E54328A222C1D34300187D44;
 			packageReferences = (
-				0A00FAB826DAFEA500BBA98B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				0A00FABD26DB003400BBA98B /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0A00FAC026DB009800BBA98B /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
+				0A647E0D2E1278DC0036F1B0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = E54328AC22C1D34300187D44 /* Products */;
 			projectDirPath = "";
@@ -625,7 +625,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
@@ -655,7 +655,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
@@ -693,14 +693,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0A00FAB826DAFEA500BBA98B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
 		0A00FABD26DB003400BBA98B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -717,19 +709,17 @@
 				minimumVersion = 0.9.3;
 			};
 		};
+		0A647E0D2E1278DC0036F1B0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.15.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0A00FAB926DAFEA500BBA98B /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A00FAB826DAFEA500BBA98B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		0A00FABB26DAFEA500BBA98B /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A00FAB826DAFEA500BBA98B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
 		0A00FABE26DB003400BBA98B /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0A00FABD26DB003400BBA98B /* XCRemoteSwiftPackageReference "Alamofire" */;
@@ -739,6 +729,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A00FAC026DB009800BBA98B /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
 			productName = SwiftyStoreKit;
+		};
+		0A647E0E2E1278DC0036F1B0 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A647E0D2E1278DC0036F1B0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		0A647E102E1278DC0036F1B0 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A647E0D2E1278DC0036F1B0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 
