@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import Firebase
+import FirebaseCore
 import GoogleMobileAds
 import SwiftyStoreKit
 
