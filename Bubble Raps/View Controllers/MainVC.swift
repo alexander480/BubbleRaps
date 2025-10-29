@@ -42,7 +42,7 @@ class MainVC: UIViewController {
 	var currentRhymePack: RhymePack?
 	
 	// let rhymeHelper = RhymeHelper()
-	let unlockable = UnlockableHelper()
+	var unlockable = UnlockableHelper()
 	
 	var isHighscore = false
 	var score = 0
@@ -126,6 +126,22 @@ class MainVC: UIViewController {
 		
     }
 	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+
+		self.timer.invalidate()
+
+		self.bubblesView.delegate = nil
+		self.bubblesView.dataSource = nil
+
+		self.bubblesView.removeBubbles()
+		self.interstitial = nil
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+	}
+	
 	// MARK: Start Round Function
 	
 	// Proceed To Next Screen
@@ -170,7 +186,8 @@ class MainVC: UIViewController {
 		self.timerLabel.borderColor = borderColor
 		self.timerLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 		
-		self.timer = Timer.init(timeInterval: 1.0, repeats: true, block: { (timr) in
+		self.timer = Timer(timeInterval: 1.0, repeats: true) { [weak self] _ in
+			guard let self = self else { return }
 			self.timeLeft -= 1
 			self.timerLabel.text = String(describing: self.timeLeft)
 			if self.timeLeft <= 0 {
@@ -186,7 +203,7 @@ class MainVC: UIViewController {
 				self.timerLabel.borderColor = borderColor
 				self.timerLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 			}
-		})
+		}
 		
 		RunLoop.current.add(timer, forMode: .common)
 	}
@@ -254,6 +271,11 @@ class MainVC: UIViewController {
 		self.timer.invalidate()
 		self.bubblesView.removeBubbles()
 	}
+	
+	deinit {
+		print("[INFO] MainVC deinit")
+		self.timer.invalidate()
+	}
 }
 
 // MARK: ContentBubblesViewDelegate Protocol Stubs
@@ -320,7 +342,7 @@ extension MainVC: ContentBubblesViewDataSource {
 	// TODO: Change The Amount Of 'notRhymes' Depending On Difficulty.
 	func numberOfItems(in view: ContentBubblesView) -> Int {
 //		guard let rhymePack = self.currentRhymePack else {
-//			print("[ERROR] Unable To Validate Current RhymePack.")
+//			print("[ERROR] Unable To Validate CurrentRhymePack.")
 //			return 0
 //		}
 //		
@@ -495,6 +517,7 @@ extension MainVC: GADFullScreenContentDelegate {
 							   
 	func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
 		print("[INFO] Did Dismiss Ad.")
+		self.interstitial = nil
 		self.loadInterstitial()
 		self.presentRoundCompletedPopup(isGameOver: true)
 	}
@@ -504,3 +527,4 @@ extension MainVC: GADFullScreenContentDelegate {
 //	private func showLoadingScreen() { if let loadingScreen = self.loadingScreen { self.present(loadingScreen, animated: true, completion: nil) } }
 //	private func hideLoadingScreen() { if let _ = self.loadingScreen { self.loadingScreen?.dismiss(animated: true, completion: nil) } }
 //}
+
