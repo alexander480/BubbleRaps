@@ -91,8 +91,9 @@ class MenuVC: UIViewController {
 //		UserDefaults.standard.set(nil, forKey: "unlockedThemes")
 //		UserDefaults.standard.set(nil, forKey: "theme")
 //		UserDefaults.standard.set(nil, forKey: "bubbles")
+//		UserDefaults.standard.set(nil, forKey: "difficulty")
+//		UserDefaults.standard.set(nil, forkey: "roundTime")
 //		print("[DEV] Reset All Progress.")
-
 	}
 	
 	// MARK: --- Theme Selector Menu
