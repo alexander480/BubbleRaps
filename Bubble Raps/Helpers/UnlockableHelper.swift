@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FirebaseRemoteConfig
 
 enum UnlockableStatus {
 	case success
@@ -16,7 +17,27 @@ enum UnlockableStatus {
 }
 
 class UnlockableHelper: NSObject {
-	// MARK: Coin Purchasing Functions
+	
+	var numLossesBeforeShowingAd: Int = 3
+	var remoteConfig: RemoteConfig
+	
+	override init() {
+		// MARK: Initialize Remote Config
+		remoteConfig = RemoteConfig.remoteConfig()
+		let settings = RemoteConfigSettings()
+		#if DEBUG
+		settings.minimumFetchInterval = 0
+		#else
+		settings.minimumFetchInterval = 3600
+		#endif
+		remoteConfig.configSettings = settings
+		remoteConfig.setDefaults(fromPlist: "remote_config_defaults")
+		numLossesBeforeShowingAd = remoteConfig["numLossesBeforeShowingAd"].numberValue.intValue
+		print("[REMOTE-CONFIG] initial numLossesBeforeShowingAd: \(numLossesBeforeShowingAd)")
+		
+		super.init()
+		refreshRemoteConfig()
+	}
 	
 	var lossesSinceLastAd: Int {
 		get { return UserDefaults.standard.integer(forKey: "lossesSinceLastAd") }
@@ -69,6 +90,25 @@ class UnlockableHelper: NSObject {
 			print("[WARNING] User Does Not Have Enough Bubbles To Purchase This Word Pack.")
 			
 			return .notEnoughBubbles
+		}
+	}
+	
+	// MARK: - Remote Config Refresh
+	func refreshRemoteConfig(completion: ((Int) -> Void)? = nil) {
+		remoteConfig.fetchAndActivate { [weak self] status, error in
+			guard let self = self else { print("[REMOTE-CONFIG] Failed To Fetch. [MESSAGE] Failed To Validate self."); return }
+			
+			if let error = error {
+				print("[REMOTE-CONFIG] fetch failed: \(error.localizedDescription)")
+			} else {
+				print("[REMOTE-CONFIG] fetchAndActivate status: \(status.rawValue)")
+			}
+			
+			let value = self.remoteConfig["numLossesBeforeShowingAd"].numberValue.intValue
+			self.numLossesBeforeShowingAd = value
+			print("[REMOTE-CONFIG] updated numLossesBeforeShowingAd: \(value)")
+			
+			completion?(value)
 		}
 	}
 	
@@ -230,11 +270,11 @@ struct WordPacks {
 		
 		"Fashion": ["supreme", "leather", "louis", "tailor", "style", "footwear", "brand", "lingerie", "swagger", "dolce", "timberlands", "clothes", "vogue", "designer", "couture", "vuitton", "armani", "menswear", "prada", "trend", "escada", "versace", "glamour", "gucci"],
 		
-		"Football": ["fullback", "quarterback", "pigskin", "league", "punter", "tackle", "kick", "touchdown", "rusher", "championship", "coach", "fans", "center", "snapper", "kickoff", "player", "season", "game", "playoffs", "SuperBowl", "rings", "Lombardi", "packers", "lions", "cowboys", "bears", "browns", "seahawks", "colts", "chiefs", "bills", "redskins", "jets", "rams", "buccaneers", "jaguars", "Crews", "Brady", "Manning", "Favre", "Jackson", "Newton", "Brees", "Romo", "Bradshaw", "Montana", "Rice", "Fitzgerald", "Luck"], 
+		"Football": ["fullback", "quarterback", "pigskin", "league", "punter", "tackle", "kick", "touchdown", "rusher", "championship", "coach", "fans", "center", "snapper", "kickoff", "player", "season", "game", "playoffs", "SuperBowl", "rings", "Lombardi", "packers", "lions", "cowboys", "bears", "browns", "seahawks", "colts", "chiefs", "bills", "redskins", "jets", "rams", "buccaneers", "jaguars", "Crews", "Brady", "Manning", "Favre", "Jackson", "Newton", "Brees", "Romo", "Bradshaw", "Montana", "Rice", "Fitzgerald", "Luck"],
 		
 		"Money": ["cash", "fund", "dime", "penny", "coffer", "pay", "amount", "sum", "loot", "paid", "amounts", "financing", "finance", "dough", "payoff", "monetary", "revenue", "wealth", "quid", "lucre", "payment", "investment", "spending", "dollar", "contributions", "income", "purse", "payroll", "stash", "appropriation", "buck", "expensive", "cost", "bet", "wherewithal", "liquidity", "wallet", "aid", "pocket", "salary", "bribe", "allocation", "coin", "fee", "credit", "hay", "means", "booty", "ticket", "expense", "profit", "loan", "retraining", "recycle", "denarii", "contribution", "reward", "treasure", "wash", "gravy", "bread", "pecuniary", "fiscal", "scratch", "gold", "stock", "washing", "price", "are", "popcorn", "mandate", "grubbing", "dear", "muni", "profitability"],
 		
-		"Jewelry": ["jeweler", "necklace", "jewels", "gemstone", "bling", "gold", "decoration", "gem", "jewel", "jeweller", "gun", "junk", "baby", "puppy", "fork", "whistle", "brooch", "beadwork", "jewelers", "antiques", "gemstones", "handbags", "baubles", "bangle", "pendant", "pendants", "tableware", "bangles", "dinnerware", "bead", "kitchenware", "bridal", "lockets", "ceramics", "cosmetics", "perfumes", "furs", "flatware", "cookware", "jadeite", "jade", "oroide", "rhinestone", "lingerie"], 
+		"Jewelry": ["jeweler", "necklace", "jewels", "gemstone", "bling", "gold", "decoration", "gem", "jewel", "jeweller", "gun", "junk", "baby", "puppy", "fork", "whistle", "brooch", "beadwork", "jewelers", "antiques", "gemstones", "handbags", "baubles", "bangle", "pendant", "pendants", "tableware", "bangles", "dinnerware", "bead", "kitchenware", "bridal", "lockets", "ceramics", "cosmetics", "perfumes", "furs", "flatware", "cookware", "jadeite", "jade", "oroide", "rhinestone", "lingerie"],
 		
 		"Cars": ["automobile", "motorcar", "auto", "railcar", "machine", "gondola", "automobiles", "trucks", "sedans", "vans", "buses", "autos", "motor", "lorries", "motors", "trains", "wheels", "carts", "wagons", "automotive", "wagon", "tanks", "machines", "carloads", "boxcars", "crates", "rail", "bombs", "coaches", "grain", "blasts", "trials", "injunctions", "writs", "makers", "automakers", "railcars", "motorcycles", "bikes", "junkers", "wheelers", "scooters", "coupes", "garages", "minivan", "cruisers", "lamborghini", "tractors", "tires", "drivers", "jeeps", "pickups", "limousines", "boats", "cabs", "taxicabs", "hatchback"]
 	]

@@ -394,7 +394,7 @@ extension MainVC: RoundCompletedAlertDelegate {
 //			}
 			
 			// MARK: Present Interstatial After Game Over (After 3+ Losses)
-			if self.unlockable.lossesSinceLastAd >= 3 {
+			if self.unlockable.lossesSinceLastAd >= self.unlockable.numLossesBeforeShowingAd - 1 {
 				self.presentInterstitial()
 				self.unlockable.lossesSinceLastAd = 0
 			}

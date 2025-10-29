@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import FirebaseCore
+import FirebaseRemoteConfig
+import FirebaseAnalytics
 import GoogleMobileAds
 import SwiftyStoreKit
 
@@ -18,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		
+		// MARK: Initialize Firebase
+		FirebaseApp.configure()
+		
 		// MARK: Handle Uncompleted Purchases
 		SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
 			for purchase in purchases {
@@ -43,9 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				}
 			}
 		}
-		
-		// MARK: Initialize Firebase
-		FirebaseApp.configure()
 		
 		// MARK: Initialize Google AdMobs
 		GADMobileAds.sharedInstance().start(completionHandler: nil)

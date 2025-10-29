@@ -22,7 +22,6 @@ class MenuVC: UIViewController {
 	let unlockable = UnlockableHelper()
 	
 	var rewardedAd: GADRewardedAd?
-	
 	// var loadingScreen: LoadingScreen?
 	
 	var selectedTheme = "Purpink"
@@ -331,7 +330,7 @@ class MenuVC: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		// MARK: Initialize LoadingScreen
 
 //		if let loadingScreenVC = self.storyboard?.instantiateViewController(withIdentifier: "LoadingScreenStoryboard") as? LoadingScreen {
@@ -409,7 +408,7 @@ class MenuVC: UIViewController {
 		// Show "Unlock Themes" If No Themes Have Been Unlocked
 		let unlockedThemes = self.unlockable.currentlyUnlockedThemes()
 		if unlockedThemes.count == 1 {
-			self.themeSelectorLabel.text = "Unlock Themes"
+			self.themeSelectorLabel.text = "Unlock New Themes!"
 			self.themeSelectorDecreaseArrow.isHidden = true
 			self.themeSelectorIncreaseArrow.isHidden = true
 			self.themeSelectorView.backgroundColor = self.unlockable.colorFor(Theme: "Dark Purpink")
@@ -424,7 +423,7 @@ class MenuVC: UIViewController {
 		// Show "Unlock Categories" If No Categories Have Been Unlocked
 		let unlockedCategories = self.unlockable.currentlyUnlockedPacks()
 		if unlockedCategories.count == 1 {
-			self.categorySelectorLabel.text = "Unlock Categories"
+			self.categorySelectorLabel.text = "Unlock New Levels!"
 			self.categorySelectorDecreaseArrow.isHidden = true
 			self.categorySelectorIncreaseArrow.isHidden = true
 		}
