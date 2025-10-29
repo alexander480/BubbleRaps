@@ -19,6 +19,7 @@
 		0A991A6523D6C0E400AA89DF /* UnlockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A991A6423D6C0E400AA89DF /* UnlockCell.swift */; };
 		0AA017D926EB04E100BBCDC7 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA017D826EB04E100BBCDC7 /* LoadingScreen.swift */; };
 		0AB424BB2EB1E1A400767C06 /* remote_config_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AB424BA2EB1E1A400767C06 /* remote_config_defaults.plist */; };
+		0AB424BD2EB1F9E900767C06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB424BC2EB1F9E900767C06 /* SceneDelegate.swift */; };
 		0ABAC6F123BAB65B00B5E20C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */; };
 		0AE338BC2BD25816007B7ECF /* allRandomWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338BB2BD25816007B7ECF /* allRandomWords.json */; };
 		0AE338C02BD28446007B7ECF /* daleChallRhymeBundle.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE338BF2BD28446007B7ECF /* daleChallRhymeBundle.json */; };
@@ -68,6 +69,7 @@
 		0A9BFC0623DAA2DB00E959E4 /* Bubble Raps.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bubble Raps.entitlements"; sourceTree = "<group>"; };
 		0AA017D826EB04E100BBCDC7 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		0AB424BA2EB1E1A400767C06 /* remote_config_defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = remote_config_defaults.plist; sourceTree = "<group>"; };
+		0AB424BC2EB1F9E900767C06 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0ABAC6F023BAB65B00B5E20C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		0ABDEC7623E7C2B4009BFCAE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		0AE338BB2BD25816007B7ECF /* allRandomWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = allRandomWords.json; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				E54B57B722C8405B0014B71C /* Extensions.swift */,
 				E54328BA22C1D34600187D44 /* Info.plist */,
 				E5E921D82318CD660088E2B9 /* BubbleRaps.xcdatamodeld */,
+				0AB424BC2EB1F9E900767C06 /* SceneDelegate.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				0A42321D258B29C80040B62F /* RhymeEngine.swift in Sources */,
 				E556CF1A2317728500598405 /* RoundCompletedAlert.swift in Sources */,
 				E5D1454F233D6C1F0060920C /* PurchaseHelper.swift in Sources */,
+				0AB424BD2EB1F9E900767C06 /* SceneDelegate.swift in Sources */,
 				E567EEE7231C9119006C36B0 /* PauseMenu.swift in Sources */,
 				E54328B122C1D34300187D44 /* MainVC.swift in Sources */,
 				0A991A6523D6C0E400AA89DF /* UnlockCell.swift in Sources */,
