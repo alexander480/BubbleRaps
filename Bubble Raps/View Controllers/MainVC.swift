@@ -385,16 +385,24 @@ extension MainVC: RoundCompletedAlertDelegate {
 			
 			// TODO: Show Ads After Showing Round Completed Pop Up, Before Navigate To Menu
 			// MARK: Present Interstatial After Game Over
-			if !self.unlockable.didShowAdLastTime {
+//			if !self.unlockable.didShowAdLastTime {
+//				self.presentInterstitial()
+//				self.unlockable.didShowAdLastTime = true
+//			}
+//			else {
+//				self.unlockable.didShowAdLastTime = false
+//			}
+			
+			// MARK: Present Interstatial After Game Over (After 3+ Losses)
+			if self.unlockable.lossesSinceLastAd >= 3 {
 				self.presentInterstitial()
-				self.unlockable.didShowAdLastTime = true
+				self.unlockable.lossesSinceLastAd = 0
 			}
 			else {
-				self.unlockable.didShowAdLastTime = false
+				self.unlockable.lossesSinceLastAd = self.unlockable.lossesSinceLastAd + 1
 			}
 			
 		}
-		
 		
 		// Present Round Completed Popup To Proceed To Next Round
 		self.presentRoundCompletedPopup(isGameOver: isGameOver)

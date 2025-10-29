@@ -18,6 +18,11 @@ enum UnlockableStatus {
 class UnlockableHelper: NSObject {
 	// MARK: Coin Purchasing Functions
 	
+	var lossesSinceLastAd: Int {
+		get { return UserDefaults.standard.integer(forKey: "lossesSinceLastAd") }
+		set { UserDefaults.standard.set(newValue, forKey: "lossesSinceLastAd") }
+	}
+	
 	// TODO: Don't Show Ads After First Loss When Its Their First Game Of The Day
 	// Only Defaults To True So User Doesn't Get Ad On First Loss
 	var didShowAdLastTime: Bool {
