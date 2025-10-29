@@ -616,7 +616,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Bubble Raps/Bubble Raps.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = VZ4LX93GR9;
 				INFOPLIST_FILE = "$(SRCROOT)/Bubble Raps/Core/Info.plist";
@@ -647,7 +647,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Bubble Raps/Bubble Raps.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = VZ4LX93GR9;
 				INFOPLIST_FILE = "$(SRCROOT)/Bubble Raps/Core/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Bubble Raps";
